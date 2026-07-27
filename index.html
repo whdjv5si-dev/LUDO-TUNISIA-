@@ -121,16 +121,21 @@
         }
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+        }
+        @media (max-width: 900px) {
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         .cat-box {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 12px;
+            padding: 12px 8px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
             color: var(--text-secondary);
             cursor: pointer;
@@ -334,6 +339,92 @@
             text-decoration: underline;
         }
 
+        /* Interactive Forms Styles */
+        .interactive-form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .interactive-form-card h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            color: var(--text-color);
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+        }
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            direction: ltr;
+            justify-content: flex-end;
+        }
+        .star {
+            color: var(--text-secondary);
+            transition: color 0.2s;
+        }
+        .star.selected, .star:hover, .star:hover ~ .star {
+            color: #f59e0b;
+        }
+        .submit-btn {
+            background: var(--accent-color);
+            color: #0b0f19;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+        }
+        .submit-btn:hover {
+            background: #0ea5e9;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .form-status {
+            margin-top: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -521,12 +612,14 @@
         </div>
     </div>
 
-    <!-- أقسام التنقل المنظمة مع إضافة صفحة الشفافية والأمان -->
+    <!-- أقسام التنقل المنظمة مع إضافة الأقسام الجديدة -->
     <div class="categories-container">
         <div class="categories-grid">
             <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (12)</div>
             <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
             <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
+            <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
+            <div class="cat-box" onclick="switchPage('feedback')">⭐ التقييم والملاحظات</div>
         </div>
     </div>
 
@@ -970,7 +1063,7 @@
             </div>
         </div>
 
-        <!-- صفحة الشفافية والأمان الجديدة -->
+        <!-- صفحة الشفافية والأمان -->
         <div id="page-transparency" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1006,6 +1099,86 @@
             </div>
         </div>
 
+        <!-- صفحة طلبات الألعاب للتعديل -->
+        <div id="page-requests" class="page-content">
+            <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
+            
+            <h2 class="section-title">📥 قسم طلبات الألعاب للتعديل (Game Mod Requests)</h2>
+            
+            <div class="interactive-form-card">
+                <h3>🎮 اقترح لعبة تريد تعديلها</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
+                    هل لديك لعبة معينة تريد منا تعديلها أو إضافة قائمة غش (Mod Menu) لها؟ أرسل طلبك الآن وسيقوم فريقنا بدراسته وإضافته للموقع باحترافية.
+                </p>
+                
+                <form id="gameRequestForm" onsubmit="submitGameRequest(event)">
+                    <div class="form-group">
+                        <label for="userNameReq">👤 اسمك أو معرفك:</label>
+                        <input type="text" id="userNameReq" class="form-control" placeholder="ادخل اسمك هنا..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gameNameReq">🎮 اسم اللعبة المطلوبة:</label>
+                        <input type="text" id="gameNameReq" class="form-control" placeholder="مثال: Roblox, Minecraft..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gameLinkReq">🔗 رابط اللعبة (متجر جوجل بلاي أو APK):</label>
+                        <input type="url" id="gameLinkReq" class="form-control" placeholder="https://play.google.com/..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modFeaturesReq">⚡ الميزات التي ترغب في إضافتها:</label>
+                        <textarea id="modFeaturesReq" class="form-control" placeholder="اكتب الميزات المطلوبة مثل: تجميد الأعداء، أموال غير محدودة..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">🚀 إرسال طلب التعديل إلى الإدارة</button>
+                    <div id="requestStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- صفحة تقييم الموقع والملاحظات -->
+        <div id="page-feedback" class="page-content">
+            <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
+            
+            <h2 class="section-title">⭐ تقييم الموقع وإرسال الملاحظات والأسئلة</h2>
+            
+            <div class="interactive-form-card">
+                <h3>💬 شاركنا رأيك أو استفسارك</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
+                    رأيك يهمنا! قيم خدماتنا أو أرسل ملاحظاتك واستفساراتك التقنية وسيتم تحويلها مباشرة إلى بوت تليجرام الخاص بالإدارة.
+                </p>
+                
+                <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                    <div class="form-group">
+                        <label for="userNameFeed">👤 اسم المستخدم:</label>
+                        <input type="text" id="userNameFeed" class="form-control" placeholder="ادخل اسمك هنا..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>⭐ تقييم الموقع:</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-value="5" onclick="setRating(5)">★</span>
+                            <span class="star" data-value="4" onclick="setRating(4)">★</span>
+                            <span class="star" data-value="3" onclick="setRating(3)">★</span>
+                            <span class="star" data-value="2" onclick="setRating(2)">★</span>
+                            <span class="star" data-value="1" onclick="setRating(1)">★</span>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="5">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackText">✍️ ملاحظاتك، أسئلتك، أو اقتراحاتك:</label>
+                        <textarea id="feedbackText" class="form-control" placeholder="اكتب استفسارك أو ملاحظتك هنا باحترافية..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">📤 إرسال التقييم والملاحظات</button>
+                    <div id="feedbackStatus" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+
     </div>
 
     <footer>
@@ -1013,6 +1186,10 @@
     </footer>
 
     <script>
+        // متغيرات بوت تليجرام المحددة من طرف المستخدم
+        const TELEGRAM_BOT_TOKEN = "8918820161:AAGo8v59x9Htppsmko8ALNaz7t6ceR4vYhU";
+        const TELEGRAM_CHAT_ID = "8464439368";
+
         function switchPage(pageName) {
             document.querySelectorAll('.page-content').forEach(el => {
                 el.classList.remove('active-page');
@@ -1027,6 +1204,12 @@
             } else if(pageName === 'transparency') {
                 document.getElementById('page-transparency').classList.add('active-page');
                 boxes[2].classList.add('active');
+            } else if(pageName === 'requests') {
+                document.getElementById('page-requests').classList.add('active-page');
+                boxes[3].classList.add('active');
+            } else if(pageName === 'feedback') {
+                document.getElementById('page-feedback').classList.add('active-page');
+                boxes[4].classList.add('active');
             } else {
                 document.getElementById('page-games').classList.add('active-page');
                 boxes[0].classList.add('active');
@@ -1048,6 +1231,103 @@
             const previewBox = button.closest('.mod-menu-preview');
             if (previewBox) {
                 previewBox.style.display = 'none';
+            }
+        }
+
+        // إدارة النجوم للتقييم
+        let currentRating = 5;
+        function setRating(val) {
+            currentRating = val;
+            document.getElementById('ratingValue').value = val;
+            const stars = document.querySelectorAll('#starRating .star');
+            stars.forEach(star => {
+                if (parseInt(star.getAttribute('data-value')) <= val) {
+                    star.classList.add('selected');
+                } else {
+                    star.classList.remove('selected');
+                }
+            });
+        }
+        // تعيين التقييم الافتراضي 5 نجوم عند التحميل
+        setRating(5);
+
+        // وظيفة إرسال رسالة احترافية إلى بوت تليجرام
+        async function sendTelegramMessage(textMessage, statusElementId) {
+            const statusEl = document.getElementById(statusElementId);
+            statusEl.style.color = "var(--accent-color)";
+            statusEl.textContent = "⏳ جاري إرسال البيانات باحترافية...";
+
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: textMessage,
+                        parse_mode: "Markdown"
+                    })
+                });
+
+                const data = await response.json();
+                if (data.ok) {
+                    statusEl.style.color = "var(--success-color)";
+                    statusEl.textContent = "✅ تم إرسال رسالتك بنجاح إلى الإدارة عبر تليجرام!";
+                    return true;
+                } else {
+                    throw new Error(data.description || "فشل الإرسال");
+                }
+            } catch (error) {
+                console.error("Telegram Error:", error);
+                statusEl.style.color = "var(--danger-color)";
+                statusEl.textContent = "❌ حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.";
+                return false;
+            }
+        }
+
+        // إرسال طلب تعديل لعبة
+        async function submitGameRequest(e) {
+            e.preventDefault();
+            const userName = document.getElementById('userNameReq').value.trim();
+            const gameName = document.getElementById('gameNameReq').value.trim();
+            const gameLink = document.getElementById('gameLinkReq').value.trim();
+            const modFeatures = document.getElementById('modFeaturesReq').value.trim();
+
+            const message = `📥 *طلب تعديل لعبة جديد* 📥\n\n` +
+                            `👤 *اسم المستخدم:* \`${userName}\`\n` +
+                            `🎮 *اسم اللعبة:* \`${gameName}\`\n` +
+                            `🔗 *رابط اللعبة:* ${gameLink}\n` +
+                            `⚡ *الميزات المطلوبة:* \n${modFeatures}\n\n` +
+                            `🌐 *المصدر:* DZ Security Lab Website`;
+
+            const success = await sendTelegramMessage(message, 'requestStatus');
+            if (success) {
+                document.getElementById('gameRequestForm').reset();
+            }
+        }
+
+        // إرسال التقييم والملاحظات والأسئلة
+        async function submitFeedback(e) {
+            e.preventDefault();
+            const userName = document.getElementById('userNameFeed').value.trim();
+            const rating = document.getElementById('ratingValue').value;
+            const feedbackText = document.getElementById('feedbackText').value.trim();
+
+            let starsVisual = "⭐".repeat(parseInt(rating));
+
+            const message = `⭐ *تقييم وملاحظات جديدة للموقع* ⭐\n\n` +
+                            `👤 *اسم المستخدم:* \`${userName}\`\n` +
+                            `📊 *التقييم:* ${rating}/5 (${starsVisual})\n` +
+                            `✍️ *الملاحظات / الأسئلة:* \n${feedbackText}\n\n` +
+                            `🌐 *المصدر:* DZ Security Lab Website`;
+
+            const success = await sendTelegramMessage(message, 'feedbackStatus');
+            if (success) {
+                document.getElementById('feedbackForm').reset();
+                setRating(5);
             }
         }
     </script>
