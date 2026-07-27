@@ -1,390 +1,802 @@
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💎 موقع الشحن فري فاير 2026</title>
-<style>
-*{ margin:0; padding:0; box-sizing:border-box; }
-body{
-  font-family: 'Arial', sans-serif;
-  color:#fff;
-  text-align:center;
-  min-height:100vh;
-  background: linear-gradient(270deg,#000000,#0f2027,#203a43,#6a11cb,#ff0000,#00eaff);
-  background-size: 1000% 1000%;
-  animation: bg 20s ease infinite;
-}
-@keyframes bg{
-  0%{ background-position:0% 50% }
-  50%{ background-position:100% 50% }
-  100%{ background-position:0% 50% }
-}
-.top-bar{
-  padding:20px;
-  font-size:32px;
-  font-weight:bold;
-  text-shadow:0 0 30px #000;
-  animation: colorText 3s infinite;
-  background:rgba(0,0,0,0.3);
-  backdrop-filter:blur(10px);
-}
-@keyframes colorText{
-  0%{ color:#ffd700; }
-  50%{ color:#00eaff; }
-  100%{ color:#ff0000; }
-}
-.logo{
-  width:120px;
-  margin-top:10px;
-  filter:drop-shadow(0 0 20px #ffd700);
-  animation: float 3s ease-in-out infinite;
-}
-@keyframes float{
-  0%,100%{ transform:translateY(0px); }
-  50%{ transform:translateY(-10px); }
-}
-.container{
-  max-width:800px;
-  margin:30px auto;
-  padding:40px 30px;
-  border-radius:30px;
-  background:rgba(0,0,0,0.85);
-  box-shadow:0 0 80px #00eaff, inset 0 0 30px rgba(0,234,255,0.1);
-  position:relative;
-  border:1px solid rgba(0,234,255,0.3);
-}
-.container h1{
-  font-size:36px;
-  background:linear-gradient(45deg,#ffd700,#ff6b6b,#00eaff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:15px;
-}
-.game-logo{
-  position:absolute;
-  top:15px;
-  right:15px;
-  width:60px;
-  filter:drop-shadow(0 0 15px #ffd700);
-}
-button{
-  padding:18px 40px;
-  font-size:20px;
-  border:none;
-  border-radius:50px;
-  cursor:pointer;
-  margin:12px;
-  font-weight:bold;
-  transition:0.3s;
-  box-shadow:0 0 30px rgba(255,255,255,0.3);
-  position:relative;
-  overflow:hidden;
-}
-button::after{
-  content:'';
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-  opacity:0;
-  transition:0.3s;
-}
-button:hover::after{ opacity:1; }
-button:hover{ transform:scale(1.08) translateY(-3px); }
-button:active{ transform:scale(0.95); }
-button:disabled{ opacity:0.5; cursor:not-allowed; transform:none !important; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DZ Security Lab - مكتبة الألعاب المعدلة وأدوات المطورين</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent-color: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+            --text-color: #f8fafc;
+            --text-secondary: #94a3b8;
+            --success-color: #22c55e;
+            --danger-color: #ef4444;
+            --purple-color: #6d28d9;
+            --border-color: #1e293b;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: var(--card-bg);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        header h1 {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        /* Developer Info Section */
+        .dev-section {
+            background: linear-gradient(135deg, #131b2e 0%, #1e293b 100%);
+            border: 1px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto 10px auto;
+            max-width: 1200px;
+            width: calc(100% - 30px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .dev-title {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .dev-name {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .dev-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .dev-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .dev-btn.youtube {
+            background-color: #ef4444;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+        .dev-btn.youtube:hover {
+            background-color: #dc2626;
+            transform: translateY(-2px);
+        }
+        .dev-btn.telegram {
+            background-color: #0ea5e9;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+        .dev-btn.telegram:hover {
+            background-color: #0284c7;
+            transform: translateY(-2px);
+        }
 
-#loginBtn{
-  background:linear-gradient(135deg,#ff3c3c,#c0392b);
-  color:#fff;
-  box-shadow:0 0 40px rgba(255,60,60,0.5);
-}
-#codeBtn{
-  background:linear-gradient(135deg,#00eaff,#0099ff);
-  color:#000;
-  box-shadow:0 0 40px rgba(0,234,255,0.5);
-}
-#diamondBtn{
-  background:linear-gradient(135deg,#ffd700,#f39c12);
-  color:#000;
-  box-shadow:0 0 40px rgba(255,215,0,0.5);
-}
-#refreshBtn{
-  background:linear-gradient(135deg,#9b59ff,#6c3483);
-  color:#fff;
-  box-shadow:0 0 40px rgba(155,89,255,0.5);
-  display:none;
-}
-.btn-group{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+        /* Small Responsive Categories Section */
+        .categories-container {
+            max-width: 1200px;
+            margin: 15px auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        @media (min-width: 768px) {
+            .categories-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+        .cat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .cat-box:hover, .cat-box.active {
+            background: #1e293b;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
 
-#codeBox{
-  margin-top:30px;
-  padding:20px;
-  font-size:30px;
-  color:#00ffcc;
-  font-weight:bold;
-  text-shadow:0 0 30px #00ffcc;
-  background:rgba(0,255,204,0.05);
-  border-radius:20px;
-  border:2px dashed rgba(0,255,204,0.3);
-  min-height:80px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  word-break:break-all;
-}
-.footer{
-  padding:30px;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(10px);
-  margin-top:30px;
-  border-top:2px solid rgba(255,215,0,0.3);
-}
-.footer h2{ color:#ffd700; margin-bottom:15px; }
-.footer p{ font-size:18px; line-height:1.8; max-width:700px; margin:10px auto; color:#ccc; }
-.footer .dev{ color:#00eaff; font-size:22px; }
-.sparkle{
-  display:inline-block;
-  animation: sparkle 1.5s ease-in-out infinite;
-}
-@keyframes sparkle{
-  0%,100%{ opacity:1; transform:scale(1); }
-  50%{ opacity:0.5; transform:scale(1.2); }
-}
-.small-logo{ width:80px; margin:15px; filter:drop-shadow(0 0 20px #ffd700); }
-.badge{
-  display:inline-block;
-  padding:5px 20px;
-  border-radius:50px;
-  font-size:14px;
-  font-weight:bold;
-  margin:5px;
-}
-.badge-gold{ background:#ffd700; color:#000; }
-.badge-blue{ background:#00eaff; color:#000; }
-.badge-red{ background:#ff3c3c; color:#fff; }
+        .main-container {
+            max-width: 1200px;
+            margin: 15px auto 40px auto;
+            padding: 0 15px;
+            flex: 1;
+            width: 100%;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 10px;
+        }
+        
+        /* Navigation Button to Tool Page */
+        .nav-tool-banner {
+            background: linear-gradient(135deg, #131b2e 0%, #1e293b 100%);
+            border: 2px dashed var(--accent-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.1);
+        }
+        .nav-tool-banner h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .goto-tool-btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #0b0f19;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+        .goto-tool-btn:hover {
+            background-color: #0ea5e9;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .back-to-home-btn {
+            display: inline-block;
+            background-color: #1e293b;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
+        }
+        .back-to-home-btn:hover {
+            background-color: var(--accent-color);
+            color: #0b0f19;
+        }
 
-@media(max-width:600px){
-  .top-bar{ font-size:22px; padding:15px; }
-  .container{ padding:20px 15px; margin:15px; }
-  .container h1{ font-size:24px; }
-  button{ padding:14px 25px; font-size:16px; margin:8px; }
-  #codeBox{ font-size:20px; padding:15px; min-height:60px; }
-  .game-logo{ width:40px; top:10px; right:10px; }
-  .logo{ width:80px; }
-  .footer p{ font-size:15px; }
-}
-</style>
+        /* Tool / Developer Section Specific Style */
+        .tool-card {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+        }
+        .tool-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        .tool-title {
+            color: var(--accent-color);
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        .tool-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        .tool-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .tool-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .tool-feature-item {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tool-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .tool-btn {
+            flex: 1;
+            min-width: 180px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .tool-btn.download {
+            background-color: var(--success-color);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        .tool-btn.download:hover {
+            background-color: #16a34a;
+            transform: translateY(-2px);
+        }
+        .tool-btn.info {
+            background-color: var(--purple-color);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
+        }
+        .tool-btn.info:hover {
+            background-color: #5b21b6;
+            transform: translateY(-2px);
+        }
+
+        /* Games Grid Styles */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 20px -5px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px -5px var(--accent-glow);
+            border-color: var(--accent-color);
+        }
+        .game-header {
+            padding: 20px 20px 10px 20px;
+        }
+        .game-title {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .game-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        .features-list {
+            list-style: none;
+            padding: 0 20px;
+            margin-bottom: 15px;
+        }
+        .features-list li {
+            padding: 5px 0;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        .features-list li::before {
+            content: "⚡";
+            margin-left: 6px;
+            color: var(--accent-color);
+        }
+        
+        .mod-menu-preview {
+            background: #090d16;
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 20px;
+            box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.1);
+        }
+        .mod-menu-title {
+            text-align: center;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .mod-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 6px;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+        .mod-btn-sample {
+            background: #1e3a8a;
+            color: #fff;
+            padding: 5px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid #3b82f6;
+            text-align: center;
+            font-weight: bold;
+        }
+        .mod-close-btn {
+            background: #1e293b;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid #334155;
+            text-align: center;
+            font-weight: bold;
+        }
+        .mod-btn-sample.purple {
+            background: var(--purple-color);
+            border-color: #8b5cf6;
+        }
+
+        .card-footer {
+            padding: 15px 20px;
+            background: rgba(15, 23, 42, 0.6);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--success-color);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+            width: 100%;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #16a34a;
+            transform: translateY(-1px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            background: var(--card-bg);
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+        
+        /* Pages visibility control */
+        .page-content {
+            display: none;
+        }
+        .page-content.active-page {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
-<div class="top-bar">
-  🌙 رمضان مبارك 🌙<br>
-  🔥 موقع الشحن فري فاير 2026 🔥
-  <br>
-  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Free_Fire_logo.png">
-</div>
+    <header>
+        <h1>DZ SECURITY LAB</h1>
+        <p>المصدر الاحترافي لتعديل الألعاب وقوائم الغش المباشرة وأدوات المطورين</p>
+    </header>
 
-<div class="container">
-  <img class="game-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Free_Fire_logo.png">
-  
-  <h1>💎 نظام شحن الجواهر الاحترافي</h1>
-  <p style="font-size:18px; color:#aaa; margin-bottom:20px;">
-    قم بتسجيل الدخول أولاً ثم انتظر 35 ثانية لتفعيل الأكواد
-  </p>
-  
-  <div class="btn-group">
-    <button id="loginBtn">🔐 تسجيل دخول فري فاير</button>
-  </div>
-  
-  <div class="btn-group" style="margin-top:10px;">
-    <button id="codeBtn" disabled>🎁 كود 510 جوهرة</button>
-    <button id="diamondBtn" disabled>💎 كود 110 جوهرة</button>
-    <button id="refreshBtn">🔄 تحديث الأكواد</button>
-  </div>
-  
-  <div id="codeBox">
-    ⏳ انتظر تسجيل الدخول أولاً
-  </div>
-  
-  <div style="margin-top:20px;">
-    <span class="badge badge-gold">🎯 510 جوهرة</span>
-    <span class="badge badge-blue">💎 110 جوهرة</span>
-    <span class="badge badge-red">🔒 آمن 100%</span>
-  </div>
-</div>
+    <!-- قسم معلومات المطور -->
+    <div class="dev-section">
+        <div class="dev-title">معلومات المطور / Developer</div>
+        <div class="dev-name">ADEM</div>
+        <div class="dev-links">
+            <a href="https://www.youtube.com/@MrSecurity333" target="_blank" class="dev-btn youtube">
+                📺 يوتيوب
+            </a>
+            <a href="https://t.me/gdch6" target="_blank" class="dev-btn telegram">
+                💬 تليجرام
+            </a>
+        </div>
+    </div>
 
-<div class="footer">
-  <h2>💡 لمحة عن فري فاير والموقع</h2>
-  <p>
-    فري فاير هي لعبة باتل رويال شهيرة مليئة بالحماس والمغامرات،
-    حيث تساعدك الجواهر على شراء الأسلحة والسكنات وتطوير حسابك داخل اللعبة.
-  </p>
-  <p>
-    هذا الموقع يوفر تجربة تصميم احترافية لعرض أكواد الجواهر بطريقة آمنة وسريعة
-    مع واجهة قوية وخلفية جميلة متحركة.
-  </p>
-  <p>
-    <span class="dev">👨‍💻 المطور: ADEM</span>
-  </p>
-  <img class="small-logo" src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Free_Fire_logo.png">
-  <p style="font-size:14px; color:#666; margin-top:10px;">
-    © 2026 جميع الحقوق محفوظة
-  </p>
-</div>
+    <!-- الأقسام الصغيرة المتوافقة مع الهاتف -->
+    <div class="categories-container">
+        <div class="categories-grid">
+            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب (9)</div>
+            <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
+            <div class="cat-box" onclick="switchPage('games')">🧟 ألعاب الرعب</div>
+            <div class="cat-box" onclick="switchPage('games')">⚡ قوائم الغش</div>
+            <div class="cat-box" onclick="switchPage('games')">🚗 ألعاب الحركة</div>
+        </div>
+    </div>
 
-<script>
-const loginBtn = document.getElementById("loginBtn");
-const codeBtn = document.getElementById("codeBtn");
-const diamondBtn = document.getElementById("diamondBtn");
-const refreshBtn = document.getElementById("refreshBtn");
-const codeBox = document.getElementById("codeBox");
+    <div class="main-container">
+        
+        <!-- ================= PAGE 1: Games & Home with Button to Tool ================= -->
+        <div id="page-games" class="page-content active-page">
+            
+            <!-- زر الانتقال إلى صفحة أداة المطور -->
+            <div class="nav-tool-banner">
+                <h3>🛠️ هل أنت مطور تبحث عن أدوات متقدمة؟</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">اكتشف أداة RVAPatcher v3 لتعديل الذاكرة في وقت التشغيل بمعمارية ARM64.</p>
+                <a href="#tool" class="goto-tool-btn" onclick="switchPage('tool')">توجه لأداة المطور</a>
+            </div>
 
-const codes510 = [
-  "386855252454554",
-  "252524242524244",
-  "252524242424222",
-  "252522222241222",
-  "252522212242222",
-  "252525222255283",
-  "683825382425544",
-  "383865242427242"
-];
+            <!-- قسم الألعاب المعدلة -->
+            <h2 class="section-title">قائمة الألعاب المعدلة المتوفرة</h2>
+            
+            <div class="games-grid">
+                
+                <!-- كارت لعبة Traffic Racer -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Traffic Racer</h3>
+                        <p class="game-desc">لعبة السباق الممتعة مع تفعيل كافة الميزات لتجربة قيادة بلا حدود.</p>
+                    </div>
+                    
+                    <ul class="features-list">
+                        <li>فتح جميع السيارات (All Cars Unlocked)</li>
+                        <li>أموال وعملات غير محدودة (Unlimited Money)</li>
+                        <li>بدون إعلانات مزعجة</li>
+                    </ul>
 
-const codes110 = [
-  "5865252524243",
-  "343438252525",
-  "373424242424",
-  "273424242425",
-  "37342425242",
-  "37352525224",
-  "27252554352",
-  "37242552522",
-  "35352424242",
-  "352525253522"
-];
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/32ks4ysha7wc0li/traffic-.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
 
-let index510 = 0;
-let index110 = 0;
-let logged = false;
-let loginTimer = null;
+                <!-- كارت لعبة Slendrina the Cellar 2 -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Slendrina the Cellar 2</h3>
+                        <p class="game-desc">لعبة الرعب مع قائمة غش مبرمجة ومطورة حصرياً عبر قناة DZ Security Lab.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample">🛡️ عدم موت: OFF</div>
+                            <div class="mod-btn-sample">❄️ تجميد: OFF</div>
+                        </div>
+                        <div class="mod-btn-sample purple" style="margin-bottom: 5px; grid-column: span 2;">🗑️ حذف مشهد</div>
+                        <div class="mod-btn-sample" style="background: #dc2626; grid-column: span 2;">❌ إخفاء</div>
+                    </div>
 
-function updateCodeBox(text, isSuccess = false) {
-  codeBox.textContent = text;
-  if (isSuccess) {
-    codeBox.style.borderColor = "rgba(0,255,204,0.8)";
-    codeBox.style.boxShadow = "0 0 50px rgba(0,255,204,0.3)";
-  } else {
-    codeBox.style.borderColor = "rgba(0,255,204,0.3)";
-    codeBox.style.boxShadow = "none";
-  }
-}
+                    <ul class="features-list">
+                        <li>حماية كاملة (God Mode)</li>
+                        <li>تجميد الأعداء وإيقافهم</li>
+                        <li>زر إخفاء القائمة وحذف المشاهد</li>
+                    </ul>
 
-function loginCountdown() {
-  let seconds = 35;
-  updateCodeBox("⏳ جاري التحقق من تسجيل الدخول: " + seconds + " ثانية");
-  
-  if (loginTimer) clearInterval(loginTimer);
-  
-  loginTimer = setInterval(() => {
-    seconds--;
-    if (seconds > 0) {
-      updateCodeBox("⏳ جاري التحقق من تسجيل الدخول: " + seconds + " ثانية");
-    } else {
-      clearInterval(loginTimer);
-      loginTimer = null;
-      if (logged) {
-        codeBtn.disabled = false;
-        diamondBtn.disabled = false;
-        updateCodeBox("✅ تم التحقق بنجاح! يمكنك الآن الحصول على الأكواد", true);
-      }
-    }
-  }, 1000);
-}
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/jko6w1ft6uf668m/Slendrina+the+Cellar+2.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
 
-loginBtn.addEventListener("click", () => {
-  window.open("https://bit.ly/ggoogle-account", "_blank");
-  logged = true;
-  codeBtn.disabled = true;
-  diamondBtn.disabled = true;
-  refreshBtn.style.display = "none";
-  codeBtn.style.display = "inline-block";
-  diamondBtn.style.display = "inline-block";
-  loginCountdown();
-});
+                <!-- كارت لعبة Ninja Arashi -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Ninja Arashi</h3>
+                        <p class="game-desc">مغامرة النينجا المشوقة مع قائمة غش مخصصة لتجميد الأعداء وعدم الموت.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample">تجميد: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                        <div class="mod-btn-sample purple" style="margin-top: 5px; grid-column: span 2;">🛡️ عدم موت: ON</div>
+                    </div>
 
-function startCountdown(callback, type) {
-  let seconds = 20;
-  updateCodeBox("⏳ تجهيز الكود (" + type + "): " + seconds + " ثانية");
-  
-  const timer = setInterval(() => {
-    seconds--;
-    if (seconds > 0) {
-      updateCodeBox("⏳ تجهيز الكود (" + type + "): " + seconds + " ثانية");
-    } else {
-      clearInterval(timer);
-      callback();
-    }
-  }, 1000);
-}
+                    <ul class="features-list">
+                        <li>تجميد الأعداء داخل المراحل</li>
+                        <li>ميزة عدم الموت (God Mode)</li>
+                        <li>تحكم كامل عبر قائمة غش مدمجة</li>
+                    </ul>
 
-codeBtn.addEventListener("click", () => {
-  if (!logged) {
-    updateCodeBox("⚠️ يجب تسجيل الدخول أولاً!");
-    return;
-  }
-  codeBtn.disabled = true;
-  diamondBtn.disabled = true;
-  
-  startCountdown(() => {
-    const code = codes510[index510];
-    index510 = (index510 + 1) % codes510.length;
-    updateCodeBox("🎁 كود 510 جوهرة: " + code + " 💎", true);
-    codeBtn.style.display = "none";
-    diamondBtn.style.display = "none";
-    refreshBtn.style.display = "inline-block";
-  }, "510");
-});
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/snbt7u8jhwqsjs8/Ninja_Arashi.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
 
-diamondBtn.addEventListener("click", () => {
-  if (!logged) {
-    updateCodeBox("⚠️ يجب تسجيل الدخول أولاً!");
-    return;
-  }
-  codeBtn.disabled = true;
-  diamondBtn.disabled = true;
-  
-  startCountdown(() => {
-    const code = codes110[index110];
-    index110 = (index110 + 1) % codes110.length;
-    updateCodeBox("💎 كود 110 جوهرة: " + code + " 💎", true);
-    codeBtn.style.display = "none";
-    diamondBtn.style.display = "none";
-    refreshBtn.style.display = "inline-block";
-  }, "110");
-});
+                <!-- كارت لعبة Cursed House Multiplayer (GMM) -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Cursed House Multiplayer (GMM)</h3>
+                        <p class="game-desc">لعبة الرعب الجماعية مع قائمة غش مخصصة لتجميد الجدة والتحكم باللعب.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample purple">❄️ تجميد الجدة: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                    </div>
 
-refreshBtn.addEventListener("click", () => {
-  refreshBtn.style.display = "none";
-  codeBtn.style.display = "inline-block";
-  diamondBtn.style.display = "inline-block";
-  codeBtn.disabled = false;
-  diamondBtn.disabled = false;
-  updateCodeBox("🔄 تم تحديث النظام! اختر الكود الذي تريده", true);
-});
+                    <ul class="features-list">
+                        <li>تجميد الجدة (Freeze Granny)</li>
+                        <li>قائمة غش تفاعلية وسريعة</li>
+                        <li>دعم اللعب الجماعي المعدل</li>
+                    </ul>
 
-// تنبيه عند محاولة إغلاق الصفحة
-window.addEventListener("beforeunload", (e) => {
-  if (logged) {
-    e.preventDefault();
-    e.returnValue = "هل أنت متأكد من المغادرة؟ قد تفقد الأكواد!";
-  }
-});
-</script>
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/r4thlp0dzggl3wy/MOD.MENU.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
+
+                <!-- كارت لعبة Gun Strike -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Gun Strike</h3>
+                        <p class="game-desc">لعبة الأكشن والحرب مع قائمة غش مخصصة لميزة عدم الموت والسيطرة على المعركة.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample purple" style="grid-column: span 1;">🛡️ عدم موت: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>ميزة عدم الموت (God Mode)</li>
+                        <li>قائمة غش تفاعلية داخل اللعبة</li>
+                        <li>تجربة أكشن حماسية بلا هزيمة</li>
+                    </ul>
+
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/tst11yk9ngvjpuq/Gun+Strik.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
+
+                <!-- كارت لعبة Evil Nun -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Evil Nun</h3>
+                        <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الراهبة وحرية الاستكشاف.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample purple" style="grid-column: span 1;">❄️ تجميد الراهبة: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>تجميد الراهبة (Freeze Nun)</li>
+                        <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
+                        <li>استكشاف المدرسة وحل الألغاز بأمان</li>
+                    </ul>
+
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/4wujo0vby1po11m/Evil_Nun.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
+
+                <!-- كارت لعبة Subway City -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Subway City</h3>
+                        <p class="game-desc">لعبة الجري والمغامرة الممتعة في شوارع المدينة مع قائمة غش مخصصة لمنع الموت.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample purple" style="grid-column: span 1;">🛡️ عدم موت: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>ميزة عدم الموت (God Mode)</li>
+                        <li>قائمة غش تفاعلية للتحكم الكامل</li>
+                        <li>مغامرة بلا حدود أو اصطدام مميت</li>
+                    </ul>
+
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/pscomj55tuxcjb3/Subway+City_2.3.0.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
+
+                <!-- كارت لعبة Granny 3 -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Granny 3</h3>
+                        <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الجدة والجد لضمان النجاة.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid">
+                            <div class="mod-btn-sample purple">تجميد: OFF</div>
+                            <div class="mod-btn-sample purple">تجميد2: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>تجميد الجدة (Freeze Granny)</li>
+                        <li>تجميد الجد (Freeze Grandpa)</li>
+                        <li>قائمة غش تفاعلية مطابقة لطلبك</li>
+                    </ul>
+
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/b65kbe4s7idu4i2/Granny3_src_sign.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
+
+                <!-- كارت لعبة Granny Chapter Two -->
+                <div class="game-card">
+                    <div class="game-header">
+                        <h3 class="game-title">Granny Chapter Two</h3>
+                        <p class="game-desc">الجزء الثاني من لعبة الرعب الأسطورية مع قائمة غش مخصصة لتجميد الجدة.</p>
+                    </div>
+                    
+                    <div class="mod-menu-preview">
+                        <div class="mod-menu-title">DZ SECURITY LAB</div>
+                        <div class="mod-grid" style="grid-template-columns: 1fr auto;">
+                            <div class="mod-btn-sample purple">تجميد: OFF</div>
+                            <div class="mod-close-btn">X</div>
+                        </div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>تجميد الجدة (Freeze Granny)</li>
+                        <li>قائمة غش تفاعلية مطابقة لطلبك</li>
+                        <li>استكشاف المنزل والهروب بأمان</li>
+                    </ul>
+
+                    <div class="card-footer">
+                        <a href="https://www.mediafire.com/file/sw7bvfh446xzgyb/Granny+Chapter+Two.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= PAGE 2: Developer Tool (RVAPatcher v3) ================= -->
+        <div id="page-tool" class="page-content">
+            <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
+            
+            <h2 class="section-title">🛠️ قسم أداة المطور (Developer Tools)</h2>
+            
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-title">🔥 RVAPatcher v3</div>
+                    <div class="tool-badge">Runtime ARM64 Patcher</div>
+                </div>
+                
+                <p class="tool-desc">
+                    مكتبة Android احترافية مطورة بلغة C/C++ لتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. مصممة خصيصاً لتعديل وتصحيح وظائف مكتبة `libil2cpp.so` في ألعاب محرك Unity <b>دون الحاجة لتعديل ملف APK الأصلي</b>، مع الحفاظ على سلامة التوقيع الرقمي والعمل بصورة خفية وآمنة تماماً.
+                </p>
+
+                <div class="tool-features-grid">
+                    <div class="tool-feature-item">🔄 <b>Runtime Patching:</b> تعديل الذاكرة فور تشغيل التطبيق.</div>
+                    <div class="tool-feature-item">🔍 <b>Signature-Based:</b> بحث تلقائي وتطبيق للبصمات (signature.SH).</div>
+                    <div class="tool-feature-item">📁 <b>Dual Config:</b> دعم ملفات التكوين الخارجية `MOD.SH`.</div>
+                    <div class="tool-feature-item">🕶️ <b>No Traces:</b> تنظيف كامل لآثار الذاكرة بعد التنفيذ لتفادي الحماية.</div>
+                </div>
+
+                <div class="tool-actions">
+                    <a href="https://www.mediafire.com/file/1nxrqs5715db55k/RVAPatcher+v3.zip/file" target="_blank" class="tool-btn download">
+                        📥 تحميل أداة المطور (v3.0)
+                    </a>
+                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/edit/v3.0.0" target="_blank" class="tool-btn info">
+                        📚 للمزيد من المعلومات (GitHub)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 DZ Security Lab | صُنع بواسطة ADEM</p>
+    </footer>
+
+    <script>
+        function switchPage(pageName) {
+            // إخفاء جميع الصفحات
+            document.querySelectorAll('.page-content').forEach(el => {
+                el.classList.remove('active-page');
+            });
+            
+            // إظهار الصفحة المطلوبة
+            if(pageName === 'tool') {
+                document.getElementById('page-tool').classList.add('active-page');
+                // تحديث الـ Active في الفئات الصغيرة
+                document.querySelectorAll('.cat-box').forEach((box, index) => {
+                    if(index === 1) box.classList.add('active');
+                    else box.classList.remove('active');
+                });
+            } else {
+                document.getElementById('page-games').classList.add('active-page');
+                document.querySelectorAll('.cat-box').forEach((box, index) => {
+                    if(index === 0) box.classList.add('active');
+                    else box.classList.remove('active');
+                });
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
