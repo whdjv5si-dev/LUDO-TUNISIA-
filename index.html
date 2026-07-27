@@ -121,13 +121,8 @@
         }
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-        }
-        @media (min-width: 768px) {
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
         .cat-box {
             background: var(--card-bg);
@@ -135,7 +130,7 @@
             border-radius: 10px;
             padding: 12px;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: var(--text-secondary);
             cursor: pointer;
@@ -302,6 +297,43 @@
             transform: translateY(-2px);
         }
 
+        /* Transparency Page Styles */
+        .transparency-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .transparency-card h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .transparency-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        .safety-box {
+            background: #090d16;
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        .safety-box a {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -414,6 +446,17 @@
             border-color: #16a34a;
         }
 
+        /* Disclaimer inside each game card */
+        .game-disclaimer {
+            background: #080b13;
+            border-top: 1px dashed var(--border-color);
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            text-align: justify;
+        }
+
         .card-footer {
             padding: 15px 20px;
             background: rgba(15, 23, 42, 0.6);
@@ -478,11 +521,12 @@
         </div>
     </div>
 
-    <!-- أقسام التنقل المنظمة (بدون تكرار) -->
+    <!-- أقسام التنقل المنظمة مع إضافة صفحة الشفافية والأمان -->
     <div class="categories-container">
         <div class="categories-grid">
             <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (12)</div>
             <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
+            <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
         </div>
     </div>
 
@@ -503,305 +547,389 @@
                 
                 <!-- Traffic Racer (نسخة 64-bit) -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Traffic Racer (نسخة 64-bit)</h3>
-                        <p class="game-desc">لعبة السباق الشهيرة بمعمارية 64-bit مع نقود كثيرة وجميع السيارات مفتوحة.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview" style="border-color: #f59e0b; background: #0f172a;">
-                        <div class="mod-menu-title" style="color: #f59e0b;">⚠️ ملاحظة هامة لتشغيل العملات</div>
-                        <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
-                            • ليتم تشغيل العملات وتفعيلها بشكل صحيح داخل اللعبة، يُرجى الخروج التام من اللعبة وإعادة فتحها من جديد.
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Traffic Racer (نسخة 64-bit)</h3>
+                            <p class="game-desc">لعبة السباق الشهيرة بمعمارية 64-bit مع نقود كثيرة وجميع السيارات مفتوحة.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview" style="border-color: #f59e0b; background: #0f172a;">
+                            <div class="mod-menu-title" style="color: #f59e0b;">⚠️ ملاحظة هامة لتشغيل العملات</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
+                                • ليتم تشغيل العملات وتفعيلها بشكل صحيح داخل اللعبة، يُرجى الخروج التام من اللعبة وإعادة فتحها من جديد.
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>نقود كثيرة وغير محدودة</li>
+                            <li>جميع السيارات مفتوحة (All Cars Unlocked)</li>
+                            <li>إصدار 64-bit متوافق مع الأجهزة الحديثة</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>نقود كثيرة وغير محدودة</li>
-                        <li>جميع السيارات مفتوحة (All Cars Unlocked)</li>
-                        <li>إصدار 64-bit متوافق مع الأجهزة الحديثة</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/fy6hcx8quiqrutg/Traffic+Racer.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/fy6hcx8quiqrutg/Traffic+Racer.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Free Fire (نسخة 32-bit) -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Free Fire (نسخة 32-bit)</h3>
-                        <p class="game-desc">الإصدار 1.128.2 المخصص للأجهزة الضعيفة والقوية لتعمل بسلاسة فائقة وبدون تقطيع.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview" style="border-color: #f59e0b; background: #0f172a;">
-                        <div class="mod-menu-title" style="color: #f59e0b;">⚠️ ملاحظة هامة للتثبيت والتشغيل</div>
-                        <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
-                            • لتفعيل النسخة على أجهزة 64، عطل التحديث التلقائي وثبتها عبر تطبيق يدعم ملفات <code>.apks</code>.
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Free Fire (نسخة 32-bit)</h3>
+                            <p class="game-desc">الإصدار 1.128.2 المخصص للأجهزة الضعيفة والقوية لتعمل بسلاسة فائقة وبدون تقطيع.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview" style="border-color: #f59e0b; background: #0f172a;">
+                            <div class="mod-menu-title" style="color: #f59e0b;">⚠️ ملاحظة هامة للتثبيت والتشغيل</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
+                                • لتفعيل النسخة على أجهزة 64، عطل التحديث التلقائي وثبتها عبر تطبيق يدعم ملفات <code>.apks</code>.
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>حزمة اللعبة: <code>com.dts.freefireth</code></li>
+                            <li>الإصدار: <code>1.128.2</code> (نسخة 32)</li>
+                            <li>أداء سلس ومحسّن لكافة الأجهزة</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>حزمة اللعبة: <code>com.dts.freefireth</code></li>
-                        <li>الإصدار: <code>1.128.2</code> (نسخة 32)</li>
-                        <li>أداء سلس ومحسّن لكافة الأجهزة</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/530v3m4u97umj66/Free+Fire_1.128.2.apks/file" target="_blank" class="btn">تحميل اللعبة (.apks)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/530v3m4u97umj66/Free+Fire_1.128.2.apks/file" target="_blank" class="btn">تحميل اللعبة (.apks)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Horror Sponge Granny V1.8 -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Horror Sponge Granny V1.8</h3>
-                        <p class="game-desc">لعبة الرعب المميزة مع قائمة غش مخصصة لتفعيل ميزات تجميد الجدة للنجاة.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة')">❄️ تجميد الجدة: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Horror Sponge Granny V1.8</h3>
+                            <p class="game-desc">لعبة الرعب المميزة مع قائمة غش مخصصة لتفعيل ميزات تجميد الجدة للنجاة.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة')">❄️ تجميد الجدة: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>تجميد الجدة بالكامل (Freeze Granny)</li>
+                            <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
+                            <li>إصدار V1.8 المعدل خصيصاً</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>تجميد الجدة بالكامل (Freeze Granny)</li>
-                        <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
-                        <li>إصدار V1.8 المعدل خصيصاً</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/05s7kr3kq7o4wnw/Horror+Sponge.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/05s7kr3kq7o4wnw/Horror+Sponge.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Traffic Racer (نسخة 32) -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Traffic Racer (نسخة 32-bit)</h3>
-                        <p class="game-desc">لعبة السباق الممتعة (نسخة 32) لتعمل بسلاسة فائقة على الأجهزة الضعيفة والقوية مع فتح الميزات.</p>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Traffic Racer (نسخة 32-bit)</h3>
+                            <p class="game-desc">لعبة السباق الممتعة (نسخة 32) لتعمل بسلاسة فائقة على الأجهزة الضعيفة والقوية مع فتح الميزات.</p>
+                        </div>
+                        
+                        <ul class="features-list" style="margin-top: 15px;">
+                            <li>إصدار 32-bit متوافق مع الأجهزة الضعيفة والقوية</li>
+                            <li>فتح جميع السيارات (All Cars Unlocked)</li>
+                            <li>أموال وعملات غير محدودة (Unlimited Money)</li>
+                        </ul>
                     </div>
-                    
-                    <ul class="features-list">
-                        <li>إصدار 32-bit متوافق مع الأجهزة الضعيفة والقوية</li>
-                        <li>فتح جميع السيارات (All Cars Unlocked)</li>
-                        <li>أموال وعملات غير محدودة (Unlimited Money)</li>
-                    </ul>
 
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/32ks4ysha7wc0li/traffic-.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/32ks4ysha7wc0li/traffic-.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Slendrina the Cellar 2 -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Slendrina the Cellar 2</h3>
-                        <p class="game-desc">لعبة الرعب مع قائمة غش مبرمجة ومطورة حصرياً عبر قناة DZ Security Lab.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample" onclick="toggleMod(this, 'عدم موت')">🛡️ عدم موت: OFF</div>
-                            <div class="mod-btn-sample" onclick="toggleMod(this, 'تجميد')">❄️ تجميد: OFF</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Slendrina the Cellar 2</h3>
+                            <p class="game-desc">لعبة الرعب مع قائمة غش مبرمجة ومطورة حصرياً عبر قناة DZ Security Lab.</p>
                         </div>
-                        <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="alert('تم تفعيل: حذف مشهد')">🗑️ حذف مشهد</div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample" onclick="toggleMod(this, 'عدم موت')">🛡️ عدم موت: OFF</div>
+                                <div class="mod-btn-sample" onclick="toggleMod(this, 'تجميد')">❄️ تجميد: OFF</div>
+                            </div>
+                            <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="alert('تم تفعيل: حذف مشهد')">🗑️ حذف مشهد</div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>حماية كاملة (God Mode)</li>
+                            <li>تجميد الأعداء وإيقافهم</li>
+                            <li>زر تفاعلي لحذف المشاهد المرعبة</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>حماية كاملة (God Mode)</li>
-                        <li>تجميد الأعداء وإيقافهم</li>
-                        <li>زر تفاعلي لحذف المشاهد المرعبة</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/jko6w1ft6uf668m/Slendrina+the+Cellar+2.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/jko6w1ft6uf668m/Slendrina+the+Cellar+2.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Ninja Arashi -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Ninja Arashi</h3>
-                        <p class="game-desc">مغامرة النينجا المشوقة مع قائمة غش مخصصة لتجميد الأعداء وعدم الموت.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample" onclick="toggleMod(this, 'تجميد الأعداء')">تجميد: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Ninja Arashi</h3>
+                            <p class="game-desc">مغامرة النينجا المشوقة مع قائمة غش مخصصة لتجميد الأعداء وعدم الموت.</p>
                         </div>
-                        <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample" onclick="toggleMod(this, 'تجميد الأعداء')">تجميد: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                            <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>تجميد الأعداء داخل المراحل</li>
+                            <li>ميزة عدم الموت (God Mode)</li>
+                            <li>تحكم كامل عبر قائمة غش مدمجة</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>تجميد الأعداء داخل المراحل</li>
-                        <li>ميزة عدم الموت (God Mode)</li>
-                        <li>تحكم كامل عبر قائمة غش مدمجة</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/snbt7u8jhwqsjs8/Ninja_Arashi.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/snbt7u8jhwqsjs8/Ninja_Arashi.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Cursed House Multiplayer (GMM) -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Cursed House Multiplayer (GMM)</h3>
-                        <p class="game-desc">لعبة الرعب الجماعية مع قائمة غش مخصصة لتجميد الجدة والتحكم باللعب.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة الجماعي')">❄️ تجميد الجدة: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Cursed House Multiplayer (GMM)</h3>
+                            <p class="game-desc">لعبة الرعب الجماعية مع قائمة غش مخصصة لتجميد الجدة والتحكم باللعب.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة الجماعي')">❄️ تجميد الجدة: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>تجميد الجدة (Freeze Granny)</li>
+                            <li>قائمة غش تفاعلية وسريعة</li>
+                            <li>دعم اللعب الجماعي المعدل</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>تجميد الجدة (Freeze Granny)</li>
-                        <li>قائمة غش تفاعلية وسريعة</li>
-                        <li>دعم اللعب الجماعي المعدل</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/r4thlp0dzggl3wy/MOD.MENU.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/r4thlp0dzggl3wy/MOD.MENU.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Gun Strike -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Gun Strike</h3>
-                        <p class="game-desc">لعبة الأكشن والحرب مع قائمة غش مخصصة لميزة عدم الموت والسيطرة على المعركة.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت - Gun Strike')">🛡️ عدم موت: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Gun Strike</h3>
+                            <p class="game-desc">لعبة الأكشن والحرب مع قائمة غش مخصصة لميزة عدم الموت والسيطرة على المعركة.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت - Gun Strike')">🛡️ عدم موت: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>ميزة عدم الموت (God Mode)</li>
+                            <li>قائمة غش تفاعلية داخل اللعبة</li>
+                            <li>تجربة أكشن حماسية بلا هزيمة</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>ميزة عدم الموت (God Mode)</li>
-                        <li>قائمة غش تفاعلية داخل اللعبة</li>
-                        <li>تجربة أكشن حماسية بلا هزيمة</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/tst11yk9ngvjpuq/Gun+Strik.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/tst11yk9ngvjpuq/Gun+Strik.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Evil Nun -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Evil Nun</h3>
-                        <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الراهبة وحرية الاستكشاف.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الراهبة')">❄️ تجميد الراهبة: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Evil Nun</h3>
+                            <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الراهبة وحرية الاستكشاف.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الراهبة')">❄️ تجميد الراهبة: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>تجميد الراهبة (Freeze Nun)</li>
+                            <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
+                            <li>استكشاف المدرسة وحل الألغاز بأمان</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>تجميد الراهبة (Freeze Nun)</li>
-                        <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
-                        <li>استكشاف المدرسة وحل الألغاز بأمان</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/4wujo0vby1po11m/Evil_Nun.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/4wujo0vby1po11m/Evil_Nun.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Subway City -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Subway City</h3>
-                        <p class="game-desc">لعبة الجري والمغامرة الممتعة في شوارع المدينة مع قائمة غش مخصصة لمنع الموت.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت - Subway City')">🛡️ عدم موت: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Subway City</h3>
+                            <p class="game-desc">لعبة الجري والمغامرة الممتعة في شوارع المدينة مع قائمة غش مخصصة لمنع الموت.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت - Subway City')">🛡️ عدم موت: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>ميزة عدم الموت (God Mode)</li>
+                            <li>قائمة غش تفاعلية للتحكم الكامل</li>
+                            <li>مغامرة بلا حدود أو اصطدام مميت</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>ميزة عدم الموت (God Mode)</li>
-                        <li>قائمة غش تفاعلية للتحكم الكامل</li>
-                        <li>مغامرة بلا حدود أو اصطدام مميت</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/pscomj55tuxcjb3/Subway+City_2.3.0.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/pscomj55tuxcjb3/Subway+City_2.3.0.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Granny 3 -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Granny 3</h3>
-                        <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الجدة والجد لضمان النجاة.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة')">تجميد: OFF</div>
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجد')">تجميد2: OFF</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Granny 3</h3>
+                            <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الجدة والجد لضمان النجاة.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة')">تجميد: OFF</div>
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجد')">تجميد2: OFF</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>تجميد الجدة (Freeze Granny)</li>
+                            <li>تجميد الجد (Freeze Grandpa)</li>
+                            <li>قائمة غش تفاعلية مطابقة لطلبك</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>تجميد الجدة (Freeze Granny)</li>
-                        <li>تجميد الجد (Freeze Grandpa)</li>
-                        <li>قائمة غش تفاعلية مطابقة لطلبك</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/b65kbe4s7idu4i2/Granny3_src_sign.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/b65kbe4s7idu4i2/Granny3_src_sign.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Granny Chapter Two -->
                 <div class="game-card">
-                    <div class="game-header">
-                        <h3 class="game-title">Granny Chapter Two</h3>
-                        <p class="game-desc">الجزء الثاني من لعبة الرعب الأسطورية مع قائمة غش مخصصة لتجميد الجدة.</p>
-                    </div>
-                    
-                    <div class="mod-menu-preview">
-                        <div class="mod-menu-title">DZ SECURITY LAB</div>
-                        <div class="mod-grid">
-                            <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة - Chapter 2')">تجميد: OFF</div>
-                            <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Granny Chapter Two</h3>
+                            <p class="game-desc">الجزء الثاني من لعبة الرعب الأسطورية مع قائمة غش مخصصة لتجميد الجدة.</p>
                         </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">DZ SECURITY LAB</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة - Chapter 2')">تجميد: OFF</div>
+                                <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li>تجميد الجدة (Freeze Granny)</li>
+                            <li>قائمة غش تفاعلية مطابقة لطلبك</li>
+                            <li>استكشاف المنزل والهروب بأمان</li>
+                        </ul>
                     </div>
 
-                    <ul class="features-list">
-                        <li>تجميد الجدة (Freeze Granny)</li>
-                        <li>قائمة غش تفاعلية مطابقة لطلبك</li>
-                        <li>استكشاف المنزل والهروب بأمان</li>
-                    </ul>
-
-                    <div class="card-footer">
-                        <a href="https://www.mediafire.com/file/sw7bvfh446xzgyb/Granny+Chapter+Two.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://www.mediafire.com/file/sw7bvfh446xzgyb/Granny+Chapter+Two.apk/file" target="_blank" class="btn">تحميل اللعبة (APK)</a>
+                        </div>
                     </div>
                 </div>
 
@@ -842,6 +970,42 @@
             </div>
         </div>
 
+        <!-- صفحة الشفافية والأمان الجديدة -->
+        <div id="page-transparency" class="page-content">
+            <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
+            
+            <h2 class="section-title">🛡️ صفحة الشفافية ودليل الأمان (Transparency & Security)</h2>
+            
+            <div class="transparency-card">
+                <h3>🔍 كيف تعمل التعديلات؟ (آلية العمل التقنية)</h3>
+                <p>
+                    نؤمن في <strong>DZ Security Lab</strong> بالشفافية الكاملة مع مستخدمينا والمطورين. جميع ملفات التعديل وقوائم الغش (Mod Menus) أو حزم التثبيت المقدمة هنا تعمل حصرياً ضمن نطاق بيئة اللعبة المعزولة (Sandbox).
+                </p>
+                <p>
+                    <strong>ما يفعله التعديل تقنياً:</strong> يقتصر التعديل على حقن كود برمجي بسيط أو تعديل قيم معينة داخل الذاكرة العشوائية (RAM) الخاصة باللعبة نفسها أثناء وقت التشغيل (Runtime)، أو تعديل بعض ملفات التكوين التابعة لمحرك اللعبة (مثل Unity Addressables أو libil2cpp.so) لفتح الميزات المدفوعة أو تفعيل الخصائص الإضافية.
+                </p>
+                <p>
+                    <strong>ما لا يفعله التعديل مطلقاً:</strong> تعديلاتنا لا تتدخل نهائياً في نظام التشغيل (Android OS)، ولا تصل إلى ملفاتك الشخصية، صورك، جهات اتصالك، أو حساباتك البنكية، ولا تقوم بتثبيت أي صلاحيات جذر خفية (Root/Backdoors).
+                </p>
+
+                <h3 style="margin-top: 25px;">🛡️ دليل الأمان وفحص الملفات (Security Guide)</h3>
+                <p>
+                    حرصاً منا على أمان جهازك وثقتك الدائمة، نشجع جميع المستخدمين وقبل تثبيت أي ملف على فحص الملفات بأنفسهم والتأكد من نظافتها التامة خلوها من أي برمجيات خبيثة.
+                </p>
+                <p>
+                    يمكنك استخدام أدوات الفحص العالمية والمعروفة مثل:
+                </p>
+                <ul class="features-list" style="margin-bottom: 15px;">
+                    <li><strong>VirusTotal:</strong> لفحص ملفات الـ APK عبر مئات برامج الحماية العالمية بنقرة واحدة.</li>
+                    <li><strong>أي برنامج مكافحة فيروسات موثوق على هاتفك:</strong> (مثل Malwarebytes أو Kaspersky Mobile).</li>
+                </ul>
+
+                <div class="safety-box">
+                    💡 <strong>تنويه أمان:</strong> موقعنا يضمن أن كافة الملفات آمنة ونظيفة ومخصصة للترفيه وتعديل الألعاب فقط. يمكنك نسخ رابط أي ملف قمت بتحميله ورفع فحصك الخاص على موقع <a href="https://www.virustotal.com" target="_blank">VirusTotal</a> للاطمئنان الكامل بنفسك.
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
@@ -854,23 +1018,22 @@
                 el.classList.remove('active-page');
             });
             
+            const boxes = document.querySelectorAll('.cat-box');
+            boxes.forEach(box => box.classList.remove('active'));
+
             if(pageName === 'tool') {
                 document.getElementById('page-tool').classList.add('active-page');
-                document.querySelectorAll('.cat-box').forEach((box, index) => {
-                    if(index === 1) box.classList.add('active');
-                    else box.classList.remove('active');
-                });
+                boxes[1].classList.add('active');
+            } else if(pageName === 'transparency') {
+                document.getElementById('page-transparency').classList.add('active-page');
+                boxes[2].classList.add('active');
             } else {
                 document.getElementById('page-games').classList.add('active-page');
-                document.querySelectorAll('.cat-box').forEach((box, index) => {
-                    if(index === 0) box.classList.add('active');
-                    else box.classList.remove('active');
-                });
+                boxes[0].classList.add('active');
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // تفعيل تفاعل أزرار قوائم الغش (ON/OFF)
         function toggleMod(button, modName) {
             if (button.classList.contains('active-mod')) {
                 button.classList.remove('active-mod');
@@ -881,7 +1044,6 @@
             }
         }
 
-        // زر إخفاء القائمة المصغرة
         function hideMenu(button) {
             const previewBox = button.closest('.mod-menu-preview');
             if (previewBox) {
