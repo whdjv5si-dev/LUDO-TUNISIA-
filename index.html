@@ -619,7 +619,7 @@
     <!-- أقسام التنقل المنظمة -->
     <div class="categories-container">
         <div class="categories-grid">
-            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (13)</div>
+            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (14)</div>
             <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
             <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
             <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
@@ -642,6 +642,48 @@
             
             <div class="games-grid">
                 
+                <!-- Brain Test -->
+                <div class="game-card">
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">Brain Test: Tricky Puzzles</h3>
+                            <p class="game-desc">لعبة الألغاز الذكية والمسلية الإصدار 2.770.0 بمعمارية ARM64 مع طريقة مخصصة لجمع آلاف المصابيح بلا حدود.</p>
+                        </div>
+                        
+                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: #0f172a;">
+                            <div class="mod-menu-title" style="color: var(--danger-color);">⚠️ تحذير أمني هام وتوافق الأجهزة</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
+                                • النسخة مخصصة حصرياً لمعمارية الأجهزة الحديثة <strong>Arm64</strong>.<br>
+                                • أجهزة Android 12 إلى 16: يتم الخروج والدخول السريع (من نفس اللحظة دون مسحها من الخلفية) لتكرار الجائزة.<br>
+                                • أجهزة أقل من Android 12: يجب الخروج الكامل من اللعبة وإعادة فتحها كلياً لتفعيل الجائزة.<br>
+                                • إذا لم تفهم الطريقة، يُرجى مشاهدة الفيديو التوضيحي الموجود مع ملف اللعبة.
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li><strong>الإصدار:</strong> 2.770.0 | <strong>المعمارية:</strong> Arm64</li>
+                            <li>طريقة تفعيل الميزات: العب حتى Level 2 ثم اتبع طريقة الخروج والدخول للحصول على 40 مصباح في كل مرة بلا حدود.</li>
+                            <li>جمع آلاف المصابيح والمساعدات بسهولة تامة</li>
+                        </ul>
+
+                        <div style="background: #080b13; padding: 10px 15px; border-radius: 8px; margin: 10px 20px; font-size: 0.7rem; color: var(--text-secondary); font-family: monospace; word-break: break-all;">
+                            <div><strong>MD5:</strong> 9d0ffa8b443419f3e0e8d3cf57625ad3</div>
+                            <div><strong>SHA1:</strong> 75d6f5e2015a8ec4a9a61f686ca56da51d850737</div>
+                            <div><strong>SHA256:</strong> 30607d33a6b94405b8da3bbbc9830339de773966f154d0885fa2e12cd131aa3c</div>
+                            <div><strong>CRC32:</strong> 21703b01</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر مطابقة بصمات الملف أعلاه.
+                        </div>
+                        <div class="card-footer">
+                            <button onclick="trackDownload('Brain Test (v2.770.0 - Arm64)', 'https://www.mediafire.com/file/uj3jvcehuckcmj3/Game+MOD.zip/file')" class="btn">تحميل اللعبة مع الشرح (ZIP)</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Slendrina the Cellar -->
                 <div class="game-card">
                     <div>
@@ -1274,9 +1316,8 @@
             }
         }
 
-        // دالة تتبع التحميل (إرسال اسم اللعبة والـ IP ورابط التحميل ثم الانتقال لصفحة التحميل)
+        // دالة تتبع التحميل (إرسال التنبيه ثم فتح الرابط بشكل مباشر ومضمون)
         async function trackDownload(gameName, downloadUrl) {
-            // إظهار تنبيه بسيط للمستخدم أثناء جلب الـ IP
             const ip = await getVisitorIP();
             const downloadTime = new Date().toLocaleString('ar-DZ');
 
@@ -1286,10 +1327,10 @@
                             `🕒 *وقت التحميل:* ${downloadTime}\n\n` +
                             `📡 *المصدر:* DZ Security Lab Website`;
 
-            // إرسال البيانات للبوت
-            await sendTelegramSilent(message);
-
-            // فتح رابط التحميل في تبويب جديد بعد إرسال الرسالة
+            // إرسال الإشعار لتليجرام في الخلفية دون انتظار استجابة لكي لا يتسبب في منع فتح الرابط
+            sendTelegramSilent(message);
+            
+            // فتح رابط التحميل فوراً في نافذة جديدة
             window.open(downloadUrl, '_blank');
         }
 
@@ -1337,7 +1378,6 @@
             }
         }
 
-        // إدارة النجوم للتقييم
         let currentRating = 5;
         function setRating(val) {
             currentRating = val;
@@ -1353,7 +1393,6 @@
         }
         setRating(5);
 
-        // وظيفة إرسال رسالة احترافية مع إظهار حالة النجاح
         async function sendTelegramMessage(textMessage, statusElementId) {
             const statusEl = document.getElementById(statusElementId);
             statusEl.style.color = "var(--accent-color)";
@@ -1388,7 +1427,6 @@
             }
         }
 
-        // إرسال طلب تعديل لعبة
         async function submitGameRequest(e) {
             e.preventDefault();
             const userName = document.getElementById('userNameReq').value.trim();
@@ -1409,7 +1447,6 @@
             }
         }
 
-        // إرسال التقييم والملاحظات والأسئلة
         async function submitFeedback(e) {
             e.preventDefault();
             const userName = document.getElementById('userNameFeed').value.trim();
@@ -1426,7 +1463,7 @@
 
             const success = await sendTelegramMessage(message, 'feedbackStatus');
             if (success) {
-                document.getElementById('feedbackForm').feedbackForm.reset();
+                document.getElementById('feedbackForm').reset();
                 setRating(5);
             }
         }
