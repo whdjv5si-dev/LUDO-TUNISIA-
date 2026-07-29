@@ -6,23 +6,73 @@
     <title>DZ Security Lab - مكتبة الألعاب المعدلة وأدوات المطورين</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: #131b2e;
-            --accent-color: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.2);
-            --text-color: #f8fafc;
-            --text-secondary: #94a3b8;
-            --success-color: #22c55e;
-            --danger-color: #ef4444;
-            --purple-color: #6d28d9;
-            --border-color: #1e293b;
+            --bg-color: #05070c;
+            --card-bg: #0d121f;
+            --accent-color: #00f0ff;
+            --accent-glow: rgba(0, 240, 255, 0.4);
+            --accent-secondary: #ff0055;
+            --accent-secondary-glow: rgba(255, 0, 85, 0.4);
+            --text-color: #ffffff;
+            --text-secondary: #a0aec0;
+            --success-color: #00ff66;
+            --danger-color: #ff2a2a;
+            --border-color: rgba(0, 240, 255, 0.3);
+            --border-glow: 0 0 15px rgba(0, 240, 255, 0.25);
         }
+
+        /* 5 أنماط سيبرانية متقدمة وفائقة التباين */
+        body.theme-neon-cyan {
+            --accent-color: #00f0ff;
+            --accent-glow: rgba(0, 240, 255, 0.5);
+            --accent-secondary: #7000ff;
+            --accent-secondary-glow: rgba(112, 0, 255, 0.4);
+            --border-color: rgba(0, 240, 255, 0.4);
+            --border-glow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        body.theme-matrix-green {
+            --accent-color: #00ff66;
+            --accent-glow: rgba(0, 255, 102, 0.5);
+            --accent-secondary: #00e1ff;
+            --accent-secondary-glow: rgba(0, 225, 255, 0.4);
+            --border-color: rgba(0, 255, 102, 0.4);
+            --border-glow: 0 0 20px rgba(0, 255, 102, 0.3);
+        }
+        body.theme-cyber-pink {
+            --accent-color: #ff007f;
+            --accent-glow: rgba(255, 0, 127, 0.5);
+            --accent-secondary: #00f0ff;
+            --accent-secondary-glow: rgba(0, 240, 255, 0.4);
+            --border-color: rgba(255, 0, 127, 0.4);
+            --border-glow: 0 0 20px rgba(255, 0, 127, 0.3);
+        }
+        body.theme-electric-violet {
+            --accent-color: #9d00ff;
+            --accent-glow: rgba(157, 0, 255, 0.5);
+            --accent-secondary: #00ffcc;
+            --accent-secondary-glow: rgba(0, 255, 204, 0.4);
+            --border-color: rgba(157, 0, 255, 0.4);
+            --border-glow: 0 0 20px rgba(157, 0, 255, 0.3);
+        }
+        body.theme-plasma-gold {
+            --accent-color: #ffaa00;
+            --accent-glow: rgba(255, 170, 0, 0.5);
+            --accent-secondary: #ff0055;
+            --accent-secondary-glow: rgba(255, 0, 85, 0.4);
+            --border-color: rgba(255, 170, 0, 0.4);
+            --border-glow: 0 0 20px rgba(255, 170, 0, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -30,35 +80,104 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
         }
+
+        /* رأس الموقع بتأثير زجاجي وحواف متوهجة مكيّفة للهواتف */
         header {
-            background: var(--card-bg);
-            padding: 25px 20px;
+            background: linear-gradient(135deg, rgba(13, 18, 31, 0.95), rgba(5, 7, 12, 0.98));
+            padding: 24px 15px;
             text-align: center;
             border-bottom: 2px solid var(--accent-color);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 30px var(--accent-glow), inset 0 0 20px rgba(255, 255, 255, 0.03);
+            position: relative;
+            backdrop-filter: blur(12px);
         }
         header h1 {
             color: var(--accent-color);
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            margin-bottom: 6px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-color);
+            font-weight: 900;
         }
         header p {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1.05rem);
+            text-shadow: 0 0 5px rgba(0,0,0,0.8);
         }
-        
-        /* Developer Info Section */
-        .dev-section {
-            background: linear-gradient(135deg, #131b2e 0%, #1e293b 100%);
-            border: 1px solid var(--accent-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px auto 10px auto;
+
+        /* شريط التحكم السيبراني المتقدم */
+        .theme-switcher-bar {
             max-width: 1200px;
-            width: calc(100% - 30px);
-            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
+            margin: 15px auto 0 auto;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--border-glow);
+            width: calc(100% - 20px);
+        }
+        .theme-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .theme-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .theme-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .theme-dot:hover {
+            transform: scale(1.35) rotate(15deg);
+        }
+        .dot-cyan { background: #00f0ff; box-shadow: 0 0 12px #00f0ff; }
+        .dot-green { background: #00ff66; box-shadow: 0 0 12px #00ff66; }
+        .dot-pink { background: #ff007f; box-shadow: 0 0 12px #ff007f; }
+        .dot-violet { background: #9d00ff; box-shadow: 0 0 12px #9d00ff; }
+        .dot-gold { background: #ffaa00; box-shadow: 0 0 12px #ffaa00; }
+
+        .auto-mode-toggle {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: #000;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-glow);
+            transition: all 0.3s;
+        }
+
+        /* قسم معلومات المطور */
+        .dev-section {
+            background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(20, 28, 48, 0.9));
+            border: 2px solid var(--accent-color);
+            border-radius: 14px;
+            padding: 18px;
+            margin: 15px auto 10px auto;
+            max-width: 1200px;
+            width: calc(100% - 20px);
+            box-shadow: 0 0 25px var(--accent-glow), inset 0 0 15px rgba(255,255,255,0.02);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -66,15 +185,17 @@
         }
         .dev-title {
             color: var(--accent-color);
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
             font-weight: bold;
+            text-shadow: 0 0 8px var(--accent-glow);
         }
         .dev-name {
             font-size: 1.4rem;
             color: var(--text-color);
-            margin-bottom: 12px;
-            font-weight: bold;
+            margin-bottom: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
         .dev-links {
             display: flex;
@@ -90,33 +211,26 @@
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .dev-btn.youtube {
-            background-color: #ef4444;
+            background-color: #ff0033;
             color: #fff;
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-        }
-        .dev-btn.youtube:hover {
-            background-color: #dc2626;
-            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
         }
         .dev-btn.telegram {
-            background-color: #0ea5e9;
+            background-color: #0088cc;
             color: #fff;
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-        }
-        .dev-btn.telegram:hover {
-            background-color: #0284c7;
-            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
         }
 
-        /* Categories Section */
+        /* الأقسام والتنقلات مخصصة لنسب الشاشات بمرونة */
         .categories-container {
             max-width: 1200px;
             margin: 15px auto;
-            padding: 0 15px;
+            padding: 0 10px;
             width: 100%;
         }
         .categories-grid {
@@ -131,94 +245,93 @@
         }
         .cat-box {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1.5px solid var(--border-color);
             border-radius: 10px;
             padding: 12px 8px;
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: bold;
             color: var(--text-secondary);
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            box-shadow: var(--border-glow);
         }
         .cat-box:hover, .cat-box.active {
-            background: #1e293b;
+            background: rgba(13, 18, 31, 0.9);
             color: var(--accent-color);
             border-color: var(--accent-color);
             transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-glow);
+            text-shadow: 0 0 8px var(--accent-glow);
         }
 
         .main-container {
             max-width: 1200px;
-            margin: 15px auto 40px auto;
-            padding: 0 15px;
+            margin: 10px auto 30px auto;
+            padding: 0 10px;
             flex: 1;
             width: 100%;
         }
         .section-title {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             color: var(--accent-color);
             margin-bottom: 20px;
             border-right: 4px solid var(--accent-color);
             padding-right: 10px;
+            text-shadow: 0 0 12px var(--accent-glow);
+            font-weight: 800;
         }
         
         .nav-tool-banner {
-            background: linear-gradient(135deg, #131b2e 0%, #1e293b 100%);
+            background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(25, 35, 60, 0.9));
             border: 2px dashed var(--accent-color);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 14px;
+            padding: 18px;
             text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.1);
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px var(--accent-glow);
         }
         .nav-tool-banner h3 {
             color: var(--accent-color);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px var(--accent-glow);
         }
         .goto-tool-btn {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: #0b0f19;
-            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: #000;
+            padding: 10px 22px;
             border-radius: 8px;
-            font-weight: bold;
-            font-size: 1rem;
+            font-weight: 900;
+            font-size: 0.95rem;
             text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-        }
-        .goto-tool-btn:hover {
-            background-color: #0ea5e9;
-            color: #fff;
-            transform: translateY(-2px);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         .back-to-home-btn {
             display: inline-block;
-            background-color: #1e293b;
+            background-color: var(--card-bg);
             color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 10px 20px;
+            border: 1.5px solid var(--accent-color);
+            padding: 8px 18px;
             border-radius: 8px;
             font-weight: bold;
             text-decoration: none;
-            margin-bottom: 20px;
-            transition: all 0.2s ease;
-        }
-        .back-to-home-btn:hover {
-            background-color: var(--accent-color);
-            color: #0b0f19;
+            margin-bottom: 15px;
+            box-shadow: var(--border-glow);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
+        /* كارد الأداة الفائق */
         .tool-card {
             background: var(--card-bg);
             border: 2px solid var(--accent-color);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 35px var(--accent-glow), inset 0 0 20px rgba(255,255,255,0.02);
         }
         .tool-header {
             display: flex;
@@ -232,40 +345,43 @@
         }
         .tool-title {
             color: var(--accent-color);
-            font-size: 1.6rem;
-            font-weight: bold;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-weight: 900;
+            text-shadow: 0 0 12px var(--accent-glow);
         }
         .tool-badge {
-            background: rgba(56, 189, 248, 0.1);
+            background: var(--accent-glow);
             color: var(--accent-color);
             border: 1px solid var(--accent-color);
-            padding: 4px 12px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
+            box-shadow: 0 0 10px var(--accent-glow);
         }
         .tool-desc {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            font-size: 0.92rem;
+            margin-bottom: 18px;
             line-height: 1.7;
         }
         .tool-features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 12px;
             margin-bottom: 20px;
         }
         .tool-feature-item {
-            background: #090d16;
+            background: rgba(5, 7, 12, 0.7);
             border: 1px solid var(--border-color);
-            padding: 12px 15px;
+            padding: 12px 14px;
             border-radius: 8px;
             font-size: 0.85rem;
             color: var(--text-color);
             display: flex;
             align-items: center;
             gap: 8px;
+            box-shadow: var(--border-glow);
         }
         .tool-actions {
             display: flex;
@@ -275,113 +391,251 @@
         .tool-btn {
             flex: 1;
             min-width: 180px;
-            padding: 12px 20px;
+            padding: 12px 18px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             font-size: 0.95rem;
             text-align: center;
-            transition: all 0.2s;
+            transition: all 0.3s;
             cursor: pointer;
             border: none;
         }
         .tool-btn.download {
-            background-color: var(--success-color);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-        }
-        .tool-btn.download:hover {
-            background-color: #16a34a;
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, #00ff66, #00b347);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+            font-weight: 900;
         }
         .tool-btn.info {
-            background-color: var(--purple-color);
+            background: linear-gradient(135deg, var(--accent-secondary), #9d00ff);
             color: #fff;
-            box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
-        }
-        .tool-btn.info:hover {
-            background-color: #5b21b6;
-            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-secondary-glow);
         }
 
-        /* Transparency Page Styles */
-        .transparency-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
+        /* شبكة الألعاب المتطورة المتكيفة مع الهواتف بدقة */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
-        .transparency-card h3 {
+        .game-card {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1.5px solid var(--border-color);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5), var(--border-glow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.7), 0 0 25px var(--accent-glow);
+            border-color: var(--accent-color);
+        }
+        .game-header {
+            padding: 18px 18px 8px 18px;
+        }
+        .game-title {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+        .game-desc {
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .features-list {
+            list-style: none;
+            padding: 0 18px;
+            margin-bottom: 12px;
+        }
+        .features-list li {
+            padding: 5px 0;
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        .features-list li::before {
+            content: "⚡";
+            margin-left: 6px;
             color: var(--accent-color);
-            font-size: 1.3rem;
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+        
+        /* Mod Menu Preview داخل الكارد */
+        .mod-menu-preview {
+            background: rgba(5, 7, 12, 0.85);
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 10px 18px;
+            box-shadow: inset 0 0 15px var(--accent-glow);
+        }
+        .mod-menu-title {
+            text-align: center;
+            color: var(--accent-color);
+            font-weight: 900;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px var(--accent-glow);
+        }
+        .mod-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 6px;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+        .mod-btn-sample {
+            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid #3b82f6;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .mod-btn-sample.active-mod {
+            background: linear-gradient(135deg, #00ff66, #16a34a);
+            color: #000;
+            border-color: #00ff66;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+        .mod-close-btn {
+            background: #1e293b;
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid #475569;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .mod-btn-sample.purple {
+            background: linear-gradient(135deg, var(--accent-secondary), #6d28d9);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+        .mod-btn-sample.purple.active-mod {
+            background: linear-gradient(135deg, #00ff66, #16a34a);
+            color: #000;
+            border-color: #00ff66;
+        }
+
+        .game-disclaimer {
+            background: rgba(3, 5, 8, 0.9);
+            border-top: 1px dashed var(--border-color);
+            padding: 10px 18px;
+            font-size: 0.74rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .card-footer {
+            padding: 14px 18px;
+            background: rgba(13, 18, 31, 0.8);
+            border-top: 1.5px solid var(--border-color);
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff66, #00b347);
+            color: #000;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
+        }
+
+        /* النماذج التفاعلية */
+        .transparency-card, .interactive-form-card {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4), var(--border-glow);
+        }
+        .transparency-card h3, .interactive-form-card h3 {
+            color: var(--accent-color);
+            font-size: 1.2rem;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
+            text-shadow: 0 0 8px var(--accent-glow);
+            font-weight: 800;
         }
         .transparency-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
+            font-size: 0.92rem;
+            margin-bottom: 12px;
             line-height: 1.7;
         }
         .safety-box {
-            background: #090d16;
+            background: rgba(5, 7, 12, 0.8);
             border-left: 4px solid var(--success-color);
-            padding: 15px;
+            padding: 14px;
             border-radius: 0 8px 8px 0;
-            margin-top: 15px;
-            font-size: 0.9rem;
+            margin-top: 12px;
+            font-size: 0.88rem;
             color: var(--text-color);
+            border: 1px solid var(--border-color);
         }
         .safety-box a {
             color: var(--accent-color);
             text-decoration: underline;
         }
 
-        /* Interactive Forms Styles */
-        .interactive-form-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        .interactive-form-card h3 {
-            color: var(--accent-color);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
         .form-group label {
             display: block;
             color: var(--text-color);
             font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
         }
         .form-control {
             width: 100%;
             padding: 12px 15px;
-            background: #090d16;
-            border: 1px solid var(--border-color);
+            background: rgba(5, 7, 12, 0.8);
+            border: 1.5px solid var(--border-color);
             border-radius: 8px;
             color: var(--text-color);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         .form-control:focus {
             border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
         textarea.form-control {
             resize: vertical;
@@ -396,29 +650,31 @@
             justify-content: flex-end;
         }
         .star {
-            color: var(--text-secondary);
-            transition: color 0.2s;
+            color: #475569;
+            transition: color 0.2s, transform 0.2s;
         }
         .star.selected, .star:hover, .star:hover ~ .star {
-            color: #f59e0b;
+            color: #ffaa00;
+            text-shadow: 0 0 12px rgba(255, 170, 0, 0.6);
+            transform: scale(1.1);
         }
         .submit-btn {
-            background: var(--accent-color);
-            color: #0b0f19;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            color: #000;
             border: none;
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 900;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
             width: 100%;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 25px var(--accent-glow);
         }
         .submit-btn:hover {
-            background: #0ea5e9;
-            color: #fff;
+            opacity: 0.95;
             transform: translateY(-2px);
+            box-shadow: 0 0 35px var(--accent-glow);
         }
         .form-status {
             margin-top: 12px;
@@ -427,164 +683,15 @@
             font-weight: bold;
         }
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .game-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 20px -5px rgba(0,0,0,0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .game-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px -5px var(--accent-glow);
-            border-color: var(--accent-color);
-        }
-        .game-header {
-            padding: 20px 20px 10px 20px;
-        }
-        .game-title {
-            color: var(--text-color);
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-        }
-        .game-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-        }
-        .features-list {
-            list-style: none;
-            padding: 0 20px;
-            margin-bottom: 15px;
-        }
-        .features-list li {
-            padding: 5px 0;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            color: var(--text-secondary);
-        }
-        .features-list li::before {
-            content: "⚡";
-            margin-left: 6px;
-            color: var(--accent-color);
-        }
-        
-        .mod-menu-preview {
-            background: #090d16;
-            border: 2px solid var(--accent-color);
-            border-radius: 10px;
-            padding: 12px;
-            margin: 12px 20px;
-            box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.1);
-        }
-        .mod-menu-title {
-            text-align: center;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        .mod-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 6px;
-            margin-bottom: 6px;
-            align-items: center;
-        }
-        .mod-btn-sample {
-            background: #1e3a8a;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            border: 1px solid #3b82f6;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .mod-btn-sample.active-mod {
-            background: var(--success-color);
-            border-color: #16a34a;
-        }
-        .mod-close-btn {
-            background: #1e293b;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            border: 1px solid #334155;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .mod-btn-sample.purple {
-            background: var(--purple-color);
-            border-color: #8b5cf6;
-        }
-        .mod-btn-sample.purple.active-mod {
-            background: var(--success-color);
-            border-color: #16a34a;
-        }
-
-        /* Disclaimer inside each game card */
-        .game-disclaimer {
-            background: #080b13;
-            border-top: 1px dashed var(--border-color);
-            padding: 10px 20px;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            text-align: justify;
-        }
-
-        .card-footer {
-            padding: 15px 20px;
-            background: rgba(15, 23, 42, 0.6);
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--success-color);
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-            width: 100%;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-        }
-        .btn:hover {
-            background-color: #16a34a;
-            transform: translateY(-1px);
-        }
-        
         footer {
             text-align: center;
             padding: 20px;
             color: var(--text-secondary);
-            border-top: 1px solid var(--border-color);
+            border-top: 1.5px solid var(--border-color);
             background: var(--card-bg);
             margin-top: auto;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.4);
         }
         
         .page-content {
@@ -592,17 +699,38 @@
         }
         .page-content.active-page {
             display: block;
+            animation: fadeInPage 0.4s ease-in-out;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body>
+<body class="theme-neon-cyan">
 
     <header>
         <h1>DZ SECURITY LAB</h1>
         <p>المصدر الاحترافي لتعديل الألعاب وقوائم الغش المباشرة وأدوات المطورين</p>
     </header>
 
-    <!-- قسم معلومات المطور مع تفعيل الروابط -->
+    <!-- شريط التحكم والتحويل السيبراني -->
+    <div class="theme-switcher-bar">
+        <div class="theme-label">
+            <span>⚡ نظام الألوان السيبراني:</span>
+        </div>
+        <div class="theme-buttons">
+            <div class="theme-dot dot-cyan" title="سماوي نيون" onclick="setCyberTheme('theme-neon-cyan')"></div>
+            <div class="theme-dot dot-green" title="أخضر ماتركس" onclick="setCyberTheme('theme-matrix-green')"></div>
+            <div class="theme-dot dot-pink" title="وردي سيبراني" onclick="setCyberTheme('theme-cyber-pink')"></div>
+            <div class="theme-dot dot-violet" title="بنفسجي كهربائي" onclick="setCyberTheme('theme-electric-violet')"></div>
+            <div class="theme-dot dot-gold" title="ذهبي بلازما" onclick="setCyberTheme('theme-plasma-gold')"></div>
+            <button id="autoModeBtn" class="auto-mode-toggle" onclick="toggleAutoThemeMode()">🔄 التغيير التلقائي: ON</button>
+        </div>
+    </div>
+
+    <!-- قسم معلومات المطور -->
     <div class="dev-section">
         <div class="dev-title">معلومات المطور / Developer</div>
         <div class="dev-name">ADEM</div>
@@ -634,7 +762,7 @@
             
             <div class="nav-tool-banner">
                 <h3>🛠️ هل أنت مطور تبحث عن أدوات متقدمة؟</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">اكتشف أداة RVAPatcher v3 لتعديل الذاكرة في وقت التشغيل بمعمارية ARM64.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">اكتشف أداة RVAPatcher v6 PRO لتعديل الذاكرة في وقت التشغيل بمعمارية ARM64 مع 60 نوع هوك.</p>
                 <a href="#tool" class="goto-tool-btn" onclick="switchPage('tool')">توجه لأداة المطور</a>
             </div>
 
@@ -650,33 +778,25 @@
                             <p class="game-desc">لعبة الألغاز الذكية والمسلية الإصدار 2.770.0 بمعمارية ARM64 مع طريقة مخصصة لجمع آلاف المصابيح بلا حدود.</p>
                         </div>
                         
-                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: #0f172a;">
+                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.9);">
                             <div class="mod-menu-title" style="color: var(--danger-color);">⚠️ تحذير أمني هام وتوافق الأجهزة</div>
-                            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; text-align: right; padding: 2px;">
                                 • النسخة مخصصة حصرياً لمعمارية الأجهزة الحديثة <strong>Arm64</strong>.<br>
-                                • أجهزة Android 12 إلى 16: يتم الخروج والدخول السريع (من نفس اللحظة دون مسحها من الخلفية) لتكرار الجائزة.<br>
-                                • أجهزة أقل من Android 12: يجب الخروج الكامل من اللعبة وإعادة فتحها كلياً لتفعيل الجائزة.<br>
-                                • إذا لم تفهم الطريقة، يُرجى مشاهدة الفيديو التوضيحي الموجود مع ملف اللعبة.
+                                • أجهزة Android 12 إلى 16: يتم الخروج والدخول السريع لتكرار الجائزة.<br>
+                                • أجهزة أقل من Android 12: يجب الخروج الكامل من اللعبة وإعادة فتحها كلياً لتفعيل الجائزة.
                             </div>
                         </div>
 
                         <ul class="features-list">
                             <li><strong>الإصدار:</strong> 2.770.0 | <strong>المعمارية:</strong> Arm64</li>
-                            <li>طريقة تفعيل الميزات: العب حتى Level 2 ثم اتبع طريقة الخروج والدخول للحصول على 40 مصباح في كل مرة بلا حدود.</li>
+                            <li>طريقة تفعيل الميزات: العب حتى Level 2 ثم اتبع طريقة الخروج والدخول للحصول على 40 مصباح في كل مرة.</li>
                             <li>جمع آلاف المصابيح والمساعدات بسهولة تامة</li>
                         </ul>
-
-                        <div style="background: #080b13; padding: 10px 15px; border-radius: 8px; margin: 10px 20px; font-size: 0.7rem; color: var(--text-secondary); font-family: monospace; word-break: break-all;">
-                            <div><strong>MD5:</strong> 9d0ffa8b443419f3e0e8d3cf57625ad3</div>
-                            <div><strong>SHA1:</strong> 75d6f5e2015a8ec4a9a61f686ca56da51d850737</div>
-                            <div><strong>SHA256:</strong> 30607d33a6b94405b8da3bbbc9830339de773966f154d0885fa2e12cd131aa3c</div>
-                            <div><strong>CRC32:</strong> 21703b01</div>
-                        </div>
                     </div>
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر مطابقة بصمات الملف أعلاه.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Brain Test (v2.770.0 - Arm64)', 'https://www.mediafire.com/file/uj3jvcehuckcmj3/Game+MOD.zip/file')" class="btn">تحميل اللعبة مع الشرح (ZIP)</button>
@@ -698,7 +818,7 @@
                                 <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد Slendrina')">❄️ تجميد: OFF</div>
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
-                            <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="toggleMod(this, 'عدم موت')">🛡️ عدم موت: OFF</div>
+                            <div class="mod-btn-sample purple" style="margin-top: 4px;" onclick="toggleMod(this, 'عدم موت')">🛡️ عدم موت: OFF</div>
                         </div>
 
                         <ul class="features-list">
@@ -711,7 +831,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Slendrina the Cellar (الجزء الأول)', 'https://www.mediafire.com/file/h09o2wirw6d5gpp/Slendrina+the+Cellar.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -727,9 +847,9 @@
                             <p class="game-desc">لعبة السباق الشهيرة بمعمارية 64-bit مع نقود كثيرة وجميع السيارات مفتوحة.</p>
                         </div>
                         
-                        <div class="mod-menu-preview" style="border-color: #f59e0b; background: #0f172a;">
-                            <div class="mod-menu-title" style="color: #f59e0b;">⚠️ ملاحظة هامة لتشغيل العملات</div>
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
+                        <div class="mod-menu-preview" style="border-color: #ffaa00; background: rgba(15, 23, 42, 0.9);">
+                            <div class="mod-menu-title" style="color: #ffaa00;">⚠️ ملاحظة هامة لتشغيل العملات</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; text-align: right; padding: 2px;">
                                 • ليتم تشغيل العملات وتفعيلها بشكل صحيح داخل اللعبة، يُرجى الخروج التام من اللعبة وإعادة فتحها من جديد.
                             </div>
                         </div>
@@ -743,7 +863,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Traffic Racer (نسخة 64-bit)', 'https://www.mediafire.com/file/fy6hcx8quiqrutg/Traffic+Racer.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -759,9 +879,9 @@
                             <p class="game-desc">الإصدار 1.128.2 المخصص للأجهزة الضعيفة والقوية لتعمل بسلاسة فائقة وبدون تقطيع.</p>
                         </div>
                         
-                        <div class="mod-menu-preview" style="border-color: #f59e0b; background: #0f172a;">
-                            <div class="mod-menu-title" style="color: #f59e0b;">⚠️ ملاحظة هامة للتثبيت والتشغيل</div>
-                            <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px;">
+                        <div class="mod-menu-preview" style="border-color: #ffaa00; background: rgba(15, 23, 42, 0.9);">
+                            <div class="mod-menu-title" style="color: #ffaa00;">⚠️ ملاحظة هامة للتثبيت والتشغيل</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; text-align: right; padding: 2px;">
                                 • لتفعيل النسخة على أجهزة 64، عطل التحديث التلقائي وثبتها عبر تطبيق يدعم ملفات <code>.apks</code>.
                             </div>
                         </div>
@@ -775,7 +895,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Free Fire (نسخة 32-bit)', 'https://www.mediafire.com/file/530v3m4u97umj66/Free+Fire_1.128.2.apks/file')" class="btn">تحميل اللعبة (.apks)</button>
@@ -808,7 +928,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Horror Sponge Granny V1.8', 'https://www.mediafire.com/file/05s7kr3kq7o4wnw/Horror+Sponge.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -824,7 +944,7 @@
                             <p class="game-desc">لعبة السباق الممتعة (نسخة 32) لتعمل بسلاسة فائقة على الأجهزة الضعيفة والقوية مع فتح الميزات.</p>
                         </div>
                         
-                        <ul class="features-list" style="margin-top: 15px;">
+                        <ul class="features-list" style="margin-top: 12px;">
                             <li>إصدار 32-bit متوافق مع الأجهزة الضعيفة والقوية</li>
                             <li>فتح جميع السيارات (All Cars Unlocked)</li>
                             <li>أموال وعملات غير محدودة (Unlimited Money)</li>
@@ -833,7 +953,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Traffic Racer (نسخة 32-bit)', 'https://www.mediafire.com/file/32ks4ysha7wc0li/traffic-.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -855,7 +975,7 @@
                                 <div class="mod-btn-sample" onclick="toggleMod(this, 'عدم موت')">🛡️ عدم موت: OFF</div>
                                 <div class="mod-btn-sample" onclick="toggleMod(this, 'تجميد')">❄️ تجميد: OFF</div>
                             </div>
-                            <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="alert('تم تفعيل: حذف مشهد')">🗑️ حذف مشهد</div>
+                            <div class="mod-btn-sample purple" style="margin-top: 4px;" onclick="alert('تم تفعيل: حذف مشهد')">🗑️ حذف مشهد</div>
                         </div>
 
                         <ul class="features-list">
@@ -867,7 +987,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Slendrina the Cellar 2', 'https://www.mediafire.com/file/jko6w1ft6uf668m/Slendrina+the+Cellar+2.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -889,7 +1009,7 @@
                                 <div class="mod-btn-sample" onclick="toggleMod(this, 'تجميد الأعداء')">تجميد: OFF</div>
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
-                            <div class="mod-btn-sample purple" style="margin-top: 5px;" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
+                            <div class="mod-btn-sample purple" style="margin-top: 4px;" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
                         </div>
 
                         <ul class="features-list">
@@ -901,7 +1021,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Ninja Arashi', 'https://www.mediafire.com/file/snbt7u8jhwqsjs8/Ninja_Arashi.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -934,7 +1054,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Cursed House Multiplayer (GMM)', 'https://www.mediafire.com/file/r4thlp0dzggl3wy/MOD.MENU.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -967,7 +1087,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Gun Strike', 'https://www.mediafire.com/file/tst11yk9ngvjpuq/Gun+Strik.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -1000,7 +1120,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Evil Nun', 'https://www.mediafire.com/file/4wujo0vby1po11m/Evil_Nun.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -1033,7 +1153,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Subway City', 'https://www.mediafire.com/file/pscomj55tuxcjb3/Subway+City_2.3.0.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -1066,7 +1186,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Granny 3', 'https://www.mediafire.com/file/b65kbe4s7idu4i2/Granny3_src_sign.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -1099,7 +1219,7 @@
 
                     <div>
                         <div class="game-disclaimer">
-                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة، ويمكنك التحقق من ذلك عبر تحليلها بأي برنامج مكافحة فيروسات.
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
                             <button onclick="trackDownload('Granny Chapter Two', 'https://www.mediafire.com/file/sw7bvfh446xzgyb/Granny+Chapter+Two.apk/file')" class="btn">تحميل اللعبة (APK)</button>
@@ -1118,26 +1238,26 @@
             
             <div class="tool-card">
                 <div class="tool-header">
-                    <div class="tool-title">🔥 RVAPatcher v3</div>
-                    <div class="tool-badge">Runtime ARM64 Patcher</div>
+                    <div class="tool-title">🔥 RVAPatcher v6 PRO</div>
+                    <div class="tool-badge">Runtime ARM64 Memory Patcher</div>
                 </div>
                 
                 <p class="tool-desc">
-                    مكتبة Android احترافية مطورة بلغة C/C++ لتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. مصممة خصيصاً لتعديل وتصحيح وظائف مكتبة `libil2cpp.so` في ألعاب محرك Unity <b>دون الحاجة لتعديل ملف APK الأصلي</b>، مع الحفاظ على سلامة التوقيع الرقمي والعمل بصورة خفية وآمنة تماماً.
+                    مكتبة Android احترافية مطورة بلغة C/C++ لتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. مصممة خصيصاً لتعديل وظائف مكتبة <code>libil2cpp.so</code> والتحكم الكامل بالسجلات والهوكات <b>دون الحاجة لتعديل ملف APK الأصلي</b>، مع حجم خفيف جداً (~25.59 KB) وعمل آمن تماماً.
                 </p>
 
                 <div class="tool-features-grid">
-                    <div class="tool-feature-item">🔄 <b>Runtime Patching:</b> تعديل الذاكرة فور تشغيل التطبيق.</div>
-                    <div class="tool-feature-item">🔍 <b>Signature-Based:</b> بحث تلقائي وتطبيق للبصمات (signature.SH).</div>
-                    <div class="tool-feature-item">📁 <b>Dual Config:</b> دعم ملفات التكوين الخارجية `MOD.SH`.</div>
-                    <div class="tool-feature-item">🕶️ <b>No Traces:</b> تنظيف كامل لآثار الذاكرة بعد التنفيذ لتفادي الحماية.</div>
+                    <div class="tool-feature-item">🚀 <b>60 أنواع هوك:</b> نظام هوكات متكامل ومتطور.</div>
+                    <div class="tool-feature-item">🧬 <b>Register Patching:</b> قراءة وتعديل السجلات (X0-X30, S0-S31).</div>
+                    <div class="tool-feature-item">💰 <b>Value Patching:</b> تعديل القيم مباشرة باستخدام <code>$RVA:OLD->NEW</code>.</div>
+                    <div class="tool-feature-item">💾 <b>Memory Dump:</b> تفريغ الذاكرة بكل سهولة ومرونة.</div>
                 </div>
 
                 <div class="tool-actions">
-                    <button onclick="trackDownload('أداة المطور RVAPatcher v3', 'https://www.mediafire.com/file/1nxrqs5715db55k/RVAPatcher+v3.zip/file')" class="tool-btn download">
-                        📥 تحميل أداة المطور (v3.0)
+                    <button onclick="trackDownload('أداة المطور RVAPatcher v6 PRO', 'https://www.mediafire.com/file/68k2ogvf6dz2wwd/RVAPatcher+v6+PRO.zip/file')" class="tool-btn download">
+                        📥 تحميل أداة المطور (v6 PRO)
                     </button>
-                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/edit/v3.0.0" target="_blank" class="tool-btn info">
+                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/tag/6.0.0.0" target="_blank" class="tool-btn info">
                         📚 للمزيد من المعلومات (GitHub)
                     </a>
                 </div>
@@ -1156,26 +1276,10 @@
                     نؤمن في <strong>DZ Security Lab</strong> بالشفافية الكاملة مع مستخدمينا والمطورين. جميع ملفات التعديل وقوائم الغش (Mod Menus) أو حزم التثبيت المقدمة هنا تعمل حصرياً ضمن نطاق بيئة اللعبة المعزولة (Sandbox).
                 </p>
                 <p>
-                    <strong>ما يفعله التعديل تقنياً:</strong> يقتصر التعديل على حقن كود برمجي بسيط أو تعديل قيم معينة داخل الذاكرة العشوائية (RAM) الخاصة اللعبة نفسها أثناء وقت التشغيل (Runtime)، أو تعديل بعض ملفات التكوين التابعة لمحرك اللعبة (مثل Unity Addressables أو libil2cpp.so) لفتح الميزات المدفوعة أو تفعيل الخصائص الإضافية.
+                    <strong>ما يفعله التعديل تقنياً:</strong> يقتصر التعديل على حقن كود برمجي بسيط أو تعديل قيم معينة داخل الذاكرة العشوائية (RAM) الخاصة اللعبة نفسها أثناء وقت التشغيل (Runtime).
                 </p>
-                <p>
-                    <strong>ما لا يفعله التعديل مطلقاً:</strong> تعديلاتنا لا تتدخل نهائياً في نظام التشغيل (Android OS)، ولا تصل إلى ملفاتك الشخصية، صورك، جهات اتصالك، أو حساباتك البنكية، ولا تقوم بتثبيت أي صلاحيات جذر خفية (Root/Backdoors).
-                </p>
-
-                <h3 style="margin-top: 25px;">🛡️ دليل الأمان وفحص الملفات (Security Guide)</h3>
-                <p>
-                    حرصاً منا على أمان جهازك وثقتك الدائمة، نشجع جميع المستخدمين وقبل تثبيت أي ملف على فحص الملفات بأنفسهم والتأكد من نظافتها التامة خلوها من أي برمجيات خبيثة.
-                </p>
-                <p>
-                    يمكنك استخدام أدوات الفحص العالمية والمعروفة مثل:
-                </p>
-                <ul class="features-list" style="margin-bottom: 15px;">
-                    <li><strong>VirusTotal:</strong> لفحص ملفات الـ APK عبر مئات برامج الحماية العالمية بنقرة واحدة.</li>
-                    <li><strong>أي برنامج مكافحة فيروسات موثوق على هاتفك:</strong> (مثل Malwarebytes أو Kaspersky Mobile).</li>
-                </ul>
-
                 <div class="safety-box">
-                    💡 <strong>تنويه أمان:</strong> موقعنا يضمن أن كافة الملفات آمنة ونظيفة ومخصصة للترفيه وتعديل الألعاب فقط. يمكنك نسخ رابط أي ملف قمت بتحميله ورفع فحصك الخاص على موقع <a href="https://www.virustotal.com" target="_blank">VirusTotal</a> للاطمئنان الكامل بنفسك.
+                    💡 <strong>تنويه أمان:</strong> موقعنا يضمن أن كافة الملفات آمنة ونظيفة ومخصصة للترفيه وتعديل الألعاب فقط. يمكنك التحقق عبر موقع <a href="https://www.virustotal.com" target="_blank">VirusTotal</a> للاطمئنان الكامل بنفسك.
                 </div>
             </div>
         </div>
@@ -1188,31 +1292,23 @@
             
             <div class="interactive-form-card">
                 <h3>🎮 اقترح لعبة تريد تعديلها</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
-                    هل لديك لعبة معينة تريد منا تعديلها أو إضافة قائمة غش (Mod Menu) لها؟ أرسل طلبك الآن وسيقوم فريقنا بدراسته وإضافته للموقع باحترافية.
-                </p>
-                
                 <form id="gameRequestForm" onsubmit="submitGameRequest(event)">
                     <div class="form-group">
                         <label for="userNameReq">👤 اسمك أو معرفك:</label>
                         <input type="text" id="userNameReq" class="form-control" placeholder="ادخل اسمك هنا..." required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="gameNameReq">🎮 اسم اللعبة المطلوبة:</label>
                         <input type="text" id="gameNameReq" class="form-control" placeholder="مثال: Roblox, Minecraft..." required>
                     </div>
-
                     <div class="form-group">
                         <label for="gameLinkReq">🔗 رابط اللعبة (متجر جوجل بلاي أو APK):</label>
                         <input type="url" id="gameLinkReq" class="form-control" placeholder="https://play.google.com/..." required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="modFeaturesReq">⚡ الميزات التي ترغب في إضافتها:</label>
                         <textarea id="modFeaturesReq" class="form-control" placeholder="اكتب الميزات المطلوبة مثل: تجميد الأعداء، أموال غير محدودة..." required></textarea>
                     </div>
-
                     <button type="submit" class="submit-btn">🚀 إرسال طلب التعديل إلى الإدارة</button>
                     <div id="requestStatus" class="form-status"></div>
                 </form>
@@ -1227,16 +1323,11 @@
             
             <div class="interactive-form-card">
                 <h3>💬 شاركنا رأيك أو استفسارك</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
-                    رأيك يهمنا! قيم خدماتنا أو أرسل ملاحظاتك واستفساراتك التقنية وسيتم تحويلها مباشرة إلى بوت تليجرام الخاص بالإدارة.
-                </p>
-                
                 <form id="feedbackForm" onsubmit="submitFeedback(event)">
                     <div class="form-group">
                         <label for="userNameFeed">👤 اسم المستخدم:</label>
                         <input type="text" id="userNameFeed" class="form-control" placeholder="ادخل اسمك هنا..." required>
                     </div>
-
                     <div class="form-group">
                         <label>⭐ تقييم الموقع:</label>
                         <div class="star-rating" id="starRating">
@@ -1248,12 +1339,10 @@
                         </div>
                         <input type="hidden" id="ratingValue" value="5">
                     </div>
-                    
                     <div class="form-group">
                         <label for="feedbackText">✍️ ملاحظاتك، أسئلتك، أو اقتراحاتك:</label>
                         <textarea id="feedbackText" class="form-control" placeholder="اكتب استفسارك أو ملاحظتك هنا باحترافية..." required></textarea>
                     </div>
-
                     <button type="submit" class="submit-btn">📤 إرسال التقييم والملاحظات</button>
                     <div id="feedbackStatus" class="form-status"></div>
                 </form>
@@ -1267,11 +1356,68 @@
     </footer>
 
     <script>
-        // متغيرات بوت تليجرام المحددة من طرف المستخدم
         const TELEGRAM_BOT_TOKEN = "8918820161:AAGo8v59x9Htppsmko8ALNaz7t6ceR4vYhU";
         const TELEGRAM_CHAT_ID = "8464439368";
 
-        // دالة مساعدة لجلب عنوان IP الخاص بالزائر
+        // مصفوفة الثيمات السيبرانية المتقدمة
+        const themes = ['theme-neon-cyan', 'theme-matrix-green', 'theme-cyber-pink', 'theme-electric-violet', 'theme-plasma-gold'];
+        let currentThemeIndex = 0;
+        let autoThemeTimer = null;
+        let isAutoThemeActive = true; // مفعل تلقائياً عند فتح الموقع بدون تدخل المستخدم
+
+        function setCyberTheme(themeName) {
+            document.body.className = themeName;
+            localStorage.setItem('dz_cyber_theme', themeName);
+            currentThemeIndex = themes.indexOf(themeName);
+        }
+
+        function toggleAutoThemeMode() {
+            const btn = document.getElementById('autoModeBtn');
+            isAutoThemeActive = !isAutoThemeActive;
+            
+            if (isAutoThemeActive) {
+                btn.textContent = "🔄 التغيير التلقائي: ON";
+                btn.style.background = "linear-gradient(135deg, #00ff66, #00b347)";
+                btn.style.color = "#000";
+                startAutoThemeEngine();
+            } else {
+                btn.textContent = "🔄 التغيير التلقائي: OFF";
+                btn.style.background = "";
+                btn.style.color = "";
+                clearInterval(autoThemeTimer);
+            }
+        }
+
+        function startAutoThemeEngine() {
+            clearInterval(autoThemeTimer);
+            autoThemeTimer = setInterval(() => {
+                if (isAutoThemeActive) {
+                    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                    setCyberTheme(themes[currentThemeIndex]);
+                }
+            }, 7000); // يتغير اللون تلقائياً كل 7 ثوانٍ بسلاسة تامة
+        }
+
+        // تفعيل ميزة التغيير التلقائي للألوان فوراً عند فتح الموقع وبشكل افتراضي
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('dz_cyber_theme');
+            if (savedTheme && themes.includes(savedTheme)) {
+                setCyberTheme(savedTheme);
+                currentThemeIndex = themes.indexOf(savedTheme);
+            } else {
+                setCyberTheme('theme-neon-cyan');
+            }
+            
+            // تشغيل محرك الألوان التلقائي تلقائياً بدون الحاجة لأي ضغط من المستخدم
+            const btn = document.getElementById('autoModeBtn');
+            if (btn) {
+                btn.textContent = "🔄 التغيير التلقائي: ON";
+                btn.style.background = "linear-gradient(135deg, #00ff66, #00b347)";
+                btn.style.color = "#000";
+            }
+            startAutoThemeEngine();
+        });
+
         async function getVisitorIP() {
             try {
                 const response = await fetch('https://api.ipify.org?format=json');
@@ -1282,7 +1428,6 @@
             }
         }
 
-        // إرسال تنبيه دخول شخص جديد إلى الموقع بمجرد فتح الصفحة (مرة واحدة لكل جلسة)
         window.addEventListener('DOMContentLoaded', async () => {
             if (!sessionStorage.getItem('visited_tracked')) {
                 sessionStorage.setItem('visited_tracked', 'true');
@@ -1298,7 +1443,6 @@
             }
         });
 
-        // دالة إرسال صامتة للخلفية (مثل إشعارات الزيارات)
         async function sendTelegramSilent(textMessage) {
             const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
             try {
@@ -1316,21 +1460,17 @@
             }
         }
 
-        // دالة تتبع التحميل (إرسال التنبيه ثم فتح الرابط بشكل مباشر ومضمون)
         async function trackDownload(gameName, downloadUrl) {
             const ip = await getVisitorIP();
             const downloadTime = new Date().toLocaleString('ar-DZ');
 
             const message = `📥 *عملية تحميل جديدة!* 📥\n\n` +
-                            `🎮 *نوع/اسم اللعبة:* \`${gameName}\`\n` +
+                            `🎮 *نوع/اسم اللعبة/الأداة:* \`${gameName}\`\n` +
                             `🌐 *عنوان الـ IP:* \`${ip}\`\n` +
                             `🕒 *وقت التحميل:* ${downloadTime}\n\n` +
                             `📡 *المصدر:* DZ Security Lab Website`;
 
-            // إرسال الإشعار لتليجرام في الخلفية دون انتظار استجابة لكي لا يتسبب في منع فتح الرابط
             sendTelegramSilent(message);
-            
-            // فتح رابط التحميل فوراً في نافذة جديدة
             window.open(downloadUrl, '_blank');
         }
 
