@@ -20,7 +20,6 @@
             --border-glow: 0 0 15px rgba(0, 240, 255, 0.25);
         }
 
-        /* 5 أنماط سيبرانية متقدمة وفائقة التباين */
         body.theme-neon-cyan {
             --accent-color: #00f0ff;
             --accent-glow: rgba(0, 240, 255, 0.5);
@@ -83,7 +82,6 @@
             overflow-x: hidden;
         }
 
-        /* رأس الموقع بتأثير زجاجي وحواف متوهجة مكيّفة للهواتف */
         header {
             background: linear-gradient(135deg, rgba(13, 18, 31, 0.95), rgba(5, 7, 12, 0.98));
             padding: 24px 15px;
@@ -107,7 +105,6 @@
             text-shadow: 0 0 5px rgba(0,0,0,0.8);
         }
 
-        /* شريط التحكم السيبراني المتقدم */
         .theme-switcher-bar {
             max-width: 1200px;
             margin: 15px auto 0 auto;
@@ -168,7 +165,6 @@
             transition: all 0.3s;
         }
 
-        /* قسم معلومات المطور */
         .dev-section {
             background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(20, 28, 48, 0.9));
             border: 2px solid var(--accent-color);
@@ -226,7 +222,6 @@
             box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
         }
 
-        /* الأقسام والتنقلات مخصصة لنسب الشاشات بمرونة */
         .categories-container {
             max-width: 1200px;
             margin: 15px auto;
@@ -324,7 +319,6 @@
             font-size: 0.9rem;
         }
 
-        /* كارد الأداة الفائق */
         .tool-card {
             background: var(--card-bg);
             border: 2px solid var(--accent-color);
@@ -413,7 +407,6 @@
             box-shadow: 0 0 20px var(--accent-secondary-glow);
         }
 
-        /* شبكة الألعاب المتطورة المتكيفة مع الهواتف بدقة */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -470,7 +463,6 @@
             text-shadow: 0 0 8px var(--accent-glow);
         }
         
-        /* Mod Menu Preview داخل الكارد */
         .mod-menu-preview {
             background: rgba(5, 7, 12, 0.85);
             border: 2px solid var(--accent-color);
@@ -572,7 +564,6 @@
             box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
         }
 
-        /* النماذج التفاعلية */
         .transparency-card, .interactive-form-card {
             background: var(--card-bg);
             border: 1.5px solid var(--border-color);
@@ -715,7 +706,6 @@
         <p>المصدر الاحترافي لتعديل الألعاب وقوائم الغش المباشرة وأدوات المطورين</p>
     </header>
 
-    <!-- شريط التحكم والتحويل السيبراني -->
     <div class="theme-switcher-bar">
         <div class="theme-label">
             <span>⚡ نظام الألوان السيبراني:</span>
@@ -730,7 +720,6 @@
         </div>
     </div>
 
-    <!-- قسم معلومات المطور -->
     <div class="dev-section">
         <div class="dev-title">معلومات المطور / Developer</div>
         <div class="dev-name">ADEM</div>
@@ -744,7 +733,6 @@
         </div>
     </div>
 
-    <!-- أقسام التنقل المنظمة -->
     <div class="categories-container">
         <div class="categories-grid">
             <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (14)</div>
@@ -757,7 +745,6 @@
 
     <div class="main-container">
         
-        <!-- صفحة الألعاب الرئيسية -->
         <div id="page-games" class="page-content active-page">
             
             <div class="nav-tool-banner">
@@ -770,12 +757,47 @@
             
             <div class="games-grid">
                 
-                <!-- Brain Test -->
+                <!-- Brain Test 2 -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
-                            <h3 class="game-title">Brain Test: Tricky Puzzles</h3>
-                            <p class="game-desc">لعبة الألغاز الذكية والمسلية الإصدار 2.770.0 بمعمارية ARM64 مع طريقة مخصصة لجمع آلاف المصابيح بلا حدود.</p>
+                            <h3 class="game-title">🧠 Brain Test 2 (الجزء الثاني)</h3>
+                            <p class="game-desc">الجزء الثاني من لعبة الألغاز الذكية والمسلية الإصدار 1.24.10 بمعمارية ARM64 مع ميزة المكافآت اللامحدودة.</p>
+                        </div>
+                        
+                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.9);">
+                            <div class="mod-menu-title" style="color: var(--danger-color);">⚠️ تنبيهات هامة للتشغيل الصحيح</div>
+                            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px 6px;">
+                                <strong>• لتفعيل الميزات:</strong> اضغط على زر المكافأة، ثم اخرج من اللعبة (ولا تحذفها من الخلفية)، ثم ارجع إليها وستجد المكافأة.<br>
+                                <strong>• الميزة:</strong> تحصل على 20 مصباح في كل مرة، ويمكنك تجميع آلاف المصابيح بتكرار العملية.<br>
+                                <strong>• فيديو الشرح:</strong> توجد طريقة الشرح في الفيديو المرفق مع اللعبة، شاهده لتعرف الطريقة الصحيحة.
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li><strong>الإصدار:</strong> 1.24.10 | <strong>المعمارية:</strong> Arm64</li>
+                            <li><strong>حجم الملف:</strong> 150.95 ميجابايت</li>
+                            <li><strong>الميزة:</strong> مكافأة لا نهائية (كل مكافأة = 20 مصباح، جمع آلاف المصابيح)</li>
+                            <li><strong>نظام التشغيل:</strong> Android 7 (API 24) إلى Android 15 (API 35)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="game-disclaimer">
+                            جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
+                        </div>
+                        <div class="card-footer">
+                            <button onclick="trackDownload('Brain Test 2 (v1.24.10 - Arm64)', 'https://www.mediafire.com/file/4wyehjava4ng0z0/Brain_Test_2.zip/file')" class="btn">تحميل اللعبة (ZIP)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brain Test 1 (الأولى) -->
+                <div class="game-card">
+                    <div>
+                        <div class="game-header">
+                            <h3 class="game-title">🧠 Brain Test: Tricky Puzzles</h3>
+                            <p class="game-desc">الجزء الأول من لعبة الألغاز الذكية الإصدار 2.770.0 بمعمارية ARM64 مع طريقة مخصصة لجمع آلاف المصابيح.</p>
                         </div>
                         
                         <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.9);">
@@ -799,7 +821,7 @@
                             جميع التعديلات مقتصرة على فتح الميزات داخل اللعبة فقط. لا تحتوي الملفات على أي أكواد ضارة أو خبيثة.
                         </div>
                         <div class="card-footer">
-                            <button onclick="trackDownload('Brain Test (v2.770.0 - Arm64)', 'https://www.mediafire.com/file/uj3jvcehuckcmj3/Game+MOD.zip/file')" class="btn">تحميل اللعبة مع الشرح (ZIP)</button>
+                            <button onclick="trackDownload('Brain Test 1 (v2.770.0 - Arm64)', 'https://www.mediafire.com/file/uj3jvcehuckcmj3/Game+MOD.zip/file')" class="btn">تحميل اللعبة مع الشرح (ZIP)</button>
                         </div>
                     </div>
                 </div>
@@ -839,7 +861,7 @@
                     </div>
                 </div>
 
-                <!-- Traffic Racer (نسخة 64-bit) -->
+                <!-- Traffic Racer (64-bit) -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
@@ -871,7 +893,7 @@
                     </div>
                 </div>
 
-                <!-- Free Fire (نسخة 32-bit) -->
+                <!-- Free Fire -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
@@ -903,7 +925,7 @@
                     </div>
                 </div>
 
-                <!-- Horror Sponge Granny V1.8 -->
+                <!-- Horror Sponge Granny -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
@@ -936,7 +958,7 @@
                     </div>
                 </div>
 
-                <!-- Traffic Racer (نسخة 32) -->
+                <!-- Traffic Racer (32-bit) -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
@@ -1029,7 +1051,7 @@
                     </div>
                 </div>
 
-                <!-- Cursed House Multiplayer (GMM) -->
+                <!-- Cursed House -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
@@ -1230,7 +1252,6 @@
             </div>
         </div>
 
-        <!-- صفحة أداة المطور -->
         <div id="page-tool" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1264,7 +1285,6 @@
             </div>
         </div>
 
-        <!-- صفحة الشفافية والأمان -->
         <div id="page-transparency" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1284,7 +1304,6 @@
             </div>
         </div>
 
-        <!-- صفحة طلبات الألعاب للتعديل -->
         <div id="page-requests" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1315,7 +1334,6 @@
             </div>
         </div>
 
-        <!-- صفحة تقييم الموقع والملاحظات -->
         <div id="page-feedback" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1359,11 +1377,10 @@
         const TELEGRAM_BOT_TOKEN = "8918820161:AAGo8v59x9Htppsmko8ALNaz7t6ceR4vYhU";
         const TELEGRAM_CHAT_ID = "8464439368";
 
-        // مصفوفة الثيمات السيبرانية المتقدمة
         const themes = ['theme-neon-cyan', 'theme-matrix-green', 'theme-cyber-pink', 'theme-electric-violet', 'theme-plasma-gold'];
         let currentThemeIndex = 0;
         let autoThemeTimer = null;
-        let isAutoThemeActive = true; // مفعل تلقائياً عند فتح الموقع بدون تدخل المستخدم
+        let isAutoThemeActive = true;
 
         function setCyberTheme(themeName) {
             document.body.className = themeName;
@@ -1395,10 +1412,9 @@
                     currentThemeIndex = (currentThemeIndex + 1) % themes.length;
                     setCyberTheme(themes[currentThemeIndex]);
                 }
-            }, 7000); // يتغير اللون تلقائياً كل 7 ثوانٍ بسلاسة تامة
+            }, 7000);
         }
 
-        // تفعيل ميزة التغيير التلقائي للألوان فوراً عند فتح الموقع وبشكل افتراضي
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('dz_cyber_theme');
             if (savedTheme && themes.includes(savedTheme)) {
@@ -1408,7 +1424,6 @@
                 setCyberTheme('theme-neon-cyan');
             }
             
-            // تشغيل محرك الألوان التلقائي تلقائياً بدون الحاجة لأي ضغط من المستخدم
             const btn = document.getElementById('autoModeBtn');
             if (btn) {
                 btn.textContent = "🔄 التغيير التلقائي: ON";
