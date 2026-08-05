@@ -712,6 +712,35 @@
             font-weight: bold;
         }
 
+        /* تنسيق خاص لأداة DZ_Scanner */
+        .scanner-badge {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            color: var(--accent-color);
+            margin: 2px 0;
+        }
+        .feature-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .feature-item-compact {
+            background: rgba(5, 7, 12, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         @keyframes fadeInPage {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
@@ -768,7 +797,7 @@
             
             <div class="nav-tool-banner">
                 <h3>🛠️ هل أنت مطور تبحث عن أدوات متقدمة؟</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">اكتشف أداة RVAPatcher v6 PRO لتعديل الذاكرة في وقت التشغيل بمعمارية ARM64 مع 60 نوع هوك.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">اكتشف أداة DZ_Scanner v7.1 لتحليل وتعديل الذاكرة في وقت التشغيل مع نظام هوكات متطور.</p>
                 <a href="#tool" class="goto-tool-btn" onclick="switchPage('tool')">توجه لأداة المطور</a>
             </div>
 
@@ -1292,26 +1321,138 @@
             
             <div class="tool-card">
                 <div class="tool-header">
-                    <div class="tool-title">🔥 RVAPatcher v6 PRO</div>
-                    <div class="tool-badge">Runtime ARM64 Memory Patcher</div>
+                    <div class="tool-title">🔥 DZ_Scanner v7.1</div>
+                    <div class="tool-badge">Ultimate Hook Engine - بدون حقن دوال</div>
                 </div>
                 
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
+                    <span class="scanner-badge">📦 الإصدار 7.1</span>
+                    <span class="scanner-badge">📜 MIT License</span>
+                    <span class="scanner-badge">📱 Android</span>
+                    <span class="scanner-badge">📐 API 21+</span>
+                    <span class="scanner-badge">📏 الحجم ~45KB</span>
+                </div>
+
                 <p class="tool-desc">
-                    مكتبة Android احترافية مطورة بلغة C/C++ لتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. مصممة خصيصاً لتعديل وظائف مكتبة <code>libil2cpp.so</code> والتحكم الكامل بالسجلات والهوكات <b>دون الحاجة لتعديل ملف APK الأصلي</b>، مع حجم خفيف جداً (~25.59 KB) وعمل آمن تماماً.
+                    <strong>DZ_Scanner v7.1</strong> هي مكتبة Android احترافية لتحليل وتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. تم تصميمها خصيصاً لتحليل دوال مكتبة <code>libil2cpp.so</code> <strong>دون حقن دوال</strong> أو تعديل الملف الأصلي على القرص.
+                    <br><br>
+                    🆓 مجانية تماماً | 💪 قوية | 🕶️ خفية | 🔄 مرنة
                 </p>
 
-                <div class="tool-features-grid">
-                    <div class="tool-feature-item">🚀 <b>60 أنواع هوك:</b> نظام هوكات متكامل ومتطور.</div>
-                    <div class="tool-feature-item">🧬 <b>Register Patching:</b> قراءة وتعديل السجلات (X0-X30, S0-S31).</div>
-                    <div class="tool-feature-item">💰 <b>Value Patching:</b> تعديل القيم مباشرة باستخدام <code>$RVA:OLD->NEW</code>.</div>
-                    <div class="tool-feature-item">💾 <b>Memory Dump:</b> تفريغ الذاكرة بكل سهولة ومرونة.</div>
+                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🆕 ما الجديد في الإصدار v7.1؟</h4>
+                <div class="feature-grid-2">
+                    <div class="feature-item-compact">🔍 <b>/WX</b> فحص دالة ومراقبة استدعاءاتها</div>
+                    <div class="feature-item-compact">📦 <b>/dumpfunc</b> تفريغ بايتات الدالة</div>
+                    <div class="feature-item-compact">🔗 <b>/trace</b> تتبع استدعاءات الدالة المتسلسلة</div>
+                    <div class="feature-item-compact">🧬 <b>Register Patching</b> قراءة وتعديل السجلات</div>
+                    <div class="feature-item-compact">💰 <b>Value Patching</b> تعديل القيم (Int/Float)</div>
+                    <div class="feature-item-compact">📊 <b>Value Extraction</b> استخراج جميع القيم</div>
+                    <div class="feature-item-compact">💾 <b>Memory Dump</b> تفريغ الذاكرة إلى ملف</div>
+                    <div class="feature-item-compact">🔧 <b>Library Switching</b> تغيير المكتبة المستهدفة</div>
+                    <div class="feature-item-compact">🎯 <b>Hook System</b> هوكات متقدمة (6 أنواع)</div>
+                    <div class="feature-item-compact">🛡️ <b>Smart Breakpoints</b> نقاط توقف ذكية</div>
+                    <div class="feature-item-compact">📝 <b>Enhanced Logging</b> تسجيل مفصل مع توقيتات</div>
+                    <div class="feature-item-compact">🛡️ <b>Crash Protection</b> حماية كاملة من الكراش</div>
+                </div>
+
+                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🏗️ المواصفات التقنية</h4>
+                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
+                        <div><b>اللغة:</b> C/C++ (Android NDK)</div>
+                        <div><b>المعمارية:</b> ARM64 (AArch64)</div>
+                        <div><b>الحد الأقصى للـ RVAs:</b> 10,000 عنوان</div>
+                        <div><b>الحد الأقصى للهوكات:</b> 128 هوك</div>
+                        <div><b>أنواع الهوك:</b> 6 أنواع</div>
+                        <div><b>ملف التكوين:</b> MOD.SH</div>
+                        <div><b>Root مطلوب؟</b> لا</div>
+                        <div><b>Android SDK:</b> 21+ (Android 5.0)</div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🎯 أنواع الهوكات</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
+                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">1. Jump</div>
+                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">2. Call</div>
+                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">3. Inline</div>
+                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">4. Conditional</div>
+                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">5. Chained</div>
+                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">6. Detour</div>
+                </div>
+
+                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">📂 تنسيق ملف التكوين (MOD.SH)</h4>
+                <div style="background: rgba(5, 7, 12, 0.9); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.78rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; word-break: break-all; font-family: monospace;">
+مسار الملف: /storage/emulated/0/Android/data/&lt;package_name&gt;/files/MOD.SH
+
+# ============================================================
+# ملف MOD.SH - DZ_Scanner v7.1
+# ============================================================
+
+# ====== تغيير المكتبة المستهدفة ======
+/Wlibil2cpp.so
+
+# ====== تأخير زمني ======
+/5
+
+# ====== أوامر التتبع والتحليل ======
+/WX 0x14549e4
+/dumpfunc 0x14549e4
+/trace 0x14549e4
+
+# ====== أوامر السجلات ======
+/regs 0x14549e4
+/reg 0x14549e4 x0=999
+/reg 0x14549e4 w1=100
+/reg 0x14549e4 s0=3.14
+
+# ====== استخراج القيم ======
+/int
+/float
+/int 0x14549e4 0x1454de4
+
+# ====== تفريغ الذاكرة ======
+dump memory_dump.bin
+
+# ====== نقاط التوقف ======
+/bp 0x14549e4
+/sbp 0x14549e4 smart_bp
+
+# ====== الهوكات ======
+/ahook 0x14549e4 hook_func
+/chook 0x14549e4
+/hook 0x14549e4 granny_hook
+/toggle 0x14549e4 1
+/rhook 0x14549e4
+
+# ====== تعديل القيم ======
+value 0x1454a8c 1.0 0.001
+
+# ====== تعديل RVAs ======
+0x14549e4: C0 03 5F D6  # RET
+0x14549e4: 1F 20 03 D5  # NOP
+
+# ====== مساعدة ======
+/help
+                </div>
+
+                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🔧 التعليمات المدعومة</h4>
+                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.8rem; color: var(--text-secondary); overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: right;">
+                        <thead><tr style="border-bottom: 1px solid var(--border-color);"><th style="padding: 6px 8px;">الغرض</th><th style="padding: 6px 8px;">البايتات (Hex)</th><th style="padding: 6px 8px;">العدد</th><th style="padding: 6px 8px;">الشرح</th></tr></thead>
+                        <tbody>
+                            <tr><td style="padding: 4px 8px;">RET</td><td style="padding: 4px 8px; direction: ltr;">C0 03 5F D6</td><td style="padding: 4px 8px;">4</td><td style="padding: 4px 8px;">تعطيل الدالة بالكامل</td></tr>
+                            <tr><td style="padding: 4px 8px;">TRUE (1)</td><td style="padding: 4px 8px; direction: ltr;">20 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td><td style="padding: 4px 8px;">إرجاع القيمة 1</td></tr>
+                            <tr><td style="padding: 4px 8px;">FALSE (0)</td><td style="padding: 4px 8px; direction: ltr;">00 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td><td style="padding: 4px 8px;">إرجاع القيمة 0</td></tr>
+                            <tr><td style="padding: 4px 8px;">NOP</td><td style="padding: 4px 8px; direction: ltr;">1F 20 03 D5</td><td style="padding: 4px 8px;">4</td><td style="padding: 4px 8px;">لا تفعل شيئاً</td></tr>
+                            <tr><td style="padding: 4px 8px;">MOV W0, #100</td><td style="padding: 4px 8px; direction: ltr;">64 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td><td style="padding: 4px 8px;">إرجاع 100</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="tool-actions">
-                    <button onclick="trackDownload('أداة المطور RVAPatcher v6 PRO', 'https://www.mediafire.com/file/68k2ogvf6dz2wwd/RVAPatcher+v6+PRO.zip/file')" class="tool-btn download">
-                        📥 تحميل أداة المطور (v6 PRO)
+                    <button onclick="trackDownload('أداة المطور DZ_Scanner v7.1', 'https://www.mediafire.com/file/3mqremp0guqvrj5/DZ_Scanner_v7.1.zip/file)" class="tool-btn download">
+                        📥 تحميل أداة المطور (v7.1)
                     </button>
-                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/tag/6.0.0.0" target="_blank" class="tool-btn info">
+                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/tag/7.1" target="_blank" class="tool-btn info">
                         📚 للمزيد من المعلومات (GitHub)
                     </a>
                 </div>
