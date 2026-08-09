@@ -464,6 +464,15 @@
             text-shadow: 0 0 8px var(--accent-glow);
         }
         
+        .game-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+
         .mod-menu-preview {
             background: rgba(5, 7, 12, 0.85);
             border: 2px solid var(--accent-color);
@@ -783,7 +792,7 @@
 
     <div class="categories-container">
         <div class="categories-grid">
-            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (15)</div>
+            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (17)</div>
             <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
             <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
             <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
@@ -805,10 +814,50 @@
             
             <div class="games-grid">
                 
+                <!-- Geometry Dash Lite -->
+                <div class="game-card">
+                    <div>
+                        <div class="game-header">
+                            <img class="game-img" src="geometry-dash.jpg" alt="Geometry Dash Lite">
+                            <h3 class="game-title">⬛ Geometry Dash Lite</h3>
+                            <p class="game-desc">لعبة الأيقونات والموسيقى الإيقاعية الشهيرة الإصدار 2.2.147 بمعمارية ARM64 مع قائمة غش متطورة.</p>
+                        </div>
+                        
+                        <div class="mod-menu-preview">
+                            <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تغيير الموسيقى')">🎵 تغيير الموسيقى: OFF</div>
+                            </div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 4px 0;">
+                                ⚡ بدون إعلانات مزعجة | ⚡ سهولة الاستخدام
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li><strong>الإصدار:</strong> 2.2.147 (رقم الإصدار: 43) | <strong>المعمارية:</strong> arm64-v8a</li>
+                            <li><strong>حجم الملف:</strong> 252.69 ميجابايت</li>
+                            <li><strong>البكج:</strong> <code>com.robtopx.geometryjumplite</code></li>
+                            <li><strong>الميزات:</strong> 🛡️ عدم موت • 🚫 بدون إعلانات • 🎵 تغيير الموسيقى • 🎮 سهولة استخدام</li>
+                            <li><strong>نظام التشغيل:</strong> Android 6 (API 23) إلى Android 15 (API 35)</li>
+                            <li><strong>MD5:</strong> <code>328bf0d6a9a864287b67c5c6c94cfb77</code></li>
+                            <li><strong>SHA1:</strong> <code>30efb9f9c878e2395478f38adee3302247fc1b61</code></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="game-disclaimer"></div>
+                        <div class="card-footer">
+                            <button onclick="trackDownload('Geometry Dash Lite (v2.2.147 - arm64-v8a)', 'https://www.mediafire.com/file/3vf0q5sco7mah28/Geometry+Dash+Lite.apk/file')" class="btn">تحميل اللعبة (APK)</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Brain Test 3 -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="brain-test-3.jpg" alt="Brain Test 3">
                             <h3 class="game-title">🧠 Brain Test 3 (الجزء الثالث)</h3>
                             <p class="game-desc">الجزء الثالث من لعبة الألغاز الذكية الإصدار 1.81.0 بمعمارية ARM64 مع أموال لا نهائية وبدون إعلانات.</p>
                         </div>
@@ -854,6 +903,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="brain-test-2.jpg" alt="Brain Test 2">
                             <h3 class="game-title">🧠 Brain Test 2 (الجزء الثاني)</h3>
                             <p class="game-desc">الجزء الثاني من لعبة الألغاز الذكية الإصدار 1.24.10 بمعمارية ARM64 مع ميزة المكافآت اللامحدودة.</p>
                         </div>
@@ -886,6 +936,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="brain-test-1.jpg" alt="Brain Test 1">
                             <h3 class="game-title">🧠 Brain Test: Tricky Puzzles</h3>
                             <p class="game-desc">الجزء الأول من لعبة الألغاز الذكية الإصدار 2.770.0 بمعمارية ARM64 مع طريقة مخصصة لجمع آلاف المصابيح.</p>
                         </div>
@@ -918,6 +969,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="slendrina-cellar.jpg" alt="Slendrina the Cellar">
                             <h3 class="game-title">Slendrina the Cellar (الجزء الأول)</h3>
                             <p class="game-desc">لعبة الرعب الأسطورية الإصدار الأول بمعمارية arm64 مع قائمة غش مخصصة وبدون إعلانات.</p>
                         </div>
@@ -951,6 +1003,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="traffic-racer-64.jpg" alt="Traffic Racer 64-bit">
                             <h3 class="game-title">Traffic Racer (نسخة 64-bit)</h3>
                             <p class="game-desc">لعبة السباق الشهيرة بمعمارية 64-bit مع نقود كثيرة وجميع السيارات مفتوحة.</p>
                         </div>
@@ -981,6 +1034,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="free-fire-32.jpg" alt="Free Fire">
                             <h3 class="game-title">Free Fire (نسخة 32-bit)</h3>
                             <p class="game-desc">الإصدار 1.128.2 المخصص للأجهزة الضعيفة والقوية لتعمل بسلاسة فائقة وبدون تقطيع.</p>
                         </div>
@@ -1011,6 +1065,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="horror-sponge-granny.jpg" alt="Horror Sponge Granny">
                             <h3 class="game-title">Horror Sponge Granny V1.8</h3>
                             <p class="game-desc">لعبة الرعب المميزة مع قائمة غش مخصصة لتفعيل ميزات تجميد الجدة للنجاة.</p>
                         </div>
@@ -1042,6 +1097,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="traffic-racer-32.jpg" alt="Traffic Racer 32-bit">
                             <h3 class="game-title">Traffic Racer (نسخة 32-bit)</h3>
                             <p class="game-desc">لعبة السباق الممتعة (نسخة 32) لتعمل بسلاسة فائقة على الأجهزة الضعيفة والقوية مع فتح الميزات.</p>
                         </div>
@@ -1065,6 +1121,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="slendrina-cellar-2.jpg" alt="Slendrina the Cellar 2">
                             <h3 class="game-title">Slendrina the Cellar 2</h3>
                             <p class="game-desc">لعبة الرعب مع قائمة غش مبرمجة ومطورة حصرياً عبر قناة DZ Security Lab.</p>
                         </div>
@@ -1097,6 +1154,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="ninja-arashi.jpg" alt="Ninja Arashi">
                             <h3 class="game-title">Ninja Arashi</h3>
                             <p class="game-desc">مغامرة النينجا المشوقة مع قائمة غش مخصصة لتجميد الأعداء وعدم الموت.</p>
                         </div>
@@ -1129,6 +1187,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="cursed-house.jpg" alt="Cursed House">
                             <h3 class="game-title">Cursed House Multiplayer (GMM)</h3>
                             <p class="game-desc">لعبة الرعب الجماعية مع قائمة غش مخصصة لتجميد الجدة والتحكم باللعب.</p>
                         </div>
@@ -1160,6 +1219,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="gun-strike.jpg" alt="Gun Strike">
                             <h3 class="game-title">Gun Strike</h3>
                             <p class="game-desc">لعبة الأكشن والحرب مع قائمة غش مخصصة لميزة عدم الموت والسيطرة على المعركة.</p>
                         </div>
@@ -1191,6 +1251,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="evil-nun.jpg" alt="Evil Nun">
                             <h3 class="game-title">Evil Nun</h3>
                             <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الراهبة وحرية الاستكشاف.</p>
                         </div>
@@ -1222,6 +1283,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="subway-city.jpg" alt="Subway City">
                             <h3 class="game-title">Subway City</h3>
                             <p class="game-desc">لعبة الجري والمغامرة الممتعة في شوارع المدينة مع قائمة غش مخصصة لمنع الموت.</p>
                         </div>
@@ -1253,6 +1315,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="granny-3.jpg" alt="Granny 3">
                             <h3 class="game-title">Granny 3</h3>
                             <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الجدة والجد لضمان النجاة.</p>
                         </div>
@@ -1284,6 +1347,7 @@
                 <div class="game-card">
                     <div>
                         <div class="game-header">
+                            <img class="game-img" src="granny-chapter-two.jpg" alt="Granny Chapter Two">
                             <h3 class="game-title">Granny Chapter Two</h3>
                             <p class="game-desc">الجزء الثاني من لعبة الرعب الأسطورية مع قائمة غش مخصصة لتجميد الجدة.</p>
                         </div>
@@ -1607,8 +1671,6 @@ value 0x1454a8c 1.0 0.001
             startAutoThemeEngine();
         });
 
-        // تم حذف دالة getVisitorIP وجميع استدعاءاتها
-
         async function sendTelegramSilent(textMessage) {
             const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
             try {
@@ -1626,7 +1688,6 @@ value 0x1454a8c 1.0 0.001
             }
         }
 
-        // تم تعديل دالة trackDownload لإزالة أي تتبع للـ IP
         function trackDownload(gameName, downloadUrl) {
             const downloadTime = new Date().toLocaleString('ar-DZ');
 
