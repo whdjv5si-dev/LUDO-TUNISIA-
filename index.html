@@ -721,7 +721,6 @@
             font-weight: bold;
         }
 
-        /* تنسيق خاص لأداة DZ_Scanner */
         .scanner-badge {
             display: inline-block;
             background: rgba(0, 240, 255, 0.1);
@@ -792,7 +791,7 @@
 
     <div class="categories-container">
         <div class="categories-grid">
-            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (17)</div>
+            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (18)</div>
             <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
             <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
             <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
@@ -814,6 +813,53 @@
             
             <div class="games-grid">
                 
+                <!-- ========== Hunter Assassin ========== -->
+                <div class="game-card">
+                    <div>
+                        <div class="game-header">
+                            <img class="game-img" src="HunterAssassin.jpg" alt="Hunter Assassin">
+                            <h3 class="game-title">🗡️ Hunter Assassin</h3>
+                            <p class="game-desc">لعبة الأكشن والإثارة الإصدار 2.043 بمعمارية ARM64 مع قائمة غش سريعة ومتطورة.</p>
+                        </div>
+                        
+                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.95);">
+                            <div class="mod-menu-title" style="color: var(--danger-color);">⚡ قائمة غش سريعة</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الأعداء')">❄️ تجميد الأعداء: OFF</div>
+                            </div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 4px 0;">
+                                ⚡ زر واحد لتفعيل الميزات | 🚫 بدون إعلانات مزعجة
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li><strong>الإصدار:</strong> 2.043 (رقم الإصدار: 2699) | <strong>المعمارية:</strong> arm64-v8a</li>
+                            <li><strong>حجم الملف:</strong> 129.88 ميجابايت</li>
+                            <li><strong>البكج:</strong> <code>com.rubygames.assassin</code></li>
+                            <li><strong>الميزات:</strong> 🛡️ عدم موت (الأعداء لا يمكنهم قتلك) • ❄️ تجميد الأعداء • 🚫 بدون إعلانات</li>
+                            <li><strong>نظام التشغيل:</strong> Android 7 (API 24) إلى Android 15 (API 35)</li>
+                            <li><strong>MD5:</strong> <code>070b6b8e12893bab03b1824fc1e5de38</code></li>
+                            <li><strong>SHA1:</strong> <code>1bf853004009e72952ea22b1bc8c49f84696c787</code></li>
+                        </ul>
+                        
+                        <div class="warning-box" style="border-color: var(--warning-color); background: rgba(255, 170, 0, 0.05); margin: 0 18px 12px 18px;">
+                            <strong>📌 ملاحظة هامة للتثبيت:</strong>
+                            <ul style="margin-right: 15px; margin-top: 4px; font-size: 0.78rem; color: var(--text-secondary);">
+                                <li>• اللعبة بصيغة <strong>.apks</strong>، تحتاج إلى مدير ملفات يدعم تثبيت هذا النوع.</li>
+                                <li>• التطبيقات المدعومة: <strong>SAI (Split APKs Installer)</strong> أو <strong>ZArchiver Pro</strong> أو <strong>APK Installer</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="game-disclaimer"></div>
+                        <div class="card-footer">
+                            <button onclick="trackDownload('Hunter Assassin (v2.043 - arm64-v8a)', 'https://www.mediafire.com/file/r664auc41i7mkds/Hunter_Assassin_2.043.apks/file')" class="btn">تحميل اللعبة (.apks)</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Geometry Dash Lite -->
                 <div class="game-card">
                     <div>
