@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DZ Security Lab - مكتبة الألعاب المعدلة وأدوات المطورين</title>
     <style>
+        /* === أنماط عامة (مختصرة للطول) === */
         :root {
             --bg-color: #05070c;
             --card-bg: #0d121f;
@@ -20,739 +21,134 @@
             --border-color: rgba(0, 240, 255, 0.3);
             --border-glow: 0 0 15px rgba(0, 240, 255, 0.25);
         }
+        /* === 5 أنماط سيبرانية (مختصرة) === */
+        body.theme-neon-cyan { --accent-color: #00f0ff; --accent-glow: rgba(0, 240, 255, 0.5); --accent-secondary: #7000ff; --accent-secondary-glow: rgba(112, 0, 255, 0.4); --border-color: rgba(0, 240, 255, 0.4); --border-glow: 0 0 20px rgba(0, 240, 255, 0.3); }
+        body.theme-matrix-green { --accent-color: #00ff66; --accent-glow: rgba(0, 255, 102, 0.5); --accent-secondary: #00e1ff; --accent-secondary-glow: rgba(0, 225, 255, 0.4); --border-color: rgba(0, 255, 102, 0.4); --border-glow: 0 0 20px rgba(0, 255, 102, 0.3); }
+        body.theme-cyber-pink { --accent-color: #ff007f; --accent-glow: rgba(255, 0, 127, 0.5); --accent-secondary: #00f0ff; --accent-secondary-glow: rgba(0, 240, 255, 0.4); --border-color: rgba(255, 0, 127, 0.4); --border-glow: 0 0 20px rgba(255, 0, 127, 0.3); }
+        body.theme-electric-violet { --accent-color: #9d00ff; --accent-glow: rgba(157, 0, 255, 0.5); --accent-secondary: #00ffcc; --accent-secondary-glow: rgba(0, 255, 204, 0.4); --border-color: rgba(157, 0, 255, 0.4); --border-glow: 0 0 20px rgba(157, 0, 255, 0.3); }
+        body.theme-plasma-gold { --accent-color: #ffaa00; --accent-glow: rgba(255, 170, 0, 0.5); --accent-secondary: #ff0055; --accent-secondary-glow: rgba(255, 0, 85, 0.4); --border-color: rgba(255, 170, 0, 0.4); --border-glow: 0 0 20px rgba(255, 170, 0, 0.3); }
 
-        body.theme-neon-cyan {
-            --accent-color: #00f0ff;
-            --accent-glow: rgba(0, 240, 255, 0.5);
-            --accent-secondary: #7000ff;
-            --accent-secondary-glow: rgba(112, 0, 255, 0.4);
-            --border-color: rgba(0, 240, 255, 0.4);
-            --border-glow: 0 0 20px rgba(0, 240, 255, 0.3);
-        }
-        body.theme-matrix-green {
-            --accent-color: #00ff66;
-            --accent-glow: rgba(0, 255, 102, 0.5);
-            --accent-secondary: #00e1ff;
-            --accent-secondary-glow: rgba(0, 225, 255, 0.4);
-            --border-color: rgba(0, 255, 102, 0.4);
-            --border-glow: 0 0 20px rgba(0, 255, 102, 0.3);
-        }
-        body.theme-cyber-pink {
-            --accent-color: #ff007f;
-            --accent-glow: rgba(255, 0, 127, 0.5);
-            --accent-secondary: #00f0ff;
-            --accent-secondary-glow: rgba(0, 240, 255, 0.4);
-            --border-color: rgba(255, 0, 127, 0.4);
-            --border-glow: 0 0 20px rgba(255, 0, 127, 0.3);
-        }
-        body.theme-electric-violet {
-            --accent-color: #9d00ff;
-            --accent-glow: rgba(157, 0, 255, 0.5);
-            --accent-secondary: #00ffcc;
-            --accent-secondary-glow: rgba(0, 255, 204, 0.4);
-            --border-color: rgba(157, 0, 255, 0.4);
-            --border-glow: 0 0 20px rgba(157, 0, 255, 0.3);
-        }
-        body.theme-plasma-gold {
-            --accent-color: #ffaa00;
-            --accent-glow: rgba(255, 170, 0, 0.5);
-            --accent-secondary: #ff0055;
-            --accent-secondary-glow: rgba(255, 0, 85, 0.4);
-            --border-color: rgba(255, 170, 0, 0.4);
-            --border-glow: 0 0 20px rgba(255, 170, 0, 0.3);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+        header { background: linear-gradient(135deg, rgba(13, 18, 31, 0.95), rgba(5, 7, 12, 0.98)); padding: 24px 15px; text-align: center; border-bottom: 2px solid var(--accent-color); box-shadow: 0 4px 30px var(--accent-glow), inset 0 0 20px rgba(255, 255, 255, 0.03); position: relative; backdrop-filter: blur(12px); }
+        header h1 { color: var(--accent-color); font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: 6px; letter-spacing: 2px; text-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-color); font-weight: 900; }
+        header p { color: var(--text-secondary); font-size: clamp(0.9rem, 3vw, 1.05rem); text-shadow: 0 0 5px rgba(0,0,0,0.8); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, rgba(13, 18, 31, 0.95), rgba(5, 7, 12, 0.98));
-            padding: 24px 15px;
-            text-align: center;
-            border-bottom: 2px solid var(--accent-color);
-            box-shadow: 0 4px 30px var(--accent-glow), inset 0 0 20px rgba(255, 255, 255, 0.03);
-            position: relative;
-            backdrop-filter: blur(12px);
-        }
-        header h1 {
-            color: var(--accent-color);
-            font-size: clamp(1.8rem, 5vw, 2.6rem);
-            margin-bottom: 6px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-color);
-            font-weight: 900;
-        }
-        header p {
-            color: var(--text-secondary);
-            font-size: clamp(0.9rem, 3vw, 1.05rem);
-            text-shadow: 0 0 5px rgba(0,0,0,0.8);
-        }
-
-        .theme-switcher-bar {
-            max-width: 1200px;
-            margin: 15px auto 0 auto;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: var(--border-glow);
-            width: calc(100% - 20px);
-        }
-        .theme-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .theme-buttons {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .theme-dot {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .theme-dot:hover {
-            transform: scale(1.35) rotate(15deg);
-        }
+        /* === شريط التحكم (مختصر) === */
+        .theme-switcher-bar { max-width: 1200px; margin: 15px auto 0 auto; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--border-glow); width: calc(100% - 20px); }
+        .theme-label { font-size: 0.85rem; color: var(--text-secondary); font-weight: bold; display: flex; align-items: center; gap: 6px; }
+        .theme-buttons { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .theme-dot { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 2px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.5); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .theme-dot:hover { transform: scale(1.35) rotate(15deg); }
         .dot-cyan { background: #00f0ff; box-shadow: 0 0 12px #00f0ff; }
         .dot-green { background: #00ff66; box-shadow: 0 0 12px #00ff66; }
         .dot-pink { background: #ff007f; box-shadow: 0 0 12px #ff007f; }
         .dot-violet { background: #9d00ff; box-shadow: 0 0 12px #9d00ff; }
         .dot-gold { background: #ffaa00; box-shadow: 0 0 12px #ffaa00; }
+        .auto-mode-toggle { background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary)); color: #000; border: none; padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: bold; cursor: pointer; box-shadow: 0 0 10px var(--accent-glow); transition: all 0.3s; }
 
-        .auto-mode-toggle {
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-            color: #000;
-            border: none;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 10px var(--accent-glow);
-            transition: all 0.3s;
-        }
+        /* === معلومات المطور (مختصر) === */
+        .dev-section { background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(20, 28, 48, 0.9)); border: 2px solid var(--accent-color); border-radius: 14px; padding: 18px; margin: 15px auto 10px auto; max-width: 1200px; width: calc(100% - 20px); box-shadow: 0 0 25px var(--accent-glow), inset 0 0 15px rgba(255,255,255,0.02); display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .dev-title { color: var(--accent-color); font-size: 1.05rem; margin-bottom: 4px; font-weight: bold; text-shadow: 0 0 8px var(--accent-glow); }
+        .dev-name { font-size: 1.4rem; color: var(--text-color); margin-bottom: 10px; font-weight: 900; letter-spacing: 1px; }
+        .dev-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .dev-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85rem; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.2); }
+        .dev-btn.youtube { background-color: #ff0033; color: #fff; box-shadow: 0 0 15px rgba(255, 0, 51, 0.4); }
+        .dev-btn.telegram { background-color: #0088cc; color: #fff; box-shadow: 0 0 15px rgba(0, 136, 204, 0.4); }
 
-        .dev-section {
-            background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(20, 28, 48, 0.9));
-            border: 2px solid var(--accent-color);
-            border-radius: 14px;
-            padding: 18px;
-            margin: 15px auto 10px auto;
-            max-width: 1200px;
-            width: calc(100% - 20px);
-            box-shadow: 0 0 25px var(--accent-glow), inset 0 0 15px rgba(255,255,255,0.02);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .dev-title {
-            color: var(--accent-color);
-            font-size: 1.05rem;
-            margin-bottom: 4px;
-            font-weight: bold;
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-        .dev-name {
-            font-size: 1.4rem;
-            color: var(--text-color);
-            margin-bottom: 10px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-        .dev-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .dev-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .dev-btn.youtube {
-            background-color: #ff0033;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 0, 51, 0.4);
-        }
-        .dev-btn.telegram {
-            background-color: #0088cc;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(0, 136, 204, 0.4);
-        }
+        /* === التصنيفات والتنقل === */
+        .categories-container { max-width: 1200px; margin: 15px auto; padding: 0 10px; width: 100%; }
+        .categories-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        @media (max-width: 900px) { .categories-grid { grid-template-columns: repeat(2, 1fr); } }
+        .cat-box { background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 0.82rem; font-weight: bold; color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; box-shadow: var(--border-glow); }
+        .cat-box:hover, .cat-box.active { background: rgba(13, 18, 31, 0.9); color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px); box-shadow: 0 0 20px var(--accent-glow); text-shadow: 0 0 8px var(--accent-glow); }
 
-        .categories-container {
-            max-width: 1200px;
-            margin: 15px auto;
-            padding: 0 10px;
-            width: 100%;
-        }
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-        }
-        @media (max-width: 900px) {
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        .cat-box {
-            background: var(--card-bg);
-            border: 1.5px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px 8px;
-            text-align: center;
-            font-size: 0.82rem;
-            font-weight: bold;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: var(--border-glow);
-        }
-        .cat-box:hover, .cat-box.active {
-            background: rgba(13, 18, 31, 0.9);
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px var(--accent-glow);
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-
-        .main-container {
-            max-width: 1200px;
-            margin: 10px auto 30px auto;
-            padding: 0 10px;
-            flex: 1;
-            width: 100%;
-        }
-        .section-title {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            border-right: 4px solid var(--accent-color);
-            padding-right: 10px;
-            text-shadow: 0 0 12px var(--accent-glow);
-            font-weight: 800;
-        }
+        .main-container { max-width: 1200px; margin: 10px auto 30px auto; padding: 0 10px; flex: 1; width: 100%; }
+        .section-title { font-size: clamp(1.2rem, 4vw, 1.5rem); color: var(--accent-color); margin-bottom: 20px; border-right: 4px solid var(--accent-color); padding-right: 10px; text-shadow: 0 0 12px var(--accent-glow); font-weight: 800; }
         
-        .nav-tool-banner {
-            background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(25, 35, 60, 0.9));
-            border: 2px dashed var(--accent-color);
-            border-radius: 14px;
-            padding: 18px;
-            text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 0 25px var(--accent-glow);
-        }
-        .nav-tool-banner h3 {
-            color: var(--accent-color);
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px var(--accent-glow);
-        }
-        .goto-tool-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-            color: #000;
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-weight: 900;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-        .back-to-home-btn {
-            display: inline-block;
-            background-color: var(--card-bg);
-            color: var(--accent-color);
-            border: 1.5px solid var(--accent-color);
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-bottom: 15px;
-            box-shadow: var(--border-glow);
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
+        .nav-tool-banner { background: linear-gradient(135deg, rgba(13, 18, 31, 0.9), rgba(25, 35, 60, 0.9)); border: 2px dashed var(--accent-color); border-radius: 14px; padding: 18px; text-align: center; margin-bottom: 25px; box-shadow: 0 0 25px var(--accent-glow); }
+        .nav-tool-banner h3 { color: var(--accent-color); margin-bottom: 8px; font-size: 1.2rem; text-shadow: 0 0 10px var(--accent-glow); }
+        .goto-tool-btn { display: inline-block; background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary)); color: #000; padding: 10px 22px; border-radius: 8px; font-weight: 900; font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 0 20px var(--accent-glow); }
+        .back-to-home-btn { display: inline-block; background-color: var(--card-bg); color: var(--accent-color); border: 1.5px solid var(--accent-color); padding: 8px 18px; border-radius: 8px; font-weight: bold; text-decoration: none; margin-bottom: 15px; box-shadow: var(--border-glow); transition: all 0.3s ease; font-size: 0.9rem; }
 
-        .tool-card {
-            background: var(--card-bg);
-            border: 2px solid var(--accent-color);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 35px var(--accent-glow), inset 0 0 20px rgba(255,255,255,0.02);
-        }
-        .tool-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-        }
-        .tool-title {
-            color: var(--accent-color);
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
-            font-weight: 900;
-            text-shadow: 0 0 12px var(--accent-glow);
-        }
-        .tool-badge {
-            background: var(--accent-glow);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .tool-desc {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            margin-bottom: 18px;
-            line-height: 1.7;
-        }
-        .tool-features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .tool-feature-item {
-            background: rgba(5, 7, 12, 0.7);
-            border: 1px solid var(--border-color);
-            padding: 12px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--border-glow);
-        }
-        .tool-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .tool-btn {
-            flex: 1;
-            min-width: 180px;
-            padding: 12px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-        .tool-btn.download {
-            background: linear-gradient(135deg, #00ff66, #00b347);
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
-            font-weight: 900;
-        }
-        .tool-btn.info {
-            background: linear-gradient(135deg, var(--accent-secondary), #9d00ff);
-            color: #fff;
-            box-shadow: 0 0 20px var(--accent-secondary-glow);
-        }
+        /* === أدوات المطور === */
+        .tool-card { background: var(--card-bg); border: 2px solid var(--accent-color); border-radius: 16px; padding: 20px; margin-bottom: 25px; box-shadow: 0 0 35px var(--accent-glow), inset 0 0 20px rgba(255,255,255,0.02); }
+        .tool-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .tool-title { color: var(--accent-color); font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 900; text-shadow: 0 0 12px var(--accent-glow); }
+        .tool-badge { background: var(--accent-glow); color: var(--accent-color); border: 1px solid var(--accent-color); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; box-shadow: 0 0 10px var(--accent-glow); }
+        .tool-desc { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 18px; line-height: 1.7; }
+        .tool-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .tool-feature-item { background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); padding: 12px 14px; border-radius: 8px; font-size: 0.85rem; color: var(--text-color); display: flex; align-items: center; gap: 8px; box-shadow: var(--border-glow); }
+        .tool-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .tool-btn { flex: 1; min-width: 180px; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem; text-align: center; transition: all 0.3s; cursor: pointer; border: none; }
+        .tool-btn.download { background: linear-gradient(135deg, #00ff66, #00b347); color: #000; box-shadow: 0 0 20px rgba(0, 255, 102, 0.4); font-weight: 900; }
+        .tool-btn.info { background: linear-gradient(135deg, var(--accent-secondary), #9d00ff); color: #fff; box-shadow: 0 0 20px var(--accent-secondary-glow); }
 
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .game-card {
-            background-color: var(--card-bg);
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1.5px solid var(--border-color);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5), var(--border-glow);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        .game-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.7), 0 0 25px var(--accent-glow);
-            border-color: var(--accent-color);
-        }
-        .game-header {
-            padding: 18px 18px 8px 18px;
-        }
-        .game-title {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            margin-bottom: 6px;
-            font-weight: 800;
-        }
-        .game-desc {
-            color: var(--text-secondary);
-            font-size: 0.86rem;
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-        .features-list {
-            list-style: none;
-            padding: 0 18px;
-            margin-bottom: 12px;
-        }
-        .features-list li {
-            padding: 5px 0;
-            font-size: 0.84rem;
-            display: flex;
-            align-items: center;
-            color: var(--text-secondary);
-        }
-        .features-list li::before {
-            content: "⚡";
-            margin-left: 6px;
-            color: var(--accent-color);
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
+        /* === شبكة الألعاب === */
+        .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .game-card { background-color: var(--card-bg); border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border-color); box-shadow: 0 8px 25px rgba(0,0,0,0.5), var(--border-glow); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+        .game-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.7), 0 0 25px var(--accent-glow); border-color: var(--accent-color); }
+        .game-header { padding: 18px 18px 8px 18px; }
+        .game-title { color: var(--text-color); font-size: 1.2rem; margin-bottom: 6px; font-weight: 800; }
+        .game-desc { color: var(--text-secondary); font-size: 0.86rem; margin-bottom: 12px; line-height: 1.5; }
+        .features-list { list-style: none; padding: 0 18px; margin-bottom: 12px; }
+        .features-list li { padding: 5px 0; font-size: 0.84rem; display: flex; align-items: center; color: var(--text-secondary); }
+        .features-list li::before { content: "⚡"; margin-left: 6px; color: var(--accent-color); text-shadow: 0 0 8px var(--accent-glow); }
         
-        .game-img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            border: 1px solid var(--border-color);
-        }
+        .game-img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; border: 1px solid var(--border-color); }
 
-        .mod-menu-preview {
-            background: rgba(5, 7, 12, 0.85);
-            border: 2px solid var(--accent-color);
-            border-radius: 10px;
-            padding: 12px;
-            margin: 10px 18px;
-            box-shadow: inset 0 0 15px var(--accent-glow);
-        }
-        .mod-menu-title {
-            text-align: center;
-            color: var(--accent-color);
-            font-weight: 900;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-        .mod-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 6px;
-            margin-bottom: 6px;
-            align-items: center;
-        }
-        .mod-btn-sample {
-            background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            border: 1px solid #3b82f6;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .mod-btn-sample.active-mod {
-            background: linear-gradient(135deg, #00ff66, #16a34a);
-            color: #000;
-            border-color: #00ff66;
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
-        }
-        .mod-close-btn {
-            background: #1e293b;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            border: 1px solid #475569;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .mod-btn-sample.purple {
-            background: linear-gradient(135deg, var(--accent-secondary), #6d28d9);
-            border-color: var(--accent-color);
-            color: #fff;
-        }
-        .mod-btn-sample.purple.active-mod {
-            background: linear-gradient(135deg, #00ff66, #16a34a);
-            color: #000;
-            border-color: #00ff66;
-        }
+        /* === قوائم الغش === */
+        .mod-menu-preview { background: rgba(5, 7, 12, 0.85); border: 2px solid var(--accent-color); border-radius: 10px; padding: 12px; margin: 10px 18px; box-shadow: inset 0 0 15px var(--accent-glow); }
+        .mod-menu-title { text-align: center; color: var(--accent-color); font-weight: 900; font-size: 0.85rem; margin-bottom: 8px; letter-spacing: 1px; text-shadow: 0 0 8px var(--accent-glow); }
+        .mod-grid { display: grid; grid-template-columns: 1fr auto; gap: 6px; margin-bottom: 6px; align-items: center; }
+        .mod-btn-sample { background: linear-gradient(135deg, #1e3a8a, #1d4ed8); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; border: 1px solid #3b82f6; text-align: center; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+        .mod-btn-sample.active-mod { background: linear-gradient(135deg, #00ff66, #16a34a); color: #000; border-color: #00ff66; box-shadow: 0 0 10px rgba(0, 255, 102, 0.5); }
+        .mod-close-btn { background: #1e293b; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; border: 1px solid #475569; text-align: center; font-weight: bold; cursor: pointer; }
+        .mod-btn-sample.purple { background: linear-gradient(135deg, var(--accent-secondary), #6d28d9); border-color: var(--accent-color); color: #fff; }
+        .mod-btn-sample.purple.active-mod { background: linear-gradient(135deg, #00ff66, #16a34a); color: #000; border-color: #00ff66; }
 
-        .game-disclaimer {
-            background: rgba(3, 5, 8, 0.9);
-            border-top: 1px dashed var(--border-color);
-            padding: 10px 18px;
-            font-size: 0.74rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            text-align: justify;
-        }
+        .game-disclaimer { background: rgba(3, 5, 8, 0.9); border-top: 1px dashed var(--border-color); padding: 10px 18px; font-size: 0.74rem; color: var(--text-secondary); line-height: 1.5; text-align: justify; }
+        .card-footer { padding: 14px 18px; background: rgba(13, 18, 31, 0.8); border-top: 1.5px solid var(--border-color); text-align: center; }
+        .btn { display: inline-block; background: linear-gradient(135deg, #00ff66, #00b347); color: #000; padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 900; font-size: 0.9rem; transition: all 0.3s; box-shadow: 0 0 15px rgba(0, 255, 102, 0.3); width: 100%; text-align: center; cursor: pointer; border: none; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 255, 102, 0.6); }
 
-        .card-footer {
-            padding: 14px 18px;
-            background: rgba(13, 18, 31, 0.8);
-            border-top: 1.5px solid var(--border-color);
-            text-align: center;
-        }
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #00ff66, #00b347);
-            color: #000;
-            padding: 10px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
-            width: 100%;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
-        }
+        /* === الشفافية والنماذج === */
+        .transparency-card, .interactive-form-card { background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.4), var(--border-glow); }
+        .transparency-card h3, .interactive-form-card h3 { color: var(--accent-color); font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 8px var(--accent-glow); font-weight: 800; }
+        .transparency-card p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 12px; line-height: 1.7; }
+        .safety-box { background: rgba(5, 7, 12, 0.8); border-left: 4px solid var(--success-color); padding: 14px; border-radius: 0 8px 8px 0; margin-top: 12px; font-size: 0.88rem; color: var(--text-color); border: 1px solid var(--border-color); }
+        .safety-box a { color: var(--accent-color); text-decoration: underline; }
 
-        .transparency-card, .interactive-form-card {
-            background: var(--card-bg);
-            border: 1.5px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4), var(--border-glow);
-        }
-        .transparency-card h3, .interactive-form-card h3 {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-shadow: 0 0 8px var(--accent-glow);
-            font-weight: 800;
-        }
-        .transparency-card p {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-        .safety-box {
-            background: rgba(5, 7, 12, 0.8);
-            border-left: 4px solid var(--success-color);
-            padding: 14px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 12px;
-            font-size: 0.88rem;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-        }
-        .safety-box a {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
+        /* === نماذج النماذج === */
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; color: var(--text-color); font-weight: bold; margin-bottom: 6px; font-size: 0.9rem; }
+        .form-control { width: 100%; padding: 12px 15px; background: rgba(5, 7, 12, 0.8); border: 1.5px solid var(--border-color); border-radius: 8px; color: var(--text-color); font-size: 0.92rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-control:focus { border-color: var(--accent-color); box-shadow: 0 0 20px var(--accent-glow); }
+        textarea.form-control { resize: vertical; min-height: 100px; }
+        .star-rating { display: flex; gap: 10px; font-size: 1.8rem; cursor: pointer; direction: ltr; justify-content: flex-end; }
+        .star { color: #475569; transition: color 0.2s, transform 0.2s; }
+        .star.selected, .star:hover, .star:hover ~ .star { color: #ffaa00; text-shadow: 0 0 12px rgba(255, 170, 0, 0.6); transform: scale(1.1); }
+        .submit-btn { background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary)); color: #000; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 900; font-size: 1rem; cursor: pointer; transition: all 0.3s; width: 100%; box-shadow: 0 0 25px var(--accent-glow); }
+        .submit-btn:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 0 35px var(--accent-glow); }
+        .form-status { margin-top: 12px; text-align: center; font-size: 0.9rem; font-weight: bold; }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            color: var(--text-color);
-            font-weight: bold;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-        }
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            background: rgba(5, 7, 12, 0.8);
-            border: 1.5px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-color);
-            font-size: 0.92rem;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-        textarea.form-control {
-            resize: vertical;
-            min-height: 100px;
-        }
-        .star-rating {
-            display: flex;
-            gap: 10px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            direction: ltr;
-            justify-content: flex-end;
-        }
-        .star {
-            color: #475569;
-            transition: color 0.2s, transform 0.2s;
-        }
-        .star.selected, .star:hover, .star:hover ~ .star {
-            color: #ffaa00;
-            text-shadow: 0 0 12px rgba(255, 170, 0, 0.6);
-            transform: scale(1.1);
-        }
-        .submit-btn {
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-            color: #000;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 900;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            box-shadow: 0 0 25px var(--accent-glow);
-        }
-        .submit-btn:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px var(--accent-glow);
-        }
-        .form-status {
-            margin-top: 12px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-secondary);
-            border-top: 1.5px solid var(--border-color);
-            background: var(--card-bg);
-            margin-top: auto;
-            font-size: 0.88rem;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.4);
-        }
+        footer { text-align: center; padding: 20px; color: var(--text-secondary); border-top: 1.5px solid var(--border-color); background: var(--card-bg); margin-top: auto; font-size: 0.88rem; box-shadow: 0 -5px 20px rgba(0,0,0,0.4); }
         
-        .page-content {
-            display: none;
-        }
-        .page-content.active-page {
-            display: block;
-            animation: fadeInPage 0.4s ease-in-out;
-        }
+        .page-content { display: none; }
+        .page-content.active-page { display: block; animation: fadeInPage 0.4s ease-in-out; }
 
-        .warning-box {
-            background: rgba(255, 170, 0, 0.1);
-            border: 1.5px solid var(--warning-color);
-            border-radius: 8px;
-            padding: 12px;
-            margin: 8px 0;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        .warning-box strong {
-            color: var(--warning-color);
-        }
-        .warning-box .highlight {
-            color: #ff6b6b;
-            font-weight: bold;
-        }
+        .warning-box { background: rgba(255, 170, 0, 0.1); border: 1.5px solid var(--warning-color); border-radius: 8px; padding: 12px; margin: 8px 0; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+        .warning-box strong { color: var(--warning-color); }
+        .warning-box .highlight { color: #ff6b6b; font-weight: bold; }
 
-        .scanner-badge {
-            display: inline-block;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--accent-color);
-            border-radius: 6px;
-            padding: 2px 10px;
-            font-size: 0.7rem;
-            color: var(--accent-color);
-            margin: 2px 0;
-        }
-        .feature-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 8px;
-            margin: 10px 0;
-        }
-        .feature-item-compact {
-            background: rgba(5, 7, 12, 0.7);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 8px 10px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        /* === تنسيق خاص لأدوات المطور === */
+        .scanner-badge { display: inline-block; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--accent-color); border-radius: 6px; padding: 2px 10px; font-size: 0.7rem; color: var(--accent-color); margin: 2px 0; }
+        .feature-grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin: 10px 0; }
+        .feature-item-compact { background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 6px; padding: 8px 10px; font-size: 0.8rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+        .badge-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+        .badge { background: rgba(0, 240, 255, 0.08); border: 1px solid var(--border-color); border-radius: 4px; padding: 2px 8px; font-size: 0.7rem; color: var(--text-secondary); }
 
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInPage { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="theme-neon-cyan">
@@ -763,9 +159,7 @@
     </header>
 
     <div class="theme-switcher-bar">
-        <div class="theme-label">
-            <span>⚡ نظام الألوان السيبراني:</span>
-        </div>
+        <div class="theme-label"><span>⚡ نظام الألوان السيبراني:</span></div>
         <div class="theme-buttons">
             <div class="theme-dot dot-cyan" title="سماوي نيون" onclick="setCyberTheme('theme-neon-cyan')"></div>
             <div class="theme-dot dot-green" title="أخضر ماتركس" onclick="setCyberTheme('theme-matrix-green')"></div>
@@ -780,12 +174,8 @@
         <div class="dev-title">معلومات المطور / Developer</div>
         <div class="dev-name">ADEM</div>
         <div class="dev-links">
-            <a href="https://www.youtube.com/@MrSecurity333" target="_blank" class="dev-btn youtube">
-                📺 يوتيوب
-            </a>
-            <a href="https://t.me/gdch6" target="_blank" class="dev-btn telegram">
-                💬 تليجرام
-            </a>
+            <a href="https://www.youtube.com/@MrSecurity333" target="_blank" class="dev-btn youtube">📺 يوتيوب</a>
+            <a href="https://t.me/gdch6" target="_blank" class="dev-btn telegram">💬 تليجرام</a>
         </div>
     </div>
 
@@ -802,18 +192,15 @@
     <div class="main-container">
         
         <div id="page-games" class="page-content active-page">
-            
             <div class="nav-tool-banner">
                 <h3>🛠️ هل أنت مطور تبحث عن أدوات متقدمة؟</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">اكتشف أداة DZ_Scanner v7.1 لتحليل وتعديل الذاكرة في وقت التشغيل مع نظام هوكات متطور.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">اكتشف أحدث أدوات التحليل: ARM64Xploit v7.2 و lib2dcppdemper</p>
                 <a href="#tool" class="goto-tool-btn" onclick="switchPage('tool')">توجه لأداة المطور</a>
             </div>
-
             <h2 class="section-title">قائمة الألعاب المعدلة المتوفرة</h2>
-            
             <div class="games-grid">
                 
-                <!-- ========== Hunter Assassin ========== -->
+                <!-- Hunter Assassin -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
@@ -821,18 +208,14 @@
                             <h3 class="game-title">🗡️ Hunter Assassin</h3>
                             <p class="game-desc">لعبة الأكشن والإثارة الإصدار 2.043 بمعمارية ARM64 مع قائمة غش سريعة ومتطورة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.95);">
                             <div class="mod-menu-title" style="color: var(--danger-color);">⚡ قائمة غش سريعة</div>
                             <div class="mod-grid">
                                 <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
                                 <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الأعداء')">❄️ تجميد الأعداء: OFF</div>
                             </div>
-                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 4px 0;">
-                                ⚡ زر واحد لتفعيل الميزات | 🚫 بدون إعلانات مزعجة
-                            </div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 4px 0;">⚡ زر واحد لتفعيل الميزات | 🚫 بدون إعلانات مزعجة</div>
                         </div>
-
                         <ul class="features-list">
                             <li><strong>الإصدار:</strong> 2.043 (رقم الإصدار: 2699) | <strong>المعمارية:</strong> arm64-v8a</li>
                             <li><strong>حجم الملف:</strong> 129.88 ميجابايت</li>
@@ -842,7 +225,6 @@
                             <li><strong>MD5:</strong> <code>070b6b8e12893bab03b1824fc1e5de38</code></li>
                             <li><strong>SHA1:</strong> <code>1bf853004009e72952ea22b1bc8c49f84696c787</code></li>
                         </ul>
-                        
                         <div class="warning-box" style="border-color: var(--warning-color); background: rgba(255, 170, 0, 0.05); margin: 0 18px 12px 18px;">
                             <strong>📌 ملاحظة هامة للتثبيت:</strong>
                             <ul style="margin-right: 15px; margin-top: 4px; font-size: 0.78rem; color: var(--text-secondary);">
@@ -851,7 +233,6 @@
                             </ul>
                         </div>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -868,18 +249,14 @@
                             <h3 class="game-title">⬛ Geometry Dash Lite</h3>
                             <p class="game-desc">لعبة الأيقونات والموسيقى الإيقاعية الشهيرة الإصدار 2.2.147 بمعمارية ARM64 مع قائمة غش متطورة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
                             <div class="mod-grid">
                                 <div class="mod-btn-sample purple" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
                                 <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تغيير الموسيقى')">🎵 تغيير الموسيقى: OFF</div>
                             </div>
-                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 4px 0;">
-                                ⚡ بدون إعلانات مزعجة | ⚡ سهولة الاستخدام
-                            </div>
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 4px 0;">⚡ بدون إعلانات مزعجة | ⚡ سهولة الاستخدام</div>
                         </div>
-
                         <ul class="features-list">
                             <li><strong>الإصدار:</strong> 2.2.147 (رقم الإصدار: 43) | <strong>المعمارية:</strong> arm64-v8a</li>
                             <li><strong>حجم الملف:</strong> 252.69 ميجابايت</li>
@@ -890,7 +267,6 @@
                             <li><strong>SHA1:</strong> <code>30efb9f9c878e2395478f38adee3302247fc1b61</code></li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -907,27 +283,20 @@
                             <h3 class="game-title">🧠 Brain Test 3 (الجزء الثالث)</h3>
                             <p class="game-desc">الجزء الثالث من لعبة الألغاز الذكية الإصدار 1.81.0 بمعمارية ARM64 مع أموال لا نهائية وبدون إعلانات.</p>
                         </div>
-                        
                         <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.95);">
                             <div class="mod-menu-title" style="color: var(--danger-color);">⚠️ تنبيهات هامة للتشغيل الصحيح</div>
-                            
                             <div class="warning-box" style="border-color: var(--danger-color); background: rgba(255, 0, 0, 0.05);">
                                 <strong>🔴 خطوات التفعيل الصحيحة (مهم جداً):</strong>
                                 <ol style="margin-right: 20px; margin-top: 6px; padding-right: 10px; font-size: 0.78rem; color: var(--text-secondary);">
                                     <li>📌 <strong>أول دخول للعبة:</strong> يجب فتح واجهة اللعبة بسرعة، يوجد عداد، يجب تفعيل الميزة (زر) في <span class="highlight">ثانية 3</span> تحديداً.</li>
                                     <li>🚫 إذا ظهرت معك مصابيح عدد كبير وفوقها علامة <span class="highlight">سالب (-)</span>: 
-                                        <ul style="margin-right: 20px; margin-top: 4px;">
-                                            <li>• اخرج من اللعبة تماماً.</li>
-                                            <li>• امسح بيانات اللعبة وبيانات الخلفية (Cache & Data).</li>
-                                            <li>• أعد الدخول وكرر التفعيل في <span class="highlight">ثانية 3</span>.</li>
-                                        </ul>
+                                        <ul style="margin-right: 20px; margin-top: 4px;"><li>• اخرج من اللعبة تماماً.</li><li>• امسح بيانات اللعبة وبيانات الخلفية (Cache & Data).</li><li>• أعد الدخول وكرر التفعيل في <span class="highlight">ثانية 3</span>.</li></ul>
                                     </li>
                                     <li>✅ إذا ظهرت المصابيح بطريقة صحيحة (عدد كبير بدون علامة سالب)، يمكنك شراء بها.</li>
                                     <li>🔄 إذا ظهرت علامة <span class="highlight">-</span> مرة أخرى، أعد المحاولة من الخطوة 2.</li>
                                 </ol>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li><strong>الإصدار:</strong> 1.81.0 (رقم الإصدار: 138) | <strong>المعمارية:</strong> Arm64</li>
                             <li><strong>حجم الملف:</strong> 138.00 ميجابايت</li>
@@ -936,7 +305,6 @@
                             <li><strong>نظام التشغيل:</strong> Android 7 (API 24) إلى Android 16 (API 36)</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -953,7 +321,6 @@
                             <h3 class="game-title">🧠 Brain Test 2 (الجزء الثاني)</h3>
                             <p class="game-desc">الجزء الثاني من لعبة الألغاز الذكية الإصدار 1.24.10 بمعمارية ARM64 مع ميزة المكافآت اللامحدودة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview" style="border-color: var(--warning-color); background: rgba(15, 23, 42, 0.9);">
                             <div class="mod-menu-title" style="color: var(--warning-color);">⚠️ تنبيهات هامة للتشغيل الصحيح</div>
                             <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.6; text-align: right; padding: 4px 6px;">
@@ -961,7 +328,6 @@
                                 <strong>• الميزة:</strong> تحصل على 20 مصباح في كل مرة، ويمكنك تجميع آلاف المصابيح بتكرار العملية.
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li><strong>الإصدار:</strong> 1.24.10 | <strong>المعمارية:</strong> Arm64</li>
                             <li><strong>حجم الملف:</strong> 150.95 ميجابايت</li>
@@ -969,7 +335,6 @@
                             <li><strong>نظام التشغيل:</strong> Android 7 (API 24) إلى Android 15 (API 35)</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -986,7 +351,6 @@
                             <h3 class="game-title">🧠 Brain Test: Tricky Puzzles</h3>
                             <p class="game-desc">الجزء الأول من لعبة الألغاز الذكية الإصدار 2.770.0 بمعمارية ARM64 مع طريقة مخصصة لجمع آلاف المصابيح.</p>
                         </div>
-                        
                         <div class="mod-menu-preview" style="border-color: var(--warning-color); background: rgba(15, 23, 42, 0.9);">
                             <div class="mod-menu-title" style="color: var(--warning-color);">⚠️ تحذير أمني هام وتوافق الأجهزة</div>
                             <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; text-align: right; padding: 2px;">
@@ -995,14 +359,12 @@
                                 • أجهزة أقل من Android 12: يجب الخروج الكامل من اللعبة وإعادة فتحها كلياً لتفعيل الجائزة.
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li><strong>الإصدار:</strong> 2.770.0 | <strong>المعمارية:</strong> Arm64</li>
                             <li>طريقة تفعيل الميزات: العب حتى Level 2 ثم اتبع طريقة الخروج والدخول للحصول على 40 مصباح في كل مرة.</li>
                             <li>جمع آلاف المصابيح والمساعدات بسهولة تامة</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1019,7 +381,6 @@
                             <h3 class="game-title">Slendrina the Cellar (الجزء الأول)</h3>
                             <p class="game-desc">لعبة الرعب الأسطورية الإصدار الأول بمعمارية arm64 مع قائمة غش مخصصة وبدون إعلانات.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
                             <div class="mod-grid">
@@ -1028,7 +389,6 @@
                             </div>
                             <div class="mod-btn-sample purple" style="margin-top: 4px;" onclick="toggleMod(this, 'عدم موت')">🛡️ عدم موت: OFF</div>
                         </div>
-
                         <ul class="features-list">
                             <li>معمارية ARM64 المخصصة للأجهزة الحديثة</li>
                             <li>تجميد Slendrina بالكامل (Freeze Slendrina)</li>
@@ -1036,7 +396,6 @@
                             <li>نسخة خالية تماماً من الإعلانات (No Ads)</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1053,21 +412,18 @@
                             <h3 class="game-title">Traffic Racer (نسخة 64-bit)</h3>
                             <p class="game-desc">لعبة السباق الشهيرة بمعمارية 64-bit مع نقود كثيرة وجميع السيارات مفتوحة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview" style="border-color: var(--warning-color); background: rgba(15, 23, 42, 0.9);">
                             <div class="mod-menu-title" style="color: var(--warning-color);">⚠️ ملاحظة هامة لتشغيل العملات</div>
                             <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; text-align: right; padding: 2px;">
                                 • ليتم تشغيل العملات وتفعيلها بشكل صحيح داخل اللعبة، يُرجى الخروج التام من اللعبة وإعادة فتحها من جديد.
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>نقود كثيرة وغير محدودة</li>
                             <li>جميع السيارات مفتوحة (All Cars Unlocked)</li>
                             <li>إصدار 64-bit متوافق مع الأجهزة الحديثة</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1084,21 +440,18 @@
                             <h3 class="game-title">Free Fire (نسخة 32-bit)</h3>
                             <p class="game-desc">الإصدار 1.128.2 المخصص للأجهزة الضعيفة والقوية لتعمل بسلاسة فائقة وبدون تقطيع.</p>
                         </div>
-                        
                         <div class="mod-menu-preview" style="border-color: var(--warning-color); background: rgba(15, 23, 42, 0.9);">
                             <div class="mod-menu-title" style="color: var(--warning-color);">⚠️ ملاحظة هامة للتثبيت والتشغيل</div>
                             <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5; text-align: right; padding: 2px;">
                                 • لتفعيل النسخة على أجهزة 64، عطل التحديث التلقائي وثبتها عبر تطبيق يدعم ملفات <code>.apks</code>.
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>حزمة اللعبة: <code>com.dts.freefireth</code></li>
                             <li>الإصدار: <code>1.128.2</code> (نسخة 32)</li>
                             <li>أداء سلس ومحسّن لكافة الأجهزة</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1115,7 +468,6 @@
                             <h3 class="game-title">Horror Sponge Granny V1.8</h3>
                             <p class="game-desc">لعبة الرعب المميزة مع قائمة غش مخصصة لتفعيل ميزات تجميد الجدة للنجاة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1123,14 +475,12 @@
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>تجميد الجدة بالكامل (Freeze Granny)</li>
                             <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
                             <li>إصدار V1.8 المعدل خصيصاً</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1147,14 +497,12 @@
                             <h3 class="game-title">Traffic Racer (نسخة 32-bit)</h3>
                             <p class="game-desc">لعبة السباق الممتعة (نسخة 32) لتعمل بسلاسة فائقة على الأجهزة الضعيفة والقوية مع فتح الميزات.</p>
                         </div>
-                        
                         <ul class="features-list" style="margin-top: 12px;">
                             <li>إصدار 32-bit متوافق مع الأجهزة الضعيفة والقوية</li>
                             <li>فتح جميع السيارات (All Cars Unlocked)</li>
                             <li>أموال وعملات غير محدودة (Unlimited Money)</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1171,7 +519,6 @@
                             <h3 class="game-title">Slendrina the Cellar 2</h3>
                             <p class="game-desc">لعبة الرعب مع قائمة غش مبرمجة ومطورة حصرياً عبر قناة DZ Security Lab.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">⚡ DZ SECURITY LAB ⚡</div>
                             <div class="mod-grid">
@@ -1180,14 +527,12 @@
                             </div>
                             <div class="mod-btn-sample purple" style="margin-top: 4px;" onclick="alert('تم تفعيل: حذف مشهد')">🗑️ حذف مشهد</div>
                         </div>
-
                         <ul class="features-list">
                             <li>حماية كاملة (God Mode)</li>
                             <li>تجميد الأعداء وإيقافهم</li>
                             <li>زر تفاعلي لحذف المشاهد المرعبة</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1204,7 +549,6 @@
                             <h3 class="game-title">Ninja Arashi</h3>
                             <p class="game-desc">مغامرة النينجا المشوقة مع قائمة غش مخصصة لتجميد الأعداء وعدم الموت.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1213,14 +557,12 @@
                             </div>
                             <div class="mod-btn-sample purple" style="margin-top: 4px;" onclick="toggleMod(this, 'عدم الموت')">🛡️ عدم موت: OFF</div>
                         </div>
-
                         <ul class="features-list">
                             <li>تجميد الأعداء داخل المراحل</li>
                             <li>ميزة عدم الموت (God Mode)</li>
                             <li>تحكم كامل عبر قائمة غش مدمجة</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1237,7 +579,6 @@
                             <h3 class="game-title">Cursed House Multiplayer (GMM)</h3>
                             <p class="game-desc">لعبة الرعب الجماعية مع قائمة غش مخصصة لتجميد الجدة والتحكم باللعب.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1245,14 +586,12 @@
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>تجميد الجدة (Freeze Granny)</li>
                             <li>قائمة غش تفاعلية وسريعة</li>
                             <li>دعم اللعب الجماعي المعدل</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1269,7 +608,6 @@
                             <h3 class="game-title">Gun Strike</h3>
                             <p class="game-desc">لعبة الأكشن والحرب مع قائمة غش مخصصة لميزة عدم الموت والسيطرة على المعركة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1277,14 +615,12 @@
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>ميزة عدم الموت (God Mode)</li>
                             <li>قائمة غش تفاعلية داخل اللعبة</li>
                             <li>تجربة أكشن حماسية بلا هزيمة</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1301,7 +637,6 @@
                             <h3 class="game-title">Evil Nun</h3>
                             <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الراهبة وحرية الاستكشاف.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1309,14 +644,12 @@
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>تجميد الراهبة (Freeze Nun)</li>
                             <li>قائمة غش تفاعلية وسهلة الاستخدام</li>
                             <li>استكشاف المدرسة وحل الألغاز بأمان</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1333,7 +666,6 @@
                             <h3 class="game-title">Subway City</h3>
                             <p class="game-desc">لعبة الجري والمغامرة الممتعة في شوارع المدينة مع قائمة غش مخصصة لمنع الموت.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1341,14 +673,12 @@
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>ميزة عدم الموت (God Mode)</li>
                             <li>قائمة غش تفاعلية للتحكم الكامل</li>
                             <li>مغامرة بلا حدود أو اصطدام مميت</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1365,7 +695,6 @@
                             <h3 class="game-title">Granny 3</h3>
                             <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الجدة والجد لضمان النجاة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1373,14 +702,12 @@
                                 <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجد')">تجميد2: OFF</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>تجميد الجدة (Freeze Granny)</li>
                             <li>تجميد الجد (Freeze Grandpa)</li>
                             <li>قائمة غش تفاعلية مطابقة لطلبك</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1397,7 +724,6 @@
                             <h3 class="game-title">Granny Chapter Two</h3>
                             <p class="game-desc">الجزء الثاني من لعبة الرعب الأسطورية مع قائمة غش مخصصة لتجميد الجدة.</p>
                         </div>
-                        
                         <div class="mod-menu-preview">
                             <div class="mod-menu-title">DZ SECURITY LAB</div>
                             <div class="mod-grid">
@@ -1405,14 +731,12 @@
                                 <div class="mod-close-btn" onclick="hideMenu(this)">X</div>
                             </div>
                         </div>
-
                         <ul class="features-list">
                             <li>تجميد الجدة (Freeze Granny)</li>
                             <li>قائمة غش تفاعلية مطابقة لطلبك</li>
                             <li>استكشاف المنزل والهروب بأمان</li>
                         </ul>
                     </div>
-
                     <div>
                         <div class="game-disclaimer"></div>
                         <div class="card-footer">
@@ -1427,144 +751,236 @@
         <div id="page-tool" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
-            <h2 class="section-title">🛠️ قسم أداة المطور (Developer Tools)</h2>
+            <h2 class="section-title">🛠️ قسم أدوات المطور (Developer Tools)</h2>
             
-            <div class="tool-card">
+            <!-- ===== ARM64Xploit v7.2 ===== -->
+            <div class="tool-card" style="border-color: var(--accent-secondary);">
                 <div class="tool-header">
-                    <div class="tool-title">🔥 DZ_Scanner v7.1</div>
-                    <div class="tool-badge">Ultimate Hook Engine - بدون حقن دوال</div>
+                    <div class="tool-title" style="color: var(--accent-secondary);">🔥 ARM64Xploit v7.2</div>
+                    <div class="tool-badge" style="border-color: var(--accent-secondary); color: var(--accent-secondary);">Ultimate ARM64 Reverse Engineering Engine</div>
                 </div>
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px;">
-                    <span class="scanner-badge">📦 الإصدار 7.1</span>
-                    <span class="scanner-badge">📜 MIT License</span>
-                    <span class="scanner-badge">📱 Android</span>
-                    <span class="scanner-badge">📐 API 21+</span>
-                    <span class="scanner-badge">📏 الحجم ~45KB</span>
+                <div class="badge-list">
+                    <span class="badge">📦 الإصدار 7.2</span>
+                    <span class="badge">📜 MIT License</span>
+                    <span class="badge">📱 Android</span>
+                    <span class="badge">📐 API 24+</span>
+                    <span class="badge">📏 الحجم 89KB</span>
+                    <span class="badge">🧠 418+ تعليمة</span>
                 </div>
 
                 <p class="tool-desc">
-                    <strong>DZ_Scanner v7.1</strong> هي مكتبة Android احترافية لتحليل وتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. تم تصميمها خصيصاً لتحليل دوال مكتبة <code>libil2cpp.so</code> <strong>دون حقن دوال</strong> أو تعديل الملف الأصلي على القرص.
+                    <strong>ARM64Xploit v7.2</strong> هي مكتبة Android احترافية لتحليل وتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. تم تطويرها بالكامل على هاتف Android فقط!<br><br>
+                    تدعم <b>418+ تعليمة ARM64</b> مع فك تشفير كامل، توليد Control Flow Graph، Hooks متقدمة، نقاط توقف ذكية، قراءة سجلات حقيقية من المعالج، استخراج بصمات الكائنات، وتفريغ المكتبات كاملة من الذاكرة.
                     <br><br>
-                    🆓 مجانية تماماً | 💪 قوية | 🕶️ خفية | 🔄 مرنة
+                    🆓 مجانية 100% | 💪 قوية | 🕶️ بدون Root | 🔄 بدون Injection
                 </p>
 
-                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🆕 ما الجديد في الإصدار v7.1؟</h4>
+                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">🆕 الميزات الكاملة</h4>
                 <div class="feature-grid-2">
-                    <div class="feature-item-compact">🔍 <b>/WX</b> فحص دالة ومراقبة استدعاءاتها</div>
-                    <div class="feature-item-compact">📦 <b>/dumpfunc</b> تفريغ بايتات الدالة</div>
-                    <div class="feature-item-compact">🔗 <b>/trace</b> تتبع استدعاءات الدالة المتسلسلة</div>
-                    <div class="feature-item-compact">🧬 <b>Register Patching</b> قراءة وتعديل السجلات</div>
-                    <div class="feature-item-compact">💰 <b>Value Patching</b> تعديل القيم (Int/Float)</div>
-                    <div class="feature-item-compact">📊 <b>Value Extraction</b> استخراج جميع القيم</div>
-                    <div class="feature-item-compact">💾 <b>Memory Dump</b> تفريغ الذاكرة إلى ملف</div>
-                    <div class="feature-item-compact">🔧 <b>Library Switching</b> تغيير المكتبة المستهدفة</div>
-                    <div class="feature-item-compact">🎯 <b>Hook System</b> هوكات متقدمة (6 أنواع)</div>
-                    <div class="feature-item-compact">🛡️ <b>Smart Breakpoints</b> نقاط توقف ذكية</div>
-                    <div class="feature-item-compact">📝 <b>Enhanced Logging</b> تسجيل مفصل مع توقيتات</div>
-                    <div class="feature-item-compact">🛡️ <b>Crash Protection</b> حماية كاملة من الكراش</div>
+                    <div class="feature-item-compact">🧠 <b>محلل ARM64 تلقائي</b> 418+ تعليمة</div>
+                    <div class="feature-item-compact">📊 <b>CFG Generator</b> /cfg 0xADDR</div>
+                    <div class="feature-item-compact">🔍 <b>تحليل دالة</b> /VX 0xADDR</div>
+                    <div class="feature-item-compact">📦 <b>تفريغ دالة</b> /dumpfunc 0xADDR</div>
+                    <div class="feature-item-compact">🔗 <b>تتبع استدعاءات</b> /trace 0xADDR</div>
+                    <div class="feature-item-compact">🧬 <b>قراءة سجلات</b> /bp 0xADDR (ucontext)</div>
+                    <div class="feature-item-compact">🎯 <b>نقطة توقف ذكية</b> /sbp 0xADDR</div>
+                    <div class="feature-item-compact">🪝 <b>Hook متقدم</b> /ahook 0xADDR</div>
+                    <div class="feature-item-compact">📤 <b>استخراج Int</b> /int 0xADDR</div>
+                    <div class="feature-item-compact">📤 <b>استخراج Float</b> /V 0xADDR</div>
+                    <div class="feature-item-compact">💾 <b>تفريغ المكتبة</b> /dumplib</div>
+                    <div class="feature-item-compact">📋 <b>استخراج دوال C#</b> /C#</div>
+                    <div class="feature-item-compact">🔬 <b>بصمة الكائنات</b> /0xADDR!</div>
+                    <div class="feature-item-compact">📝 <b>تعديل بايتات</b> 0xADDR: HEX</div>
+                    <div class="feature-item-compact">⏰ <b>تأخير</b> /30</div>
+                    <div class="feature-item-compact">📚 <b>تحديد مكتبة</b> /Wlib.so</div>
                 </div>
 
-                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🏗️ المواصفات التقنية</h4>
+                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">🏗️ المواصفات التقنية</h4>
                 <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
-                        <div><b>اللغة:</b> C/C++ (Android NDK)</div>
+                        <div><b>اللغة:</b> C/C++ (Android NDK r29)</div>
                         <div><b>المعمارية:</b> ARM64 (AArch64)</div>
-                        <div><b>الحد الأقصى للـ RVAs:</b> 10,000 عنوان</div>
-                        <div><b>الحد الأقصى للهوكات:</b> 128 هوك</div>
-                        <div><b>أنواع الهوك:</b> 6 أنواع</div>
-                        <div><b>ملف التكوين:</b> MOD.SH</div>
-                        <div><b>Root مطلوب؟</b> لا</div>
-                        <div><b>Android SDK:</b> 21+ (Android 5.0)</div>
+                        <div><b>الحد الأدنى:</b> Android 7.0 (API 24)</div>
+                        <div><b>حجم المكتبة:</b> 89 KB</div>
+                        <div><b>عدد التعليمات:</b> 418+</div>
+                        <div><b>عدد الأوامر:</b> 16 أمر</div>
+                        <div><b>Root مطلوب:</b> ❌ لا</div>
+                        <div><b>Injection:</b> ❌ لا</div>
                     </div>
                 </div>
 
-                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🎯 أنواع الهوكات</h4>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
-                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">1. Jump</div>
-                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">2. Call</div>
-                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">3. Inline</div>
-                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">4. Conditional</div>
-                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">5. Chained</div>
-                    <div style="background: rgba(5, 7, 12, 0.5); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 10px; text-align: center;">6. Detour</div>
-                </div>
-
-                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">📂 تنسيق ملف التكوين (MOD.SH)</h4>
+                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">📂 تنسيق ملف MOD.SH</h4>
                 <div style="background: rgba(5, 7, 12, 0.9); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.78rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; word-break: break-all; font-family: monospace;">
-مسار الملف: /storage/emulated/0/Android/data/&lt;package_name&gt;/files/MOD.SH
+مسار الملف: /storage/emulated/0/Android/data/&lt;package&gt;/files/MOD.SH
 
 # ============================================================
-# ملف MOD.SH - DZ_Scanner v7.1
+# ARM64Xploit v7.2 - MOD.SH
 # ============================================================
 
-# ====== تغيير المكتبة المستهدفة ======
+# 1. تحديد المكتبة الهدف
 /Wlibil2cpp.so
 
-# ====== تأخير زمني ======
-/5
+# 2. تأخير 10 ثواني
+/10
 
-# ====== أوامر التتبع والتحليل ======
-/WX 0x14549e4
-/dumpfunc 0x14549e4
-/trace 0x14549e4
+# 3. استخراج جميع الدوال بصيغة C#
+/C#
 
-# ====== أوامر السجلات ======
-/regs 0x14549e4
-/reg 0x14549e4 x0=999
-/reg 0x14549e4 w1=100
-/reg 0x14549e4 s0=3.14
+# 4. تفريغ المكتبة كاملة من الذاكرة
+/dumplib
 
-# ====== استخراج القيم ======
-/int
-/float
-/int 0x14549e4 0x1454de4
+# 5. Hook تلقائي + قراءة X0 + بصمة الكائن
+/0x161f668!
 
-# ====== تفريغ الذاكرة ======
-dump memory_dump.bin
+# 6. تحليل دالة كامل
+/VX 0x161f668
 
-# ====== نقاط التوقف ======
-/bp 0x14549e4
-/sbp 0x14549e4 smart_bp
+# 7. رسم Control Flow Graph
+/cfg 0x161f668
 
-# ====== الهوكات ======
-/ahook 0x14549e4 hook_func
-/chook 0x14549e4
-/hook 0x14549e4 granny_hook
-/toggle 0x14549e4 1
-/rhook 0x14549e4
+# 8. نقطة توقف مع قراءة سجلات
+/bp 0x161f668
 
-# ====== تعديل القيم ======
-value 0x1454a8c 1.0 0.001
-
-# ====== تعديل RVAs ======
-0x14549e4: C0 03 5F D6  # RET
-0x14549e4: 1F 20 03 D5  # NOP
-
-# ====== مساعدة ======
-/help
+# 9. تعديل بايتات (تعطيل دالة)
+0x161f668: C0 03 5F D6
                 </div>
 
-                <h4 style="color: var(--accent-color); margin: 15px 0 8px 0; font-size: 1.1rem;">🔧 التعليمات المدعومة</h4>
-                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.8rem; color: var(--text-secondary); overflow-x: auto;">
+                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">📁 الملفات الناتجة</h4>
+                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
+                        <div>DZ_Scanner_Log.txt</div><div>سجل جميع العمليات</div>
+                        <div>dumps.cs</div><div>جميع الدوال بصيغة C#</div>
+                        <div>libil2cpp.so_dump.so</div><div>المكتبة كاملة من الذاكرة</div>
+                        <div>cfg_report.txt</div><div>Control Flow Graph</div>
+                        <div>PIIP.txt</div><div>سجلات كاملة من نقطة التوقف</div>
+                        <div>object_signatures.txt</div><div>بصمات الكائنات</div>
+                        <div>function_dump_0xXXX.bin</div><div>بايتات الدالة</div>
+                        <div>function_dump_0xXXX_hex.txt</div><div>بايتات بصيغة Hex</div>
+                        <div>function_report_0xXXX.txt</div><div>تقرير /VX</div>
+                        <div>trace_report_0xXXX.txt</div><div>تقرير /trace</div>
+                        <div>extracted_ints.txt</div><div>قيم Int</div>
+                        <div>extracted_floats.txt</div><div>قيم Float</div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">🔧 التعليمات الجاهزة للتعديل</h4>
+                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
                     <table style="width: 100%; border-collapse: collapse; text-align: right;">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color);"><th style="padding: 6px 8px;">الغرض</th><th style="padding: 6px 8px;">البايتات (Hex)</th><th style="padding: 6px 8px;">العدد</th><th style="padding: 6px 8px;">الشرح</th></tr></thead>
+                        <thead><tr style="border-bottom: 1px solid var(--border-color);"><th style="padding: 4px 8px;">الغرض</th><th style="padding: 4px 8px;">البايتات</th><th style="padding: 4px 8px;">الحجم</th></tr></thead>
                         <tbody>
-                            <tr><td style="padding: 4px 8px;">RET</td><td style="padding: 4px 8px; direction: ltr;">C0 03 5F D6</td><td style="padding: 4px 8px;">4</td><td style="padding: 4px 8px;">تعطيل الدالة بالكامل</td></tr>
-                            <tr><td style="padding: 4px 8px;">TRUE (1)</td><td style="padding: 4px 8px; direction: ltr;">20 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td><td style="padding: 4px 8px;">إرجاع القيمة 1</td></tr>
-                            <tr><td style="padding: 4px 8px;">FALSE (0)</td><td style="padding: 4px 8px; direction: ltr;">00 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td><td style="padding: 4px 8px;">إرجاع القيمة 0</td></tr>
-                            <tr><td style="padding: 4px 8px;">NOP</td><td style="padding: 4px 8px; direction: ltr;">1F 20 03 D5</td><td style="padding: 4px 8px;">4</td><td style="padding: 4px 8px;">لا تفعل شيئاً</td></tr>
-                            <tr><td style="padding: 4px 8px;">MOV W0, #100</td><td style="padding: 4px 8px; direction: ltr;">64 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td><td style="padding: 4px 8px;">إرجاع 100</td></tr>
+                            <tr><td style="padding: 4px 8px;">تعطيل دالة (RET)</td><td style="padding: 4px 8px; direction: ltr;">C0 03 5F D6</td><td style="padding: 4px 8px;">4</td></tr>
+                            <tr><td style="padding: 4px 8px;">إرجاع 1</td><td style="padding: 4px 8px; direction: ltr;">20 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td></tr>
+                            <tr><td style="padding: 4px 8px;">إرجاع 0</td><td style="padding: 4px 8px; direction: ltr;">00 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td></tr>
+                            <tr><td style="padding: 4px 8px;">NOP</td><td style="padding: 4px 8px; direction: ltr;">1F 20 03 D5</td><td style="padding: 4px 8px;">4</td></tr>
+                            <tr><td style="padding: 4px 8px;">إرجاع 100</td><td style="padding: 4px 8px; direction: ltr;">64 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="tool-actions">
-                    <button onclick="trackDownload('أداة المطور DZ_Scanner v7.1', 'https://www.mediafire.com/file/3mqremp0guqvrj5/DZ_Scanner_v7.1.zip/file')" class="tool-btn download">
-                        📥 تحميل أداة المطور (v7.1)
+                    <button onclick="trackDownload('أداة المطور ARM64Xploit v7.2', 'https://www.mediafire.com/file/8u2tdzhqwoi1ijw/libAdvancedCaller.so.zip/file')" class="tool-btn download">
+                        📥 تحميل ARM64Xploit (v7.2)
                     </button>
-                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/tag/7.1" target="_blank" class="tool-btn info">
+                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/tag/7.2" target="_blank" class="tool-btn info">
                         📚 للمزيد من المعلومات (GitHub)
                     </a>
+                </div>
+            </div>
+
+            <!-- ===== lib2dcppdemper ===== -->
+            <div class="tool-card" style="border-color: var(--warning-color);">
+                <div class="tool-header">
+                    <div class="tool-title" style="color: var(--warning-color);">🛠️ lib2dcppdemper</div>
+                    <div class="tool-badge" style="border-color: var(--warning-color); color: var(--warning-color);">Cocos2d-x / Unity / Unreal Analyzer</div>
+                </div>
+                
+                <div class="badge-list">
+                    <span class="badge">📦 الإصدار 1.0</span>
+                    <span class="badge">📜 MIT License</span>
+                    <span class="badge">📱 Android (Termux)</span>
+                    <span class="badge">📐 ARM64</span>
+                    <span class="badge">📏 الحجم 9.85KB</span>
+                </div>
+
+                <p class="tool-desc">
+                    <strong>lib2dcppdemper</strong> هي أداة احترافية مخصصة لتحليل واستخراج الدوال من مكتبات C++ (`.so`) على نظام Android.
+                    <br><br>
+                    🎯 <b>تدعم:</b> ✅ Cocos2d-x (`libcocos2dcpp.so`) • ✅ Unity (`libil2cpp.so`) • ✅ Unreal Engine • ✅ أي محرك C++
+                </p>
+
+                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">✨ الميزات</h4>
+                <div class="feature-grid-2">
+                    <div class="feature-item-compact">🎯 <b>استخراج الدوال</b> مع عناوينها</div>
+                    <div class="feature-item-compact">🔍 <b>تفكيك ARM64</b> كامل التعليمات</div>
+                    <div class="feature-item-compact">📍 <b>دالة محددة</b> تفكيك بعنوانها</div>
+                    <div class="feature-item-compact">⚡ <b>وضع سريع</b> خلال 1-2 دقائق</div>
+                    <div class="feature-item-compact">🐢 <b>وضع دقيق</b> مع فك أسماء C++</div>
+                    <div class="feature-item-compact">📁 <b>ملفات كبيرة</b> حتى 100 ميجابايت</div>
+                </div>
+
+                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">📋 الأوامر</h4>
+                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
+                        <div><code>./lib2dcppdemper /2</code></div><div>استخراج الدوال (وضع سريع)</div>
+                        <div><code>./lib2dcppdemper /1</code></div><div>استخراج الدوال (وضع دقيق)</div>
+                        <div><code>./lib2dcppdemper /3</code></div><div>تفكيك المكتبة كاملة</div>
+                        <div><code>./lib2dcppdemper -d 0xADDR</code></div><div>تفكيك دالة محددة</div>
+                        <div><code>./lib2dcppdemper -h</code></div><div>عرض المساعدة</div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">💡 أمثلة عملية</h4>
+                <div style="background: rgba(5, 7, 12, 0.9); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.78rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; word-break: break-all; font-family: monospace;">
+# استخراج الدوال (سريع)
+./lib2dcppdemper /2
+
+# استخراج الدوال (دقيق)
+./lib2dcppdemper /1
+
+# تفكيك المكتبة كاملة
+./lib2dcppdemper /3
+
+# تفكيك دالة محددة
+./lib2dcppdemper -d 0x5ca2cc
+
+# استخدام مكتبة Unity
+./lib2dcppdemper -f /storage/emulated/0/Download/libil2cpp.so /2
+
+# تغيير اسم الملف الناتج
+./lib2dcppdemper -o my_offsets.cs /2
+                </div>
+
+                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">📁 مكان وضع المكتبة</h4>
+                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; font-family: monospace;">
+/storage/emulated/0/Download/libcocos2dcpp.so
+/storage/emulated/0/Download/libil2cpp.so
+/storage/emulated/0/Download/libgame.so
+                </div>
+
+                <div class="tool-actions">
+                    <button onclick="trackDownload('أداة المطور lib2dcppdemper', 'https://www.mediafire.com/file/dsphfoc2hecvd4b/lib2dcppdemper.zip/file')" class="tool-btn download">
+                        📥 تحميل lib2dcppdemper
+                    </button>
+                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases" target="_blank" class="tool-btn info">
+                        📚 للمزيد من المعلومات (GitHub)
+                    </a>
+                </div>
+            </div>
+
+            <!-- ===== DZ_Scanner v7.1 (قديم) ===== -->
+            <div class="tool-card" style="border-color: var(--text-secondary); opacity: 0.7;">
+                <div class="tool-header">
+                    <div class="tool-title">🔥 DZ_Scanner v7.1</div>
+                    <div class="tool-badge">Legacy</div>
+                </div>
+                <p class="tool-desc">
+                    <strong>DZ_Scanner v7.1</strong> هي المكتبة السابقة، تم استبدالها بـ <strong>ARM64Xploit v7.2</strong> الأحدث والأقوى.
+                </p>
+                <div class="tool-actions">
+                    <button onclick="trackDownload('أداة المطور DZ_Scanner v7.1', 'https://www.mediafire.com/file/3mqremp0guqvrj5/DZ_Scanner_v7.1.zip/file')" class="tool-btn download">
+                        📥 تحميل DZ_Scanner (v7.1)
+                    </button>
                 </div>
             </div>
         </div>
