@@ -231,10 +231,15 @@
         }
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 8px;
         }
         @media (max-width: 900px) {
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 500px) {
             .categories-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -537,6 +542,139 @@
             border-color: #00ff66;
         }
 
+        .slider-container {
+            margin: 8px 0;
+            padding: 8px;
+            background: rgba(5, 7, 12, 0.6);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.72rem;
+            margin-bottom: 4px;
+        }
+        .slider-value {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        .cyber-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #1e293b;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+        .cyber-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-glow);
+            border: 2px solid #fff;
+        }
+        .cyber-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-glow);
+            border: 2px solid #fff;
+        }
+
+        .app-card {
+            background: linear-gradient(135deg, rgba(13, 18, 31, 0.95), rgba(5, 7, 12, 0.98));
+            border: 2px solid var(--accent-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 35px var(--accent-glow), inset 0 0 20px rgba(255,255,255,0.02);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 20px var(--accent-glow);
+            object-fit: cover;
+        }
+        .app-info {
+            flex: 1;
+            min-width: 200px;
+        }
+        .app-name {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 900;
+            text-shadow: 0 0 10px var(--accent-glow);
+            margin-bottom: 6px;
+        }
+        .app-version {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        .app-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+        .app-features li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding: 3px 0;
+        }
+        .app-features li::before {
+            content: "✅ ";
+            color: var(--success-color);
+        }
+        .app-download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff66, #00b347);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1rem;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .app-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.7);
+        }
+        .app-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 8px;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(5, 7, 12, 0.6);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .app-meta b {
+            color: var(--accent-color);
+        }
+
         .game-disclaimer {
             background: rgba(3, 5, 8, 0.9);
             border-top: 1px dashed var(--border-color);
@@ -721,48 +859,6 @@
             font-weight: bold;
         }
 
-        .scanner-badge {
-            display: inline-block;
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--accent-color);
-            border-radius: 6px;
-            padding: 2px 10px;
-            font-size: 0.7rem;
-            color: var(--accent-color);
-            margin: 2px 0;
-        }
-        .feature-grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 8px;
-            margin: 10px 0;
-        }
-        .feature-item-compact {
-            background: rgba(5, 7, 12, 0.7);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 8px 10px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .badge-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-        .badge {
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-        }
-
         @keyframes fadeInPage {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
@@ -805,7 +901,8 @@
 
     <div class="categories-container">
         <div class="categories-grid">
-            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (20)</div>
+            <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (21)</div>
+            <div class="cat-box" onclick="switchPage('app')">📱 تطبيقنا الرسمي</div>
             <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
             <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
             <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
@@ -818,20 +915,85 @@
         <div id="page-games" class="page-content active-page">
             
             <div class="nav-tool-banner">
-                <h3>🛠️ هل أنت مطور تبحث عن أدوات متقدمة؟</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">اكتشف أحدث أدوات التحليل: ARM64Xploit v7.2 و lib2dcppdemper</p>
-                <a href="#tool" class="goto-tool-btn" onclick="switchPage('tool')">توجه لأداة المطور</a>
+                <h3>📱 حمّل تطبيقنا الرسمي الآن!</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">تطبيق APK Menu - تصفح جميع الألعاب والأدوات بسهولة مع الإشعارات الفورية.</p>
+                <a href="#app" class="goto-tool-btn" onclick="switchPage('app')">📥 تحميل التطبيق</a>
             </div>
 
             <h2 class="section-title">قائمة الألعاب المعدلة المتوفرة</h2>
             
             <div class="games-grid">
                 
+                <!-- Granny & Her Husband -->
+                <div class="game-card">
+                    <div>
+                        <div class="game-header">
+                            <img class="game-img" src="grannymod.jpg" alt="Granny & Her Husband">
+                            <h3 class="game-title">👵 Granny & Her Husband (جراني وزوجها)</h3>
+                            <p class="game-desc">لعبة الرعب الشهيرة الإصدار 1.6 بمعمارية ARM64 مع قائمة غش احترافية للتحكم في السرعة.</p>
+                        </div>
+                        
+                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.95);">
+                            <div class="mod-menu-title" style="color: var(--danger-color);">⚡ DZ SECURITY LAB - Speed Control Menu</div>
+                            
+                            <!-- التحكم بسرعة الجد -->
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>👴 سرعة الجد:</span>
+                                    <span class="slider-value" id="grandpaSpeedValue">40</span>
+                                </div>
+                                <input type="range" min="1" max="80" value="40" class="cyber-slider" id="grandpaSpeed" oninput="updateSlider('grandpaSpeed', 'grandpaSpeedValue')">
+                            </div>
+
+                            <!-- التحكم بسرعة الجدة -->
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>👵 سرعة الجدة:</span>
+                                    <span class="slider-value" id="grannySpeedValue">40</span>
+                                </div>
+                                <input type="range" min="1" max="80" value="40" class="cyber-slider" id="grannySpeed" oninput="updateSlider('grannySpeed', 'grannySpeedValue')">
+                            </div>
+
+                            <!-- التحكم بسرعة اللاعب -->
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>🏃 سرعة اللاعب:</span>
+                                    <span class="slider-value" id="playerSpeedValue">50</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="50" class="cyber-slider" id="playerSpeed" oninput="updateSlider('playerSpeed', 'playerSpeedValue')">
+                            </div>
+                            
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 6px 0;">
+                                🚫 بدون إعلانات مزعجة | ⚡ تحكم كامل بالسرعات
+                            </div>
+                        </div>
+
+                        <ul class="features-list">
+                            <li><strong>إصدار التطبيق:</strong> 11 | <strong>إصدار المتجر:</strong> 1.6</li>
+                            <li><strong>حجم الملف:</strong> 143.47 ميجابايت</li>
+                            <li><strong>الحزمة:</strong> <code>com.granniarabic2.borroco</code></li>
+                            <li><strong>المعمارية:</strong> arm64-v8a</li>
+                            <li><strong>الميزات:</strong> 🎚️ تحكم بسرعة الجد (1-80) • 🎚️ تحكم بسرعة الجدة (1-80) • 🎚️ تحكم بسرعة اللاعب (0-100) • 🚫 بدون إعلانات</li>
+                            <li><strong>نظام التشغيل:</strong> Android 7.1 (API 25) → Android 16 (API 36)</li>
+                            <li><strong>MD5:</strong> <code>43d446f701c1d2acdff0c26bda01db5e</code></li>
+                            <li><strong>SHA1:</strong> <code>4cf4ba2132584a1d699b5ee1e1894a7efa5fe8ec</code></li>
+                            <li><strong>CRC32:</strong> <code>d1f16398</code></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="game-disclaimer"></div>
+                        <div class="card-footer">
+                            <button onclick="trackDownload('Granny & Her Husband (v1.6 - arm64-v8a)', 'https://www.mediafire.com/file/cz70900fmy4wqlr/جراني+و+زوجها.apk/file')" class="btn">تحميل اللعبة (APK)</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Ninja Arashi 2 Shadow's Return -->
                 <div class="game-card">
                     <div>
                         <div class="game-header">
-                            <img class="game-img" src="NinjaArashi2Shadows_Return.jpg" alt="Ninja Arashi 2 Shadow's Return">
+                            <img class="game-img" src="NinjaArashi2Shadows Return.jpg" alt="Ninja Arashi 2 Shadow's Return">
                             <h3 class="game-title">🥷 Ninja Arashi 2 Shadow's Return</h3>
                             <p class="game-desc">الجزء الثاني من لعبة النينجا الشهيرة الإصدار 1.4 بمعمارية ARM64 مع قائمة غش احترافية متكاملة.</p>
                         </div>
@@ -856,7 +1018,6 @@
                             <ul style="margin-right: 15px; margin-top: 4px; font-size: 0.78rem; color: var(--text-secondary);">
                                 <li>• <strong>ظهور فوق التطبيقات:</strong> ضروري لظهور قائمة الغش أثناء اللعب.</li>
                                 <li>• اللعبة بصيغة <strong>.apk</strong>، تُثبَّت مباشرة بدون أدوات إضافية.</li>
-                                <li>• إذا رفضت الإذن، لن تظهر قائمة الغش داخل اللعبة.</li>
                             </ul>
                         </div>
 
@@ -1475,135 +1636,75 @@
             </div>
         </div>
 
+        <!-- ==================== صفحة التطبيق ==================== -->
+        <div id="page-app" class="page-content">
+            <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
+            
+            <h2 class="section-title">📱 تطبيقنا الرسمي - APK Menu</h2>
+            
+            <div class="app-card">
+                <img class="app-icon" src="apk_menu_icon.jpg" alt="APK Menu">
+                <div class="app-info">
+                    <div class="app-name">📱 APK Menu</div>
+                    <div class="app-version">الإصدار 1.0 | DZ Security Lab</div>
+                    
+                    <ul class="app-features">
+                        <li>تصفح جميع الألعاب المعدلة بسهولة</li>
+                        <li>واجهة سيبرانية احترافية متعددة الألوان</li>
+                        <li>تحميل مباشر للألعاب والأدوات</li>
+                        <li>إشعارات فورية عند إضافة ألعاب جديدة</li>
+                        <li>قائمة منسدلة بالخيارات المتقدمة</li>
+                        <li>يعمل بسلاسة على جميع الأجهزة</li>
+                    </ul>
+                    
+                    <div class="app-meta">
+                        <div><b>الحزمة:</b> com.dzsecuritylab.app</div>
+                        <div><b>الحجم:</b> 5.86 ميجابايت</div>
+                        <div><b>التوافق:</b> Android 8 - Android 14</div>
+                        <div><b>الإصدار:</b> 1.0</div>
+                    </div>
+                    
+                    <button onclick="trackDownload('APK Menu (v1.0)', 'https://www.mediafire.com/file/ea7tup1o8hrhlfe/APK+Menu.apk/file')" class="app-download-btn">
+                        📥 تحميل APK Menu
+                    </button>
+                </div>
+            </div>
+
+            <div class="transparency-card">
+                <h3>🎯 ماذا يفعل تطبيق APK Menu؟</h3>
+                <p><strong>APK Menu</strong> هو تطبيقك الرسمي الذي يجمع جميع محتويات موقع DZ Security Lab في واجهة واحدة أنيقة وسريعة.</p>
+                <p>يوفّر التطبيق تجربة استخدام احترافية مع:</p>
+                <ul style="margin-right: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8;">
+                    <li>✅ <strong>تصفح سريع:</strong> لجميع الألعاب المعدلة والأدوات</li>
+                    <li>✅ <strong>تحميل مباشر:</strong> بضغطة واحدة</li>
+                    <li>✅ <strong>واجهة سيبرانية:</strong> 5 أنماط ألوان متغيرة</li>
+                    <li>✅ <strong>قائمة ذكية:</strong> مع خيارات التحديث والمشاركة</li>
+                    <li>✅ <strong>يعمل على الأجهزة الحديثة:</strong> ARM64</li>
+                </ul>
+                <div class="safety-box">
+                    💡 <strong>تحديثات فورية:</strong> عند إضافة لعبة جديدة في الموقع، تظهر تلقائياً في التطبيق بدون الحاجة لتحديثه.
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== صفحة أدوات المطور ==================== -->
         <div id="page-tool" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
             <h2 class="section-title">🛠️ قسم أدوات المطور (Developer Tools)</h2>
             
-            <!-- ===== ARM64Xploit v7.2 ===== -->
+            <!-- ARM64Xploit -->
             <div class="tool-card" style="border-color: var(--accent-secondary);">
                 <div class="tool-header">
                     <div class="tool-title" style="color: var(--accent-secondary);">🔥 ARM64Xploit v7.2</div>
                     <div class="tool-badge" style="border-color: var(--accent-secondary); color: var(--accent-secondary);">Ultimate ARM64 Reverse Engineering Engine</div>
                 </div>
                 
-                <div class="badge-list">
-                    <span class="badge">📦 الإصدار 7.2</span>
-                    <span class="badge">📜 MIT License</span>
-                    <span class="badge">📱 Android</span>
-                    <span class="badge">📐 API 24+</span>
-                    <span class="badge">📏 الحجم 89KB</span>
-                    <span class="badge">🧠 418+ تعليمة</span>
-                </div>
-
                 <p class="tool-desc">
-                    <strong>ARM64Xploit v7.2</strong> هي مكتبة Android احترافية لتحليل وتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. تم تطويرها بالكامل على هاتف Android فقط!<br><br>
-                    تدعم <b>418+ تعليمة ARM64</b> مع فك تشفير كامل، توليد Control Flow Graph، Hooks متقدمة، نقاط توقف ذكية، قراءة سجلات حقيقية من المعالج، استخراج بصمات الكائنات، وتفريغ المكتبات كاملة من الذاكرة.
+                    <strong>ARM64Xploit v7.2</strong> هي مكتبة Android احترافية لتحليل وتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. تدعم <b>418+ تعليمة ARM64</b> مع فك تشفير كامل.
                     <br><br>
                     🆓 مجانية 100% | 💪 قوية | 🕶️ بدون Root | 🔄 بدون Injection
                 </p>
-
-                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">🆕 الميزات الكاملة</h4>
-                <div class="feature-grid-2">
-                    <div class="feature-item-compact">🧠 <b>محلل ARM64 تلقائي</b> 418+ تعليمة</div>
-                    <div class="feature-item-compact">📊 <b>CFG Generator</b> /cfg 0xADDR</div>
-                    <div class="feature-item-compact">🔍 <b>تحليل دالة</b> /VX 0xADDR</div>
-                    <div class="feature-item-compact">📦 <b>تفريغ دالة</b> /dumpfunc 0xADDR</div>
-                    <div class="feature-item-compact">🔗 <b>تتبع استدعاءات</b> /trace 0xADDR</div>
-                    <div class="feature-item-compact">🧬 <b>قراءة سجلات</b> /bp 0xADDR (ucontext)</div>
-                    <div class="feature-item-compact">🎯 <b>نقطة توقف ذكية</b> /sbp 0xADDR</div>
-                    <div class="feature-item-compact">🪝 <b>Hook متقدم</b> /ahook 0xADDR</div>
-                    <div class="feature-item-compact">📤 <b>استخراج Int</b> /int 0xADDR</div>
-                    <div class="feature-item-compact">📤 <b>استخراج Float</b> /V 0xADDR</div>
-                    <div class="feature-item-compact">💾 <b>تفريغ المكتبة</b> /dumplib</div>
-                    <div class="feature-item-compact">📋 <b>استخراج دوال C#</b> /C#</div>
-                    <div class="feature-item-compact">🔬 <b>بصمة الكائنات</b> /0xADDR!</div>
-                    <div class="feature-item-compact">📝 <b>تعديل بايتات</b> 0xADDR: HEX</div>
-                    <div class="feature-item-compact">⏰ <b>تأخير</b> /30</div>
-                    <div class="feature-item-compact">📚 <b>تحديد مكتبة</b> /Wlib.so</div>
-                </div>
-
-                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">🏗️ المواصفات التقنية</h4>
-                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
-                        <div><b>اللغة:</b> C/C++ (Android NDK r29)</div>
-                        <div><b>المعمارية:</b> ARM64 (AArch64)</div>
-                        <div><b>الحد الأدنى:</b> Android 7.0 (API 24)</div>
-                        <div><b>حجم المكتبة:</b> 89 KB</div>
-                        <div><b>عدد التعليمات:</b> 418+</div>
-                        <div><b>عدد الأوامر:</b> 16 أمر</div>
-                        <div><b>Root مطلوب:</b> ❌ لا</div>
-                        <div><b>Injection:</b> ❌ لا</div>
-                    </div>
-                </div>
-
-                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">📂 تنسيق ملف MOD.SH</h4>
-                <div style="background: rgba(5, 7, 12, 0.9); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.78rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; word-break: break-all; font-family: monospace;">
-مسار الملف: /storage/emulated/0/Android/data/&lt;package&gt;/files/MOD.SH
-
-# ============================================================
-# ARM64Xploit v7.2 - MOD.SH
-# ============================================================
-
-# 1. تحديد المكتبة الهدف
-/Wlibil2cpp.so
-
-# 2. تأخير 10 ثواني
-/10
-
-# 3. استخراج جميع الدوال بصيغة C#
-/C#
-
-# 4. تفريغ المكتبة كاملة من الذاكرة
-/dumplib
-
-# 5. Hook تلقائي + قراءة X0 + بصمة الكائن
-/0x161f668!
-
-# 6. تحليل دالة كامل
-/VX 0x161f668
-
-# 7. رسم Control Flow Graph
-/cfg 0x161f668
-
-# 8. نقطة توقف مع قراءة سجلات
-/bp 0x161f668
-
-# 9. تعديل بايتات (تعطيل دالة)
-0x161f668: C0 03 5F D6
-                </div>
-
-                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">📁 الملفات الناتجة</h4>
-                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
-                        <div>DZ_Scanner_Log.txt</div><div>سجل جميع العمليات</div>
-                        <div>dumps.cs</div><div>جميع الدوال بصيغة C#</div>
-                        <div>libil2cpp.so_dump.so</div><div>المكتبة كاملة من الذاكرة</div>
-                        <div>cfg_report.txt</div><div>Control Flow Graph</div>
-                        <div>PIIP.txt</div><div>سجلات كاملة من نقطة التوقف</div>
-                        <div>object_signatures.txt</div><div>بصمات الكائنات</div>
-                        <div>function_dump_0xXXX.bin</div><div>بايتات الدالة</div>
-                        <div>function_dump_0xXXX_hex.txt</div><div>بايتات بصيغة Hex</div>
-                        <div>function_report_0xXXX.txt</div><div>تقرير /VX</div>
-                        <div>trace_report_0xXXX.txt</div><div>تقرير /trace</div>
-                        <div>extracted_ints.txt</div><div>قيم Int</div>
-                        <div>extracted_floats.txt</div><div>قيم Float</div>
-                    </div>
-                </div>
-
-                <h4 style="color: var(--accent-secondary); margin: 15px 0 8px 0; font-size: 1.1rem;">🔧 التعليمات الجاهزة للتعديل</h4>
-                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
-                    <table style="width: 100%; border-collapse: collapse; text-align: right;">
-                        <thead><tr style="border-bottom: 1px solid var(--border-color);"><th style="padding: 4px 8px;">الغرض</th><th style="padding: 4px 8px;">البايتات</th><th style="padding: 4px 8px;">الحجم</th></tr></thead>
-                        <tbody>
-                            <tr><td style="padding: 4px 8px;">تعطيل دالة (RET)</td><td style="padding: 4px 8px; direction: ltr;">C0 03 5F D6</td><td style="padding: 4px 8px;">4</td></tr>
-                            <tr><td style="padding: 4px 8px;">إرجاع 1</td><td style="padding: 4px 8px; direction: ltr;">20 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td></tr>
-                            <tr><td style="padding: 4px 8px;">إرجاع 0</td><td style="padding: 4px 8px; direction: ltr;">00 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td></tr>
-                            <tr><td style="padding: 4px 8px;">NOP</td><td style="padding: 4px 8px; direction: ltr;">1F 20 03 D5</td><td style="padding: 4px 8px;">4</td></tr>
-                            <tr><td style="padding: 4px 8px;">إرجاع 100</td><td style="padding: 4px 8px; direction: ltr;">64 00 80 52 C0 03 5F D6</td><td style="padding: 4px 8px;">8</td></tr>
-                        </tbody>
-                    </table>
-                </div>
 
                 <div class="tool-actions">
                     <button onclick="trackDownload('أداة المطور ARM64Xploit v7.2', 'https://www.mediafire.com/file/8u2tdzhqwoi1ijw/libAdvancedCaller.so.zip/file')" class="tool-btn download">
@@ -1615,103 +1716,28 @@
                 </div>
             </div>
 
-            <!-- ===== lib2dcppdemper ===== -->
+            <!-- lib2dcppdemper -->
             <div class="tool-card" style="border-color: var(--warning-color);">
                 <div class="tool-header">
                     <div class="tool-title" style="color: var(--warning-color);">🛠️ lib2dcppdemper</div>
                     <div class="tool-badge" style="border-color: var(--warning-color); color: var(--warning-color);">Cocos2d-x / Unity / Unreal Analyzer</div>
                 </div>
                 
-                <div class="badge-list">
-                    <span class="badge">📦 الإصدار 1.0</span>
-                    <span class="badge">📜 MIT License</span>
-                    <span class="badge">📱 Android (Termux)</span>
-                    <span class="badge">📐 ARM64</span>
-                    <span class="badge">📏 الحجم 9.85KB</span>
-                </div>
-
                 <p class="tool-desc">
                     <strong>lib2dcppdemper</strong> هي أداة احترافية مخصصة لتحليل واستخراج الدوال من مكتبات C++ (`.so`) على نظام Android.
                     <br><br>
-                    🎯 <b>تدعم:</b> ✅ Cocos2d-x (`libcocos2dcpp.so`) • ✅ Unity (`libil2cpp.so`) • ✅ Unreal Engine • ✅ أي محرك C++
+                    🎯 <b>تدعم:</b> ✅ Cocos2d-x • ✅ Unity • ✅ Unreal Engine • ✅ أي محرك C++
                 </p>
-
-                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">✨ الميزات</h4>
-                <div class="feature-grid-2">
-                    <div class="feature-item-compact">🎯 <b>استخراج الدوال</b> مع عناوينها</div>
-                    <div class="feature-item-compact">🔍 <b>تفكيك ARM64</b> كامل التعليمات</div>
-                    <div class="feature-item-compact">📍 <b>دالة محددة</b> تفكيك بعنوانها</div>
-                    <div class="feature-item-compact">⚡ <b>وضع سريع</b> خلال 1-2 دقائق</div>
-                    <div class="feature-item-compact">🐢 <b>وضع دقيق</b> مع فك أسماء C++</div>
-                    <div class="feature-item-compact">📁 <b>ملفات كبيرة</b> حتى 100 ميجابايت</div>
-                </div>
-
-                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">📋 الأوامر</h4>
-                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary);">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px;">
-                        <div><code>./lib2dcppdemper /2</code></div><div>استخراج الدوال (وضع سريع)</div>
-                        <div><code>./lib2dcppdemper /1</code></div><div>استخراج الدوال (وضع دقيق)</div>
-                        <div><code>./lib2dcppdemper /3</code></div><div>تفكيك المكتبة كاملة</div>
-                        <div><code>./lib2dcppdemper -d 0xADDR</code></div><div>تفكيك دالة محددة</div>
-                        <div><code>./lib2dcppdemper -h</code></div><div>عرض المساعدة</div>
-                    </div>
-                </div>
-
-                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">💡 أمثلة عملية</h4>
-                <div style="background: rgba(5, 7, 12, 0.9); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.78rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; word-break: break-all; font-family: monospace;">
-# استخراج الدوال (سريع)
-./lib2dcppdemper /2
-
-# استخراج الدوال (دقيق)
-./lib2dcppdemper /1
-
-# تفكيك المكتبة كاملة
-./lib2dcppdemper /3
-
-# تفكيك دالة محددة
-./lib2dcppdemper -d 0x5ca2cc
-
-# استخدام مكتبة Unity
-./lib2dcppdemper -f /storage/emulated/0/Download/libil2cpp.so /2
-
-# تغيير اسم الملف الناتج
-./lib2dcppdemper -o my_offsets.cs /2
-                </div>
-
-                <h4 style="color: var(--warning-color); margin: 15px 0 8px 0; font-size: 1.1rem;">📁 مكان وضع المكتبة</h4>
-                <div style="background: rgba(5, 7, 12, 0.7); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-secondary); direction: ltr; text-align: left; overflow-x: auto; white-space: pre-wrap; font-family: monospace;">
-/storage/emulated/0/Download/libcocos2dcpp.so
-/storage/emulated/0/Download/libil2cpp.so
-/storage/emulated/0/Download/libgame.so
-                </div>
 
                 <div class="tool-actions">
                     <button onclick="trackDownload('أداة المطور lib2dcppdemper', 'https://www.mediafire.com/file/dsphfoc2hecvd4b/lib2dcppdemper.zip/file')" class="tool-btn download">
                         📥 تحميل lib2dcppdemper
                     </button>
-                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases" target="_blank" class="tool-btn info">
-                        📚 للمزيد من المعلومات (GitHub)
-                    </a>
-                </div>
-            </div>
-
-            <!-- ===== DZ_Scanner v7.1 (قديم) ===== -->
-            <div class="tool-card" style="border-color: var(--text-secondary); opacity: 0.7;">
-                <div class="tool-header">
-                    <div class="tool-title">🔥 DZ_Scanner v7.1</div>
-                    <div class="tool-badge">Legacy</div>
-                </div>
-                <p class="tool-desc">
-                    <strong>DZ_Scanner v7.1</strong> هي المكتبة السابقة، تم استبدالها بـ <strong>ARM64Xploit v7.2</strong> الأحدث والأقوى.
-                </p>
-                <div class="tool-actions">
-                    <button onclick="trackDownload('أداة المطور DZ_Scanner v7.1', 'https://www.mediafire.com/file/3mqremp0guqvrj5/DZ_Scanner_v7.1.zip/file')" class="tool-btn download">
-                        📥 تحميل DZ_Scanner (v7.1)
-                    </button>
                 </div>
             </div>
         </div>
 
+        <!-- ==================== صفحة الشفافية ==================== -->
         <div id="page-transparency" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1731,6 +1757,7 @@
             </div>
         </div>
 
+        <!-- ==================== صفحة الطلبات ==================== -->
         <div id="page-requests" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1761,6 +1788,7 @@
             </div>
         </div>
 
+        <!-- ==================== صفحة التقييم ==================== -->
         <div id="page-feedback" class="page-content">
             <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
             
@@ -1897,18 +1925,21 @@
             const boxes = document.querySelectorAll('.cat-box');
             boxes.forEach(box => box.classList.remove('active'));
 
-            if(pageName === 'tool') {
-                document.getElementById('page-tool').classList.add('active-page');
+            if(pageName === 'app') {
+                document.getElementById('page-app').classList.add('active-page');
                 boxes[1].classList.add('active');
+            } else if(pageName === 'tool') {
+                document.getElementById('page-tool').classList.add('active-page');
+                boxes[2].classList.add('active');
             } else if(pageName === 'transparency') {
                 document.getElementById('page-transparency').classList.add('active-page');
-                boxes[2].classList.add('active');
+                boxes[3].classList.add('active');
             } else if(pageName === 'requests') {
                 document.getElementById('page-requests').classList.add('active-page');
-                boxes[3].classList.add('active');
+                boxes[4].classList.add('active');
             } else if(pageName === 'feedback') {
                 document.getElementById('page-feedback').classList.add('active-page');
-                boxes[4].classList.add('active');
+                boxes[5].classList.add('active');
             } else {
                 document.getElementById('page-games').classList.add('active-page');
                 boxes[0].classList.add('active');
@@ -1930,6 +1961,14 @@
             const previewBox = button.closest('.mod-menu-preview');
             if (previewBox) {
                 previewBox.style.display = 'none';
+            }
+        }
+
+        function updateSlider(sliderId, valueId) {
+            const slider = document.getElementById(sliderId);
+            const valueDisplay = document.getElementById(valueId);
+            if (slider && valueDisplay) {
+                valueDisplay.textContent = slider.value;
             }
         }
 
