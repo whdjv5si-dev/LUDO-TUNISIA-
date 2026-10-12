@@ -913,7 +913,134 @@
     <div class="main-container">
         
         <div id="page-games" class="page-content active-page">
-            
+            <!-- ⚠️ تحذير هام لأصحاب الأجهزة الحديثة -->
+<div style="
+    background: linear-gradient(135deg, rgba(255, 42, 42, 0.15), rgba(255, 0, 85, 0.1));
+    border: 2px solid #ff2a2a;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255, 42, 42, 0.5), inset 0 0 15px rgba(255, 0, 85, 0.1);
+    animation: pulseWarning 2s infinite;
+">
+
+    <!-- أيقونة التحذير -->
+    <div style="font-size: 50px; margin-bottom: 10px; text-shadow: 0 0 20px #ff2a2a;">
+        ⚠️
+    </div>
+
+    <!-- العنوان الرئيسي -->
+    <h2 style="
+        color: #ff2a2a;
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+        font-weight: 900;
+        margin-bottom: 15px;
+        text-shadow: 0 0 15px rgba(255, 42, 42, 0.8);
+        letter-spacing: 1px;
+    ">
+        🚨 تنبيه هام جداً 🚨
+    </h2>
+
+    <!-- الرسالة الأساسية -->
+    <p style="
+        color: #ffffff;
+        font-size: clamp(1rem, 4vw, 1.15rem);
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.7;
+    ">
+        جميع الألعاب المعروضة في هذا الموقع <span style="color: #ff2a2a; text-decoration: underline;">لا تعمل</span> على:
+    </p>
+
+    <!-- أنظمة لا تعمل -->
+    <div style="
+        display: inline-block;
+        background: rgba(255, 42, 42, 0.2);
+        border: 2px solid #ff2a2a;
+        border-radius: 10px;
+        padding: 12px 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 15px rgba(255, 42, 42, 0.4);
+    ">
+        <p style="
+            color: #ff2a2a;
+            font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+            font-weight: 900;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(255, 42, 42, 0.6);
+        ">
+            📱 Android 14 | 15 | 16
+        </p>
+    </div>
+
+    <!-- قائمة الأنظمة التي تعمل -->
+    <p style="
+        color: #00ff66;
+        font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+        font-weight: bold;
+        margin-bottom: 10px;
+    ">
+        ✅ تعمل فقط على الأنظمة التالية:
+    </p>
+
+    <div style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 20px;
+    ">
+        <span style="background: rgba(0, 255, 102, 0.15); border: 1.5px solid #00ff66; color: #00ff66; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">✅ Android 8</span>
+        <span style="background: rgba(0, 255, 102, 0.15); border: 1.5px solid #00ff66; color: #00ff66; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">✅ Android 9</span>
+        <span style="background: rgba(0, 255, 102, 0.15); border: 1.5px solid #00ff66; color: #00ff66; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">✅ Android 10</span>
+        <span style="background: rgba(0, 255, 102, 0.15); border: 1.5px solid #00ff66; color: #00ff66; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">✅ Android 11</span>
+        <span style="background: rgba(0, 255, 102, 0.15); border: 1.5px solid #00ff66; color: #00ff66; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">✅ Android 12</span>
+        <span style="background: rgba(0, 255, 102, 0.15); border: 1.5px solid #00ff66; color: #00ff66; padding: 6px 14px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);">✅ Android 13</span>
+    </div>
+
+    <!-- رسالة حزينة لأصحاب Android 14+ -->
+    <div style="
+        background: rgba(5, 7, 12, 0.7);
+        border-left: 4px solid #ffaa00;
+        border-radius: 0 10px 10px 0;
+        padding: 15px;
+        margin-top: 20px;
+        text-align: right;
+    ">
+        <p style="
+            color: #ffaa00;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        ">
+            💔 رسالة إلى أصحاب الأجهزة الحديثة:
+        </p>
+        <p style="
+            color: #a0aec0;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin: 0;
+        ">
+            نعلم أنك اشتريت هاتفاً جديداً لتستمتع بأحدث الألعاب...<br>
+            ولكن للأسف، نظام Android 14 و 15 و 16 يمنع تشغيل التعديلات الحالية.<br>
+            <span style="color: #ff2a2a; font-weight: bold;">نأسف بشدة، ونعمل بجد لإيجاد حل قريباً.</span><br>
+            🙏 شكراً لتفهمك وصبرك.
+        </p>
+    </div>
+
+</div>
+
+<style>
+    @keyframes pulseWarning {
+        0%, 100% {
+            box-shadow: 0 0 25px rgba(255, 42, 42, 0.5), inset 0 0 15px rgba(255, 0, 85, 0.1);
+        }
+        50% {
+            box-shadow: 0 0 40px rgba(255, 42, 42, 0.8), inset 0 0 25px rgba(255, 0, 85, 0.2);
+        }
+    }
+</style>
             <div class="nav-tool-banner">
                 <h3>📱 حمّل تطبيقنا الرسمي الآن!</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.88rem;">تطبيق APK Menu - تصفح جميع الألعاب والأدوات بسهولة مع الإشعارات الفورية.</p>
