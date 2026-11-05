@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DZ Hooking Lab - مكتبة الألعاب المعدلة وأدوات المطورين</title>
+    <title>DZ Hooking Lab - مكتبة الألعاب المعدلة</title>
     <style>
         :root {
             --bg-color: #05070c;
@@ -231,7 +231,7 @@
         }
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 8px;
         }
         @media (max-width: 900px) {
@@ -323,94 +323,6 @@
             box-shadow: var(--border-glow);
             transition: all 0.3s ease;
             font-size: 0.9rem;
-        }
-
-        .tool-card {
-            background: var(--card-bg);
-            border: 2px solid var(--accent-color);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 35px var(--accent-glow), inset 0 0 20px rgba(255,255,255,0.02);
-        }
-        .tool-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-        }
-        .tool-title {
-            color: var(--accent-color);
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
-            font-weight: 900;
-            text-shadow: 0 0 12px var(--accent-glow);
-        }
-        .tool-badge {
-            background: var(--accent-glow);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .tool-desc {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            margin-bottom: 18px;
-            line-height: 1.7;
-        }
-        .tool-features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .tool-feature-item {
-            background: rgba(5, 7, 12, 0.7);
-            border: 1px solid var(--border-color);
-            padding: 12px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--border-glow);
-        }
-        .tool-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .tool-btn {
-            flex: 1;
-            min-width: 180px;
-            padding: 12px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-        .tool-btn.download {
-            background: linear-gradient(135deg, #00ff66, #00b347);
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
-            font-weight: 900;
-        }
-        .tool-btn.info {
-            background: linear-gradient(135deg, var(--accent-secondary), #9d00ff);
-            color: #fff;
-            box-shadow: 0 0 20px var(--accent-secondary-glow);
         }
 
         .games-grid {
@@ -869,7 +781,7 @@
 
     <header>
         <h1>DZ Hooking Lab</h1>
-        <p>المصدر الاحترافي لتعديل الألعاب وقوائم الغش المباشرة وأدوات المطورين</p>
+        <p>المصدر الاحترافي لتعديل الألعاب وقوائم الغش المباشرة</p>
     </header>
 
     <div class="theme-switcher-bar">
@@ -901,9 +813,8 @@
 
 <div class="categories-container">
     <div class="categories-grid">
-        <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (22)</div>
+        <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (21)</div>
         <div class="cat-box" onclick="switchPage('app')">📱 تطبيقنا الرسمي</div>
-        <div class="cat-box" onclick="switchPage('tool')">🛠️ أداة المطور</div>
         <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
         <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
         <div class="cat-box" onclick="switchPage('feedback')">⭐ التقييم والملاحظات</div>
@@ -1789,35 +1700,6 @@
                     </div>
                 </div>
 
-                <!-- Granny 3 -->
-                <div class="game-card">
-                    <div>
-                        <div class="game-header">
-                            <img class="game-img" src="granny-3.jpg" alt="Granny 3">
-                            <h3 class="game-title">Granny 3</h3>
-                            <p class="game-desc">لعبة الرعب الشهيرة مع قائمة غش مخصصة لتجميد الجدة والجد لضمان النجاة.</p>
-                        </div>
-                        <div class="mod-menu-preview">
-                            <div class="mod-menu-title">DZ Hooking Lab</div>
-                            <div class="mod-grid">
-                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجدة')">تجميد: OFF</div>
-                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'تجميد الجد')">تجميد2: OFF</div>
-                            </div>
-                        </div>
-                        <ul class="features-list">
-                            <li>تجميد الجدة (Freeze Granny)</li>
-                            <li>تجميد الجد (Freeze Grandpa)</li>
-                            <li>قائمة غش تفاعلية مطابقة لطلبك</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="game-disclaimer"></div>
-                        <div class="card-footer">
-                            <button onclick="trackDownload('Granny 3', 'https://www.mediafire.com/file/b65kbe4s7idu4i2/Granny3_src_sign.apk/file')" class="btn">تحميل اللعبة (APK)</button>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Granny Chapter Two -->
                 <div class="game-card">
                     <div>
@@ -1897,56 +1779,6 @@
                 </ul>
                 <div class="safety-box">
                     💡 <strong>تحديثات فورية:</strong> عند إضافة لعبة جديدة في الموقع، تظهر تلقائياً في التطبيق بدون الحاجة لتحديثه.
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== صفحة أدوات المطور ==================== -->
-        <div id="page-tool" class="page-content">
-            <a href="#" class="back-to-home-btn" onclick="switchPage('games')">⬅ العودة إلى قائمة الألعاب</a>
-            
-            <h2 class="section-title">🛠️ قسم أدوات المطور (Developer Tools)</h2>
-            
-            <!-- ARM64Xploit -->
-            <div class="tool-card" style="border-color: var(--accent-secondary);">
-                <div class="tool-header">
-                    <div class="tool-title" style="color: var(--accent-secondary);">🔥 ARM64Xploit v7.2</div>
-                    <div class="tool-badge" style="border-color: var(--accent-secondary); color: var(--accent-secondary);">Ultimate ARM64 Reverse Engineering Engine</div>
-                </div>
-                
-                <p class="tool-desc">
-                    <strong>ARM64Xploit v7.2</strong> هي مكتبة Android احترافية لتحليل وتعديل الذاكرة في وقت التشغيل (Runtime Patching) لمعمارية <b>ARM64</b>. تدعم <b>418+ تعليمة ARM64</b> مع فك تشفير كامل.
-                    <br><br>
-                    🆓 مجانية 100% | 💪 قوية | 🕶️ بدون Root | 🔄 بدون Injection
-                </p>
-
-                <div class="tool-actions">
-                    <button onclick="trackDownload('أداة المطور ARM64Xploit v7.2', 'https://www.mediafire.com/file/8u2tdzhqwoi1ijw/libAdvancedCaller.so.zip/file')" class="tool-btn download">
-                        📥 تحميل ARM64Xploit (v7.2)
-                    </button>
-                    <a href="https://github.com/whdjv5si-dev/ADEMX/releases/tag/7.2" target="_blank" class="tool-btn info">
-                        📚 للمزيد من المعلومات (GitHub)
-                    </a>
-                </div>
-            </div>
-
-            <!-- lib2dcppdemper -->
-            <div class="tool-card" style="border-color: var(--warning-color);">
-                <div class="tool-header">
-                    <div class="tool-title" style="color: var(--warning-color);">🛠️ lib2dcppdemper</div>
-                    <div class="tool-badge" style="border-color: var(--warning-color); color: var(--warning-color);">Cocos2d-x / Unity / Unreal Analyzer</div>
-                </div>
-                
-                <p class="tool-desc">
-                    <strong>lib2dcppdemper</strong> هي أداة احترافية مخصصة لتحليل واستخراج الدوال من مكتبات C++ (`.so`) على نظام Android.
-                    <br><br>
-                    🎯 <b>تدعم:</b> ✅ Cocos2d-x • ✅ Unity • ✅ Unreal Engine • ✅ أي محرك C++
-                </p>
-
-                <div class="tool-actions">
-                    <button onclick="trackDownload('أداة المطور lib2dcppdemper', 'https://www.mediafire.com/file/dsphfoc2hecvd4b/lib2dcppdemper.zip/file')" class="tool-btn download">
-                        📥 تحميل lib2dcppdemper
-                    </button>
                 </div>
             </div>
         </div>
@@ -2142,18 +1974,15 @@
             if(pageName === 'app') {
                 document.getElementById('page-app').classList.add('active-page');
                 boxes[1].classList.add('active');
-            } else if(pageName === 'tool') {
-                document.getElementById('page-tool').classList.add('active-page');
-                boxes[2].classList.add('active');
             } else if(pageName === 'transparency') {
                 document.getElementById('page-transparency').classList.add('active-page');
-                boxes[3].classList.add('active');
+                boxes[2].classList.add('active');
             } else if(pageName === 'requests') {
                 document.getElementById('page-requests').classList.add('active-page');
-                boxes[4].classList.add('active');
+                boxes[3].classList.add('active');
             } else if(pageName === 'feedback') {
                 document.getElementById('page-feedback').classList.add('active-page');
-                boxes[5].classList.add('active');
+                boxes[4].classList.add('active');
             } else {
                 document.getElementById('page-games').classList.add('active-page');
                 boxes[0].classList.add('active');
