@@ -814,7 +814,7 @@
 
 <div class="categories-container">
     <div class="categories-grid">
-        <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (24)</div>
+        <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (25)</div>
         <div class="cat-box" onclick="switchPage('app')">📱 تطبيقنا الرسمي</div>
         <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
         <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
@@ -962,6 +962,79 @@
             <h2 class="section-title">قائمة الألعاب المعدلة المتوفرة</h2>
             
             <div class="games-grid">
+            <!-- Battleground Survival -->
+<div class="game-card">
+    <div>
+        <div class="game-header">
+            <img class="game-img" src="DZMOD.png" alt="Battleground Survival">
+            <h3 class="game-title">🔫 Battleground Survival</h3>
+            <p class="game-desc">لعبة تصويب وقتال (أوف لاين)، مع قائمة غش احترافية (Mod Menu) للتحكم الكامل باللعبة.</p>
+        </div>
+
+        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.95);">
+            <div class="mod-menu-title" style="color: var(--danger-color);">⚡ DZ SURITY LAB - Battleground Survival Mod</div>
+            
+            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: right; padding: 2px 0; font-weight: bold;">[ AIM & VISUAL MODS ]</div>
+            <div class="mod-grid">
+                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'Aimbot')">🎯 Aimbot: OFF</div>
+                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'ESP')">👁️ ESP: OFF</div>
+            </div>
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>FOV Aim:</span>
+                    <span class="slider-value" id="bgsFovValue">0</span>
+                </div>
+                <input type="range" min="0" max="100" value="0" class="cyber-slider" id="bgsFov" oninput="updateSlider('bgsFov', 'bgsFovValue')">
+            </div>
+
+            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: right; padding: 2px 0; font-weight: bold; margin-top: 4px;">[ PLAYER MODS ]</div>
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Player Speed:</span>
+                    <span class="slider-value" id="bgsSpeedValue">0</span>
+                </div>
+                <input type="range" min="0" max="100" value="0" class="cyber-slider" id="bgsSpeed" oninput="updateSlider('bgsSpeed', 'bgsSpeedValue')">
+            </div>
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>High Jump:</span>
+                    <span class="slider-value" id="bgsJumpValue">0</span>
+                </div>
+                <input type="range" min="0" max="100" value="0" class="cyber-slider" id="bgsJump" oninput="updateSlider('bgsJump', 'bgsJumpValue')">
+            </div>
+
+            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 6px 0; margin-top: 4px;">
+                🚫 بدون إعلانات | ⚡ يتطلب صلاحية "ظهور فوق التطبيقات"
+            </div>
+        </div>
+
+        <div class="warning-box" style="border-color: var(--warning-color); background: rgba(255, 170, 0, 0.05); margin: 0 18px 12px 18px;">
+            <strong>📌 ملاحظات هامة:</strong>
+            <ul style="margin-right: 15px; margin-top: 4px; font-size: 0.78rem; color: var(--text-secondary);">
+                <li>• <strong>صلاحية "ظهور فوق التطبيقات":</strong> يجب تفعيلها من إعدادات الهاتف ليظهر المود مينو أثناء اللعب.</li>
+                <li>• <strong>وضع اللعب:</strong> اللعبة أوف لاين (Offline) ولا تحتاج لاتصال إنترنت.</li>
+                <li>• اللعبة بصيغة <strong>.apk</strong>، تُثبَّت مباشرة.</li>
+            </ul>
+        </div>
+
+        <ul class="features-list">
+            <li><strong>اسم اللعبة:</strong> Battleground Survival</li>
+            <li><strong>حجم الملف:</strong> 182.75 ميجابايت</li>
+            <li><strong>البكج:</strong> <code>com.pro.game.BattlegroundSurvival</code></li>
+            <li><strong>المعمارية:</strong> arm64-v8a</li>
+            <li><strong>الميزات:</strong> 🎯 Aimbot • 👁️ ESP • 🎚️ FOV Aim • 🏃 Player Speed • 🦘 High Jump • 🚫 بدون إعلانات • 🎮 لعبة أوف لاين</li>
+            <li><strong>MD5:</strong> <code>8c8dd40f32d20dd691a61d678fe03e23</code></li>
+            <li><strong>SHA256:</strong> <code style="word-break: break-all; font-size: 0.72rem;">237628fba48b64d95e897298c7c8ab673fe4be5e9649b2fffcf04ce18fd7bf23</code></li>
+        </ul>
+    </div>
+
+    <div>
+        <div class="game-disclaimer"></div>
+        <div class="card-footer">
+            <button onclick="trackDownload('Battleground Survival (arm64-v8a)', 'https://www.mediafire.com/file/8txhtbz02gei20g/DZ_MOD.apk/file')" class="btn">تحميل اللعبة (APK)</button>
+        </div>
+    </div>
+</div>
                 <!-- Cyber Gun -->
                 <div class="game-card" style="border-color: #ffaa00;">
                     <div>
