@@ -814,7 +814,7 @@
 
 <div class="categories-container">
     <div class="categories-grid">
-        <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (23)</div>
+        <div class="cat-box active" onclick="switchPage('games')">🎮 الألعاب المعدلة (24)</div>
         <div class="cat-box" onclick="switchPage('app')">📱 تطبيقنا الرسمي</div>
         <div class="cat-box" onclick="switchPage('transparency')">🛡️ الشفافية والأمان</div>
         <div class="cat-box" onclick="switchPage('requests')">📥 طلبات التعديل</div>
@@ -962,6 +962,65 @@
             <h2 class="section-title">قائمة الألعاب المعدلة المتوفرة</h2>
             
             <div class="games-grid">
+                <!-- Cyber Gun -->
+                <div class="game-card" style="border-color: #ffaa00;">
+                    <div>
+                        <div class="game-header">
+                            <img class="game-img" src="game.jpg" alt="Cyber Gun">
+<h3 class="game-title">🔫 Cyber Gun</h3>
+                            <p class="game-desc">لعبة تصويب وقتال أونلاين، مع قائمة غش احترافية (Mod Menu) للتحكم الكامل باللعبة.</p>
+                        </div>
+
+                        <div class="mod-menu-preview" style="border-color: var(--danger-color); background: rgba(15, 23, 42, 0.95);">
+                            <div class="mod-menu-title" style="color: var(--danger-color);">⚡ DZ SURITY LAB - Cyber Gun Mod</div>
+                            
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: right; padding: 2px 0; font-weight: bold;">[ AIM & VISUAL MODS ]</div>
+                            <div class="mod-grid">
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'Aimbot')">🎯 Aimbot: OFF</div>
+                                <div class="mod-btn-sample purple" onclick="toggleMod(this, 'ESP')">👁️ ESP: OFF</div>
+                            </div>
+                            
+                            <div class="slider-container">
+                                <div class="slider-label">
+                                    <span>FOV Aim:</span>
+                                    <span class="slider-value" id="cyberGunFovValue">0</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="0" class="cyber-slider" id="cyberGunFov" oninput="updateSlider('cyberGunFov', 'cyberGunFovValue')">
+                            </div>
+
+                            <div style="font-size: 0.7rem; color: var(--text-secondary); text-align: center; padding: 6px 0; margin-top: 4px;">
+                                🚫 بدون إعلانات | ⚡ يتطلب صلاحية "ظهور فوق التطبيقات"
+                            </div>
+                        </div>
+
+                        <div class="warning-box" style="border-color: var(--warning-color); background: rgba(255, 170, 0, 0.05); margin: 0 18px 12px 18px;">
+                            <strong>📌 ملاحظات هامة جداً:</strong>
+                            <ul style="margin-right: 15px; margin-top: 4px; font-size: 0.78rem; color: var(--text-secondary);">
+                                <li>• <strong>صلاحية "ظهور فوق التطبيقات":</strong> يجب تفعيلها من إعدادات الهاتف ليظهر المود مينو أثناء اللعب.</li>
+                                <li>• <strong>الإنترنت:</strong> لتشغيل ميزات اللعبة، يجب أن يكون اتصال الإنترنت شغالاً.</li>
+                                <li>• اللعبة بصيغة <strong>.apk</strong>، تُثبَّت مباشرة.</li>
+                            </ul>
+                        </div>
+
+                        <ul class="features-list">
+                            <li><strong>اسم اللعبة:</strong> Cyber Gun</li>
+                            <li><strong>حجم الملف:</strong> 114.33 ميجابايت</li>
+                            <li><strong>البكج:</strong> <code>com.firstanvilgames.Cyberpunk.Battleground</code></li>
+                            <li><strong>المعمارية:</strong> arm64-v8a</li>
+                            <li><strong>الميزات:</strong> 🎯 Aimbot • 👁️ ESP • 🎚️ FOV Aim • 🚫 بدون إعلانات • 🌐 لعبة أونلاين</li>
+                            <li><strong>MD5:</strong> <code>7daa597da0ddbf35e7320ed86a673233</code></li>
+                            <li><strong>SHA256:</strong> <code style="word-break: break-all; font-size: 0.72rem;">0757e06dca3cf5a6c280f432a70be7f8af441054a81c92a6e733badad313ddbc</code></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="game-disclaimer"></div>
+                        <div class="card-footer">
+                            <button onclick="trackDownload('Cyber Gun (arm64-v8a)', 'https://www.mediafire.com/file/y5jpzh1h521p9ij/Cyber+Gun.apk/file')" class="btn">تحميل اللعبة (APK)</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Hungry Shark Evolution (جديد) -->
                 <div class="game-card">
                     <div>
